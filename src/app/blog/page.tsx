@@ -1,7 +1,14 @@
 'use client';
 import React, { useState } from 'react';
 import {
-  Container, Box, Typography, Grid, Card, CardContent, Chip, Button,
+  Container,
+  Box,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Chip,
+  Button,
   useTheme as useMuiTheme,
 } from '@mui/material';
 import { CalendarToday, ArrowForward, WbSunny } from '@mui/icons-material';
@@ -20,7 +27,8 @@ const Blog = () => {
       date: 'March 15, 2024',
       category: 'Solar Costs',
       slug: 'solar-panel-cost-pune',
-      image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80',
+      image:
+        'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80',
       alt: 'Solar panel installation cost in Pune Maharashtra',
       readTime: '6 min read',
     },
@@ -32,7 +40,8 @@ const Blog = () => {
       date: 'March 10, 2024',
       category: 'Subsidy & Finance',
       slug: 'solar-subsidy-maharashtra',
-      image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80',
+      image:
+        'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80',
       alt: 'Government solar subsidy scheme in Maharashtra India',
       readTime: '8 min read',
     },
@@ -44,7 +53,8 @@ const Blog = () => {
       date: 'March 5, 2024',
       category: 'Solar Costs',
       slug: '5kw-solar-system-price-india',
-      image: 'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=800&q=80',
+      image:
+        'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=800&q=80',
       alt: '5KW rooftop solar system installation in India',
       readTime: '7 min read',
     },
@@ -56,7 +66,8 @@ const Blog = () => {
       date: 'February 28, 2024',
       category: 'Solar Basics',
       slug: 'rooftop-solar-benefits-maharashtra',
-      image: 'https://images.unsplash.com/photo-1594398044738-3482bc03cb41?auto=format&fit=crop&w=800&q=80',
+      image:
+        'https://images.unsplash.com/photo-1594398044738-3482bc03cb41?auto=format&fit=crop&w=800&q=80',
       alt: 'Rooftop solar panels on Maharashtra home',
       readTime: '5 min read',
     },
@@ -68,7 +79,8 @@ const Blog = () => {
       date: 'February 20, 2024',
       category: 'Solar Basics',
       slug: 'on-grid-off-grid-hybrid-solar',
-      image: 'https://images.unsplash.com/photo-1605647540924-852290d6e597?auto=format&fit=crop&w=800&q=80',
+      image:
+        'https://images.unsplash.com/photo-1605647540924-852290d6e597?auto=format&fit=crop&w=800&q=80',
       alt: 'Solar system types comparison on-grid off-grid hybrid',
       readTime: '9 min read',
     },
@@ -80,7 +92,8 @@ const Blog = () => {
       date: 'February 15, 2024',
       category: 'Local Guide',
       slug: 'solar-panel-installation-nagpur-guide',
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+      image:
+        'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
       alt: 'Solar panel installation guide Nagpur Maharashtra',
       readTime: '10 min read',
     },
@@ -88,13 +101,13 @@ const Blog = () => {
 
   const categories = ['All', 'Solar Costs', 'Subsidy & Finance', 'Solar Basics', 'Local Guide'];
 
-  const filtered = selectedCategory === 'All'
-    ? blogPosts
-    : blogPosts.filter((p) => p.category === selectedCategory);
+  const filtered =
+    selectedCategory === 'All'
+      ? blogPosts
+      : blogPosts.filter((p) => p.category === selectedCategory);
 
   return (
     <Box sx={{ pt: { xs: 8, md: 10 } }}>
-
       {/* Hero Section — matches Products/Services/About */}
       <Box
         sx={{
@@ -155,7 +168,8 @@ const Blog = () => {
                 color: 'text.secondary',
               }}
             >
-              Expert guides, cost breakdowns, subsidy tips and solar news for Maharashtra homeowners and businesses
+              Expert guides, cost breakdowns, subsidy tips and solar news for Maharashtra homeowners
+              and businesses
             </Typography>
           </motion.div>
         </Container>
@@ -180,7 +194,8 @@ const Blog = () => {
                 border: `1px solid ${selectedCategory === category ? theme.palette.primary.main : theme.palette.divider}`,
                 transition: 'all 0.3s ease',
                 '&:hover': {
-                  bgcolor: selectedCategory === category ? 'primary.dark' : 'rgba(212, 175, 55, 0.08)',
+                  bgcolor:
+                    selectedCategory === category ? 'primary.dark' : 'rgba(212, 175, 55, 0.08)',
                 },
               }}
             />
@@ -248,13 +263,31 @@ const Blog = () => {
                   <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: 3 }}>
                     {/* Date + Read time */}
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, color: 'text.secondary' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 0.5,
+                          color: 'text.secondary',
+                        }}
+                      >
                         <CalendarToday sx={{ fontSize: 14 }} />
-                        <Typography variant="caption" sx={{ fontWeight: 500 }}>{post.date}</Typography>
+                        <Typography variant="caption" sx={{ fontWeight: 500 }}>
+                          {post.date}
+                        </Typography>
                       </Box>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, color: 'text.secondary' }}>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 0.5,
+                          color: 'text.secondary',
+                        }}
+                      >
                         <WbSunny sx={{ fontSize: 14, color: 'primary.main' }} />
-                        <Typography variant="caption" sx={{ fontWeight: 500 }}>{post.readTime}</Typography>
+                        <Typography variant="caption" sx={{ fontWeight: 500 }}>
+                          {post.readTime}
+                        </Typography>
                       </Box>
                     </Box>
 
@@ -298,7 +331,9 @@ const Blog = () => {
         {/* Empty state */}
         {filtered.length === 0 && (
           <Box sx={{ textAlign: 'center', py: 10 }}>
-            <Typography variant="h5" color="text.secondary">No articles in this category yet.</Typography>
+            <Typography variant="h5" color="text.secondary">
+              No articles in this category yet.
+            </Typography>
           </Box>
         )}
       </Container>
