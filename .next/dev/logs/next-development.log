@@ -1,0 +1,878 @@
+[00:00:02.586] Server  LOG     ✓ Ready in 1862ms
+[00:00:30.972] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:38.680] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:08:38.403] Server  LOG     ✓ Compiled in 400ms
+[00:08:40.040] Server  LOG     ✓ Compiled in 28ms
+[00:09:19.926] Server  LOG     ✓ Compiled in 353ms
+[00:09:20.321] Browser ERROR   ./src/components/HeroBanner/HeroBanner.tsx:42:3
+Parsing ecmascript source code failed
+  40 |         display: 'flex',
+  41 |         alignItems: 'center',
+> 42 |   );
+     |   ^
+  43 | };
+  44 |
+  45 | export default HeroBanner;
+
+Unexpected token `)`. Expected identifier, string literal, numeric literal or [ for the computed key
+
+Import traces:
+  Client Component Browser:
+    ./src/components/HeroBanner/HeroBanner.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/HeroBanner/HeroBanner.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[00:10:15.544] Server  LOG     ✓ Compiled in 78ms
+[00:10:56.818] Server  LOG     ✓ Compiled in 110ms
+[00:10:56.926] Browser ERROR   ./src/components/SolarProductsGrid/SolarProductsGrid.tsx:82:21
+Parsing ecmascript source code failed
+  80 |                   '&:hover': {
+  81 |                     '& .product-icon': {
+> 82 |                     {product.description}
+     |                     ^
+  83 |                   </Typography>
+  84 |                   <Button
+  85 |                     endIcon={<ArrowForward />}
+
+Expected '</', got '{'
+
+Import traces:
+  Client Component Browser:
+    ./src/components/SolarProductsGrid/SolarProductsGrid.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/SolarProductsGrid/SolarProductsGrid.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[00:11:08.188] Server  LOG     ✓ Compiled in 110ms
+[00:11:08.314] Browser ERROR   ./src/app/page.tsx:63:15
+Parsing ecmascript source code failed
+  61 |             Get Free Quote
+  62 |           </Button>
+> 63 |         </Box>
+     |               ^
+> 64 |       </Container>
+     | ^^^^^^^
+  65 |
+  66 |       {/* FAQ Section */}
+  67 |       <FAQAccordion />
+
+Expected '</', got 'jsx text'
+[00:12:07.282] Server  LOG     ✓ Compiled in 220ms
+[00:12:07.390] Browser ERROR   ./src/components/SolarProductsGrid/SolarProductsGrid.tsx:77:7
+Parsing ecmascript source code failed
+  75 |           </Button>
+  76 |         </Box>
+> 77 |       )}
+     |       ^
+  78 |     </Box>
+  79 |   );
+  80 | };
+
+Expected '</', got ')'
+
+Import traces:
+  Client Component Browser:
+    ./src/components/SolarProductsGrid/SolarProductsGrid.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/SolarProductsGrid/SolarProductsGrid.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[00:12:44.975] Server  LOG     ✓ Compiled in 8ms
+[00:12:45.314] Browser ERROR   ./src/components/SolarProductsGrid/SolarProductsGrid.tsx:214:1
+Parsing ecmascript source code failed
+  212 | };
+  213 |
+> 214 | export default SolarProductsGrid;
+      | ^^^^^^
+  215 |
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./src/components/SolarProductsGrid/SolarProductsGrid.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/SolarProductsGrid/SolarProductsGrid.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[00:13:10.992] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:13:12.972] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <MuiThemeProvider>
+      <ThemeProvider theme={{...}}>
+        <ThemeProvider themeId={undefined} theme={{...}}>
+          <ThemeProvider theme={{...}}>
+            <RtlProvider value={false}>
+              <DefaultPropsProvider value={{...}}>
+                <CssBaseline>
+                <Layout>
+                  <Box sx={{...}}>
+                    <Styled(div) as="div" ref={null} className="MuiBox-root" theme={{...}} sx={{...}}>
+                      <Insertion>
++                     <div className="MuiBox-root css-1svsvwq">
+-                     <style data-emotion="css-global 1x38s0b" data-s="">
+
+[00:14:09.641] Server  LOG     ✓ Compiled in 23ms
+[00:14:32.250] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:26:56.783] Server  LOG     ✓ Compiled in 20ms
+[00:27:02.707] Server  LOG     ✓ Compiled in 10ms
+[00:27:04.725] Server  LOG     ✓ Compiled in 12ms
+[00:27:45.562] Server  LOG     ✓ Compiled in 63ms
+[00:27:46.312] Browser ERROR   ./src/components/TestimonialSlider/TestimonialSlider.tsx:4:5
+Parsing ecmascript source code failed
+  2 | import React, { useState, useEffect } from 'react';
+  3 | import { Box, Typography, Avatar, Container, Rating } from '@mui/material';
+> 4 |     return () => clearInterval(interval);
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |   }, [testimonials.length]);
+  6 |
+  7 |   return (
+
+Return statement is not allowed here
+
+Import traces:
+  Client Component Browser:
+    ./src/components/TestimonialSlider/TestimonialSlider.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/TestimonialSlider/TestimonialSlider.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[00:28:17.221] Server  LOG     ✓ Compiled in 5ms
+[00:28:18.319] Browser ERROR   ./src/components/TestimonialSlider/TestimonialSlider.tsx:3:17
+Parsing ecmascript source code failed
+  1 | 'use client';
+  2 |         bgcolor: 'background.default',
+> 3 |         position: 'relative',
+    |                 ^
+  4 |       }}
+  5 |     >
+  6 |       <Container maxWidth="md">
+
+Expected ';', '}' or <eof>
+
+Import traces:
+  Client Component Browser:
+    ./src/components/TestimonialSlider/TestimonialSlider.tsx [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/TestimonialSlider/TestimonialSlider.tsx [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+[00:33:24.044] Server  LOG     ✓ Compiled in 9ms
+[00:35:05.427] Server  LOG     ✓ Compiled in 13ms
+[00:35:07.442] Server  LOG     ✓ Compiled in 7ms
+[00:35:09.454] Server  LOG     ✓ Compiled in 19ms
+[00:37:54.043] Server  LOG     ✓ Compiled in 11ms
+[00:37:56.100] Server  LOG     ✓ Compiled in 13ms
+[00:38:09.777] Server  LOG     ✓ Compiled in 8ms
+[00:41:54.622] Server  LOG     ✓ Compiled in 8ms
+[00:50:26.123] Server  LOG     ✓ Compiled in 13ms
+[00:50:37.577] Server  LOG     ✓ Compiled in 8ms
+[00:50:39.609] Server  LOG     ✓ Compiled in 10ms
+[00:50:56.107] Server  LOG     ✓ Compiled in 16ms
+[00:54:27.982] Server  LOG     ✓ Compiled in 9ms
+[00:54:30.019] Server  LOG     ✓ Compiled in 15ms
+[00:55:43.836] Server  LOG     ✓ Compiled in 8ms
+[00:58:18.486] Server  LOG     ✓ Compiled in 32ms
+[00:58:27.072] Server  LOG     ✓ Compiled in 99ms
+[00:58:27.321] Browser ERROR   ./src/app/contact/page.tsx:16:6
+Parsing ecmascript source code failed
+  14 |   LocationOn,
+  15 |   Schedule,
+> 16 |     },
+     |      ^
+  17 |   ];
+  18 |
+  19 |   return (
+
+Expected 'from', got ','
+[00:58:36.992] Server  LOG     ✓ Compiled in 61ms
+[00:58:37.316] Browser ERROR   ./src/app/about/page.tsx:100:32
+Parsing ecmascript source code failed
+   98 |           <motion.div
+   99 |             initial={{ opacity: 0, y: 30 }}
+> 100 |         {/* Mission & Vision */}
+      |                                ^
+  101 |         <Grid container spacing={4} sx={{ mb: 8 }}>
+  102 |           {missionVision.map((item, index) => (
+  103 |             <Grid item xs={12} md={6} key={index}>
+
+Expected '</', got '}'
+[00:58:37.316] Browser ERROR   ./src/app/contact/page.tsx:16:6
+Parsing ecmascript source code failed
+  14 |   LocationOn,
+  15 |   Schedule,
+> 16 |     },
+     |      ^
+  17 |   ];
+  18 |
+  19 |   return (
+
+Expected 'from', got ','
+[00:59:09.660] Server  LOG     ✓ Compiled in 66ms
+[00:59:10.322] Browser ERROR   ./src/app/about/page.tsx:100:32
+Parsing ecmascript source code failed
+   98 |           <motion.div
+   99 |             initial={{ opacity: 0, y: 30 }}
+> 100 |         {/* Mission & Vision */}
+      |                                ^
+  101 |         <Grid container spacing={4} sx={{ mb: 8 }}>
+  102 |           {missionVision.map((item, index) => (
+  103 |             <Grid item xs={12} md={6} key={index}>
+
+Expected '</', got '}'
+[00:59:11.020] Server  LOG     ✓ Compiled in 69ms
+[00:59:12.093] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:59:13.921] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <MuiThemeProvider>
+      <ThemeProvider theme={{...}}>
+        <ThemeProvider themeId={undefined} theme={{...}}>
+          <ThemeProvider theme={{...}}>
+            <RtlProvider value={false}>
+              <DefaultPropsProvider value={{...}}>
+                <CssBaseline>
+                <Layout>
+                  <Box sx={{...}}>
+                    <Styled(div) as="div" ref={null} className="MuiBox-root" theme={{...}} sx={{...}}>
+                      <Insertion>
++                     <div className="MuiBox-root css-1svsvwq">
+-                     <style data-emotion="css-global 1x38s0b" data-s="">
+
+[01:00:33.797] Server  LOG     ✓ Compiled in 19ms
+[01:04:36.649] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:06:17.709] Server  LOG     ✓ Compiled in 14ms
+[01:06:18.314] Browser ERROR   uncaughtError: ReferenceError: useMuiTheme is not defined
+[01:06:19.201] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:06:19.646] Server  LOG     ✓ Compiled in 63ms
+[01:06:19.907] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:06:21.310] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <MuiThemeProvider>
+      <ThemeProvider theme={{...}}>
+        <ThemeProvider themeId={undefined} theme={{...}}>
+          <ThemeProvider theme={{...}}>
+            <RtlProvider value={false}>
+              <DefaultPropsProvider value={{...}}>
+                <CssBaseline>
+                <Layout>
+                  <Box sx={{...}}>
+                    <Styled(div) as="div" ref={null} className="MuiBox-root" theme={{...}} sx={{...}}>
+                      <Insertion>
++                     <div className="MuiBox-root css-1svsvwq">
+-                     <style data-emotion="css-global 1x38s0b" data-s="">
+
+[01:12:02.021] Server  LOG     ✓ Compiled in 10ms
+[01:12:51.664] Server  LOG     ✓ Compiled in 7ms
+[01:12:53.689] Server  LOG     ✓ Compiled in 12ms
+[01:13:49.090] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:29.866] Server  LOG     ✓ Compiled in 20ms
+[01:14:29.978] Browser ERROR   ./src/app/about/page.tsx:89:3
+Parsing ecmascript source code failed
+  87 |
+  88 |   return (
+> 89 |   return (
+     |   ^^^^^^
+  90 |     <Box sx={{ pt: 0, pb: 4, position: 'relative', overflow: 'hidden' }}>
+  91 |       {/* Premium Hero Section */}
+  92 |       <Box
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./src/app/about/page.tsx [Client Component Browser]
+    ./src/app/about/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/about/page.tsx [Client Component SSR]
+    ./src/app/about/page.tsx [Server Component]
+[01:14:31.204] Server  LOG     ✓ Compiled in 20ms
+[01:14:31.307] Browser ERROR   ./src/app/about/page.tsx:89:3
+Parsing ecmascript source code failed
+  87 |
+  88 |   return (
+> 89 |   return (
+     |   ^^^^^^
+  90 |     <Box sx={{ pt: 0, pb: 4, position: 'relative', overflow: 'hidden' }}>
+  91 |       {/* Premium Hero Section */}
+  92 |       <Box
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./src/app/about/page.tsx [Client Component Browser]
+    ./src/app/about/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/about/page.tsx [Client Component SSR]
+    ./src/app/about/page.tsx [Server Component]
+[01:15:07.066] Server  ERROR   ⨯ ./src/app/about/page.tsx:89:3
+Parsing ecmascript source code failed
+  87 |
+  88 |   return (
+> 89 |   return (
+     |   ^^^^^^
+  90 |     <Box sx={{ pt: 0, pb: 4, position: 'relative', overflow: 'hidden' }}>
+  91 |       {/* Premium Hero Section */}
+  92 |       <Box
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./src/app/about/page.tsx [Client Component Browser]
+    ./src/app/about/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/about/page.tsx [Client Component SSR]
+    ./src/app/about/page.tsx [Server Component]
+
+
+[01:15:07.183] Browser ERROR   ./src/app/about/page.tsx:89:3
+Parsing ecmascript source code failed
+  87 |
+  88 |   return (
+> 89 |   return (
+     |   ^^^^^^
+  90 |     <Box sx={{ pt: 0, pb: 4, position: 'relative', overflow: 'hidden' }}>
+  91 |       {/* Premium Hero Section */}
+  92 |       <Box
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./src/app/about/page.tsx [Client Component Browser]
+    ./src/app/about/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/about/page.tsx [Client Component SSR]
+    ./src/app/about/page.tsx [Server Component]
+[01:15:08.083] Browser ERROR   ./src/app/about/page.tsx:89:3
+Parsing ecmascript source code failed
+  87 |
+  88 |   return (
+> 89 |   return (
+     |   ^^^^^^
+  90 |     <Box sx={{ pt: 0, pb: 4, position: 'relative', overflow: 'hidden' }}>
+  91 |       {/* Premium Hero Section */}
+  92 |       <Box
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./src/app/about/page.tsx [Client Component Browser]
+    ./src/app/about/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/about/page.tsx [Client Component SSR]
+    ./src/app/about/page.tsx [Server Component]
+[01:15:08.233] Browser ERROR   ./src/app/about/page.tsx:89:3
+Parsing ecmascript source code failed
+  87 |
+  88 |   return (
+> 89 |   return (
+     |   ^^^^^^
+  90 |     <Box sx={{ pt: 0, pb: 4, position: 'relative', overflow: 'hidden' }}>
+  91 |       {/* Premium Hero Section */}
+  92 |       <Box
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./src/app/about/page.tsx [Client Component Browser]
+    ./src/app/about/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/about/page.tsx [Client Component SSR]
+    ./src/app/about/page.tsx [Server Component]
+[01:15:09.052] Browser ERROR   ./src/app/about/page.tsx:89:3
+Parsing ecmascript source code failed
+  87 |
+  88 |   return (
+> 89 |   return (
+     |   ^^^^^^
+  90 |     <Box sx={{ pt: 0, pb: 4, position: 'relative', overflow: 'hidden' }}>
+  91 |       {/* Premium Hero Section */}
+  92 |       <Box
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./src/app/about/page.tsx [Client Component Browser]
+    ./src/app/about/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/about/page.tsx [Client Component SSR]
+    ./src/app/about/page.tsx [Server Component]
+[01:15:09.237] Browser ERROR   uncaughtError: Error: ./src/app/about/page.tsx:89:3
+Parsing ecmascript source code failed
+  87 |
+  88 |   return (
+> 89 |   return (
+     |   ^^^^^^
+  90 |     <Box sx={{ pt: 0, pb: 4, position: 'relative', overflow: 'hidden' }}>
+  91 |       {/* Premium Hero Section */}
+  92 |       <Box
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./src/app/about/page.tsx [Client Component Browser]
+    ./src/app/about/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/about/page.tsx [Client Component SSR]
+    ./src/app/about/page.tsx [Server Component]
+
+
+[01:15:09.434] Browser ERROR   ./src/app/about/page.tsx:89:3
+Parsing ecmascript source code failed
+  87 |
+  88 |   return (
+> 89 |   return (
+     |   ^^^^^^
+  90 |     <Box sx={{ pt: 0, pb: 4, position: 'relative', overflow: 'hidden' }}>
+  91 |       {/* Premium Hero Section */}
+  92 |       <Box
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./src/app/about/page.tsx [Client Component Browser]
+    ./src/app/about/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/about/page.tsx [Client Component SSR]
+    ./src/app/about/page.tsx [Server Component]
+[01:15:09.434] Browser ERROR   ./src/app/about/page.tsx:89:3
+Parsing ecmascript source code failed
+  87 |
+  88 |   return (
+> 89 |   return (
+     |   ^^^^^^
+  90 |     <Box sx={{ pt: 0, pb: 4, position: 'relative', overflow: 'hidden' }}>
+  91 |       {/* Premium Hero Section */}
+  92 |       <Box
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./src/app/about/page.tsx [Client Component Browser]
+    ./src/app/about/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/about/page.tsx [Client Component SSR]
+    ./src/app/about/page.tsx [Server Component]
+[01:15:36.971] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:38.322] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <MuiThemeProvider>
+      <ThemeProvider theme={{...}}>
+        <ThemeProvider themeId={undefined} theme={{...}}>
+          <ThemeProvider theme={{...}}>
+            <RtlProvider value={false}>
+              <DefaultPropsProvider value={{...}}>
+                <CssBaseline>
+                <Layout>
+                  <Box sx={{...}}>
+                    <Styled(div) as="div" ref={null} className="MuiBox-root" theme={{...}} sx={{...}}>
+                      <Insertion>
++                     <div className="MuiBox-root css-1svsvwq">
+-                     <style data-emotion="css-global 1x38s0b" data-s="">
+
+[01:18:09.136] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:22:21.287] Server  LOG     ✓ Compiled in 90ms
+[01:22:22.321] Browser ERROR   ./src/app/products/page.tsx:19:24
+Parsing ecmascript source code failed
+  17 |                           ))}
+  18 |                         </Box>
+> 19 |                       </Box>
+     |                        ^^^^^
+  20 |                       <Button
+  21 |                         variant="contained"
+  22 |                         fullWidth
+
+Unterminated regexp literal
+[01:22:23.323] Browser ERROR   ./src/app/products/page.tsx:19:24
+Parsing ecmascript source code failed
+  17 |                           ))}
+  18 |                         </Box>
+> 19 |                       </Box>
+     |                        ^^^^^
+  20 |                       <Button
+  21 |                         variant="contained"
+  22 |                         fullWidth
+
+Unterminated regexp literal
+[01:22:53.372] Server  LOG     ✓ Compiled in 60ms
+[01:22:53.528] Server  LOG     ✓ Compiled in 83ms
+[01:22:56.901] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:23:16.339] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:24:38.632] Server  LOG     ✓ Compiled in 66ms
+[01:28:22.020] Server  LOG     ✓ Compiled in 13ms
+[01:28:36.752] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:32:27.549] Server  LOG     ✓ Compiled in 14ms
+[01:33:10.306] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:33:45.487] Server  LOG     ✓ Compiled in 13ms
+[01:36:02.106] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:39:52.869] Server  ERROR   ⨯ ./src/app/portfolio/page.tsx:2:24
+Parsing ecmascript source code failed
+  1 | 'use client';
+> 2 |               onClick={() => setSelectedCategory(category)}
+    |                        ^
+  3 |               color={selectedCategory === category ? 'primary' : 'default'}
+  4 |               sx={{
+  5 |                 px: 2,
+
+Unexpected token `(`. Expected identifier, string literal, numeric literal or [ for the computed key
+
+
+[01:39:52.909] Server  ERROR   ⨯ ./src/app/portfolio/page.tsx:2:24
+Parsing ecmascript source code failed
+  1 | 'use client';
+> 2 |               onClick={() => setSelectedCategory(category)}
+    |                        ^
+  3 |               color={selectedCategory === category ? 'primary' : 'default'}
+  4 |               sx={{
+  5 |                 px: 2,
+
+Unexpected token `(`. Expected identifier, string literal, numeric literal or [ for the computed key
+
+
+[01:39:52.953] Server  LOG     ✓ Compiled in 132ms
+[01:39:53.270] Browser ERROR   uncaughtError: Error: ./src/app/portfolio/page.tsx:2:24
+Parsing ecmascript source code failed
+  1 | 'use client';
+> 2 |               onClick={() => setSelectedCategory(category)}
+    |                        ^
+  3 |               color={selectedCategory === category ? 'primary' : 'default'}
+  4 |               sx={{
+  5 |                 px: 2,
+
+Unexpected token `(`. Expected identifier, string literal, numeric literal or [ for the computed key
+
+
+[01:39:54.314] Browser ERROR   ./src/app/portfolio/page.tsx:2:24
+Parsing ecmascript source code failed
+  1 | 'use client';
+> 2 |               onClick={() => setSelectedCategory(category)}
+    |                        ^
+  3 |               color={selectedCategory === category ? 'primary' : 'default'}
+  4 |               sx={{
+  5 |                 px: 2,
+
+Unexpected token `(`. Expected identifier, string literal, numeric literal or [ for the computed key
+[01:39:54.314] Browser ERROR   ./src/app/portfolio/page.tsx:2:24
+Parsing ecmascript source code failed
+  1 | 'use client';
+> 2 |               onClick={() => setSelectedCategory(category)}
+    |                        ^
+  3 |               color={selectedCategory === category ? 'primary' : 'default'}
+  4 |               sx={{
+  5 |                 px: 2,
+
+Unexpected token `(`. Expected identifier, string literal, numeric literal or [ for the computed key
+[01:40:25.320] Browser ERROR   ./src/components/CaseStudyCard/CaseStudyCard.tsx:35:26
+Parsing ecmascript source code failed
+  33 |       <Card
+  34 |         sx={{
+> 35 |               label={data.category}
+     |                          ^
+  36 |               size="small"
+  37 |               sx={{
+  38 |                 bgcolor: 'primary.main',
+
+Expected a semicolon
+
+Import traces:
+  Client Component Browser:
+    ./src/components/CaseStudyCard/CaseStudyCard.tsx [Client Component Browser]
+    ./src/app/portfolio/page.tsx [Client Component Browser]
+    ./src/app/portfolio/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/CaseStudyCard/CaseStudyCard.tsx [Client Component SSR]
+    ./src/app/portfolio/page.tsx [Client Component SSR]
+    ./src/app/portfolio/page.tsx [Server Component]
+[01:40:25.923] Server  LOG     ✓ Compiled in 62ms
+[01:40:27.027] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:44:02.842] Server  LOG     ✓ Compiled in 190ms
+[01:44:13.009] Server  LOG     ✓ Compiled in 17ms
+[01:45:51.255] Server  LOG     ✓ Compiled in 15ms
+[01:46:07.708] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:47:33.801] Server  LOG     ✓ Compiled in 355ms
+[01:47:34.255] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:47:35.310] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <MuiThemeProvider>
+      <ThemeProvider theme={{...}}>
+        <ThemeProvider themeId={undefined} theme={{...}}>
+          <ThemeProvider theme={{...}}>
+            <RtlProvider value={false}>
+              <DefaultPropsProvider value={{...}}>
+                <CssBaseline>
+                <Layout>
+                  <Box sx={{...}}>
+                    <Styled(div) as="div" ref={null} className="MuiBox-root" theme={{...}} sx={{...}}>
+                      <Insertion>
++                     <div className="MuiBox-root css-1svsvwq">
+-                     <style data-emotion="css-global 1x38s0b" data-s="">
+
+[01:47:40.808] Server  LOG     ✓ Compiled in 204ms
+[01:47:41.078] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:47:42.321] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <MuiThemeProvider>
+      <ThemeProvider theme={{...}}>
+        <ThemeProvider themeId={undefined} theme={{...}}>
+          <ThemeProvider theme={{...}}>
+            <RtlProvider value={false}>
+              <DefaultPropsProvider value={{...}}>
+                <CssBaseline>
+                <Layout>
+                  <Box sx={{...}}>
+                    <Styled(div) as="div" ref={null} className="MuiBox-root" theme={{...}} sx={{...}}>
+                      <Insertion>
++                     <div className="MuiBox-root css-1svsvwq">
+-                     <style data-emotion="css-global 1x38s0b" data-s="">
+
+[01:47:58.375] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:49:21.013] Server  LOG     ✓ Compiled in 104ms
+[01:50:14.584] Server  LOG     ✓ Compiled in 16ms
+[01:50:16.620] Server  LOG     ✓ Compiled in 25ms
+[01:53:17.041] Server  LOG     ✓ Compiled in 95ms
+[01:55:34.846] Server  LOG     ✓ Compiled in 196ms
+[01:56:35.619] Server  LOG     ✓ Compiled in 16ms
+[01:59:46.127] Server  LOG     ✓ Compiled in 432ms
+[01:59:46.310] Browser ERROR   ./src/components/WhatsAppButton/WhatsAppButton.tsx:2:19
+Parsing ecmascript source code failed
+  1 | 'use client';
+> 2 |       transition={{ delay: 1, type: 'spring', stiffness: 200 }}
+    |                   ^
+  3 |     >
+  4 |       <Fab
+  5 |         component="a"
+
+Unexpected token `{`. Expected identifier, string literal, numeric literal or [ for the computed key
+
+Import traces:
+  Client Component Browser:
+    ./src/components/WhatsAppButton/WhatsAppButton.tsx [Client Component Browser]
+    ./src/components/Layout/Layout.tsx [Client Component Browser]
+    ./src/components/Layout/Layout.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/WhatsAppButton/WhatsAppButton.tsx [Client Component SSR]
+    ./src/components/Layout/Layout.tsx [Client Component SSR]
+    ./src/components/Layout/Layout.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+[01:59:46.974] Server  LOG     ✓ Compiled in 31ms
+[01:59:47.322] Browser ERROR   ./src/components/WhatsAppButton/WhatsAppButton.tsx:2:19
+Parsing ecmascript source code failed
+  1 | 'use client';
+> 2 |       transition={{ delay: 1, type: 'spring', stiffness: 200 }}
+    |                   ^
+  3 |     >
+  4 |       <Fab
+  5 |         component="a"
+
+Unexpected token `{`. Expected identifier, string literal, numeric literal or [ for the computed key
+
+Import traces:
+  Client Component Browser:
+    ./src/components/WhatsAppButton/WhatsAppButton.tsx [Client Component Browser]
+    ./src/components/Layout/Layout.tsx [Client Component Browser]
+    ./src/components/Layout/Layout.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/WhatsAppButton/WhatsAppButton.tsx [Client Component SSR]
+    ./src/components/Layout/Layout.tsx [Client Component SSR]
+    ./src/components/Layout/Layout.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+[01:59:49.308] Browser ERROR   ./src/components/WhatsAppButton/WhatsAppButton.tsx:2:19
+Parsing ecmascript source code failed
+  1 | 'use client';
+> 2 |       transition={{ delay: 1, type: 'spring', stiffness: 200 }}
+    |                   ^
+  3 |     >
+  4 |       <Fab
+  5 |         component="a"
+
+Unexpected token `{`. Expected identifier, string literal, numeric literal or [ for the computed key
+
+Import traces:
+  Client Component Browser:
+    ./src/components/WhatsAppButton/WhatsAppButton.tsx [Client Component Browser]
+    ./src/components/Layout/Layout.tsx [Client Component Browser]
+    ./src/components/Layout/Layout.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/WhatsAppButton/WhatsAppButton.tsx [Client Component SSR]
+    ./src/components/Layout/Layout.tsx [Client Component SSR]
+    ./src/components/Layout/Layout.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+[02:00:00.792] Server  LOG     ✓ Compiled in 298ms
+[02:00:00.930] Server  LOG     ✓ Compiled in 40ms
+[02:00:01.825] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:01:37.988] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:02:20.810] Server  LOG     ✓ Compiled in 267ms
+[02:03:07.728] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:03:15.988] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:04:23.363] Server  LOG     ✓ Compiled in 18ms
+[02:09:18.068] Server  LOG     ✓ Compiled in 17ms
+[02:09:34.210] Server  LOG     ✓ Compiled in 94ms
+[02:19:26.823] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:27:30.364] Server  LOG     ✓ Compiled in 55ms
+[02:29:04.617] Server  LOG     ✓ Compiled in 71ms
+[02:29:05.316] Browser ERROR   ./src/components/Footer/Footer.tsx:188:16
+Parsing ecmascript source code failed
+  186 |           </Grid>
+  187 |         </Grid>
+> 188 |         </Grid>
+      |                ^
+> 189 |
+      | ^
+> 190 |         <Divider sx={{ my: 4 }} />
+      | ^^^^^^^^^
+  191 |
+  192 |         <Box
+  193 |           sx={{
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./src/components/Footer/Footer.tsx [Client Component Browser]
+    ./src/components/Layout/Layout.tsx [Client Component Browser]
+    ./src/components/Layout/Layout.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/Footer/Footer.tsx [Client Component SSR]
+    ./src/components/Layout/Layout.tsx [Client Component SSR]
+    ./src/components/Layout/Layout.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+[02:29:06.317] Browser ERROR   ./src/components/Footer/Footer.tsx:188:16
+Parsing ecmascript source code failed
+  186 |           </Grid>
+  187 |         </Grid>
+> 188 |         </Grid>
+      |                ^
+> 189 |
+      | ^
+> 190 |         <Divider sx={{ my: 4 }} />
+      | ^^^^^^^^^
+  191 |
+  192 |         <Box
+  193 |           sx={{
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./src/components/Footer/Footer.tsx [Client Component Browser]
+    ./src/components/Layout/Layout.tsx [Client Component Browser]
+    ./src/components/Layout/Layout.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/components/Footer/Footer.tsx [Client Component SSR]
+    ./src/components/Layout/Layout.tsx [Client Component SSR]
+    ./src/components/Layout/Layout.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
