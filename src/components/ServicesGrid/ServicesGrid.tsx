@@ -1,13 +1,7 @@
 'use client';
 import React from 'react';
 import { Grid, Card, CardContent, Typography, Box, Button } from '@mui/material';
-import {
-  Build,
-  Engineering,
-  Assignment,
-  Assessment,
-  SupportAgent,
-} from '@mui/icons-material';
+import { Build, Engineering, Assignment, Assessment, SupportAgent } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
@@ -18,14 +12,16 @@ const ServicesGrid = () => {
     {
       id: 1,
       title: 'Solar Installation',
-      description: 'Professional installation services with certified technicians and quality assurance.',
+      description:
+        'Professional installation services with certified technicians and quality assurance.',
       icon: <Build sx={{ fontSize: 48 }} />,
       color: '#FFA500',
     },
     {
       id: 2,
       title: 'Maintenance & AMC',
-      description: 'Annual Maintenance Contracts and regular servicing to ensure optimal performance.',
+      description:
+        'Annual Maintenance Contracts and regular servicing to ensure optimal performance.',
       icon: <Engineering sx={{ fontSize: 48 }} />,
       color: '#2B7A0B',
     },
@@ -39,14 +35,16 @@ const ServicesGrid = () => {
     {
       id: 4,
       title: 'Site Survey & Proposal',
-      description: 'Comprehensive site assessment and detailed project proposals with ROI calculations.',
+      description:
+        'Comprehensive site assessment and detailed project proposals with ROI calculations.',
       icon: <Assessment sx={{ fontSize: 48 }} />,
       color: '#FFA500',
     },
     {
       id: 5,
       title: '24/7 Support',
-      description: 'Round-the-clock customer support and emergency service for all your solar needs.',
+      description:
+        'Round-the-clock customer support and emergency service for all your solar needs.',
       icon: <SupportAgent sx={{ fontSize: 48 }} />,
       color: '#2B7A0B',
     },
@@ -120,4 +118,3 @@ const ServicesGrid = () => {
 };
 
 export default ServicesGrid;
-

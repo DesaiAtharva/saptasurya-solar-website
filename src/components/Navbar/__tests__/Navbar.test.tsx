@@ -23,9 +23,7 @@ const mockTheme = createTheme({
 const renderWithTheme = (component: React.ReactElement) => {
   return render(
     <ThemeContextProvider>
-      <MuiThemeProvider theme={mockTheme}>
-        {component}
-      </MuiThemeProvider>
+      <MuiThemeProvider theme={mockTheme}>{component}</MuiThemeProvider>
     </ThemeContextProvider>
   );
 };
@@ -47,9 +45,9 @@ describe('Navbar Component', () => {
       'Subsidy & Finance',
       'Blog',
     ];
-    
+
     // We expect these to be in the DOM
-    navItems.forEach(item => {
+    navItems.forEach((item) => {
       const elements = screen.getAllByText(item);
       expect(elements.length).toBeGreaterThan(0);
     });

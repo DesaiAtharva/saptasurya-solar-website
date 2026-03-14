@@ -65,7 +65,7 @@ const HeroBanner = () => {
             right: 0,
             bottom: 0,
             background: `linear-gradient(to right, ${theme.palette.background.default} 20%, transparent 100%)`,
-          }
+          },
         }}
       />
 
@@ -73,11 +73,7 @@ const HeroBanner = () => {
         <Grid container spacing={4} alignItems="center">
           {/* Left Content */}
           <Grid item xs={12} md={6}>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
+            <motion.div variants={containerVariants} initial="hidden" animate="visible">
               <motion.div variants={itemVariants}>
                 <Typography
                   variant="h1"
@@ -93,7 +89,9 @@ const HeroBanner = () => {
                     letterSpacing: '-0.02em',
                   }}
                 >
-                  Power Your Future With<br />Saptasurya Solar Energy
+                  Power Your Future With
+                  <br />
+                  Saptasurya Solar Energy
                 </Typography>
               </motion.div>
 
@@ -103,7 +101,11 @@ const HeroBanner = () => {
                   color="text.secondary"
                   sx={{ mb: 4, fontWeight: 400, lineHeight: 1.6 }}
                 >
-                  Save up to <Box component="span" sx={{ color: 'primary.main', fontWeight: 700 }}>80%</Box> on Electricity Bills
+                  Save up to{' '}
+                  <Box component="span" sx={{ color: 'primary.main', fontWeight: 700 }}>
+                    80%
+                  </Box>{' '}
+                  on Electricity Bills
                   <br />
                   Join thousands of satisfied customers switching to clean, renewable energy
                 </Typography>
@@ -145,10 +147,7 @@ const HeroBanner = () => {
               </motion.div>
 
               {/* Stats */}
-              <motion.div
-                variants={itemVariants}
-                style={{ marginTop: '48px' }}
-              >
+              <motion.div variants={itemVariants} style={{ marginTop: '48px' }}>
                 <Grid container spacing={4}>
                   {[
                     { number: '100+', label: 'Happy Customers' },
@@ -216,8 +215,9 @@ const HeroBanner = () => {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      background: 'radial-gradient(circle, rgba(10, 17, 40, 0.6) 0%, rgba(10, 17, 40, 0.9) 100%)',
-                    }
+                      background:
+                        'radial-gradient(circle, rgba(10, 17, 40, 0.6) 0%, rgba(10, 17, 40, 0.9) 100%)',
+                    },
                   }}
                 >
                   <Box
@@ -233,7 +233,10 @@ const HeroBanner = () => {
                       transform: 'scale(1.05)', // Cropping edges
                       // Assuming isDarkMode is defined in the component's scope, otherwise this line will cause an error.
                       // If not defined, consider removing or defining it.
-                      filter: theme.palette.mode === 'dark' ? 'drop-shadow(0 0 10px rgba(212, 175, 55, 0.5))' : 'none',
+                      filter:
+                        theme.palette.mode === 'dark'
+                          ? 'drop-shadow(0 0 10px rgba(212, 175, 55, 0.5))'
+                          : 'none',
                       borderRadius: '4px',
                     }}
                   />

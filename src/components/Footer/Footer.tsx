@@ -1,14 +1,6 @@
 'use client';
 import React from 'react';
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Link,
-  IconButton,
-  Divider,
-} from '@mui/material';
+import { Box, Container, Grid, Typography, Link, IconButton, Divider } from '@mui/material';
 import {
   Facebook,
   Twitter,
@@ -85,12 +77,26 @@ const Footer = () => {
               transition={{ duration: 0.5 }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                <Box component="img" src="/new_logo.png" alt="Logo" sx={{ height: '45px', mr: 1.5, borderRadius: '4px', objectFit: 'contain' }} />
-                <Typography variant="h6" sx={{ fontWeight: 800, color: 'primary.main', lineHeight: 1.2 }}>
-                  Saptasurya<br />Solar Energy
+                <Box
+                  component="img"
+                  src="/new_logo.png"
+                  alt="Logo"
+                  sx={{ height: '45px', mr: 1.5, borderRadius: '4px', objectFit: 'contain' }}
+                />
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: 800, color: 'primary.main', lineHeight: 1.2 }}
+                >
+                  Saptasurya
+                  <br />
+                  Solar Energy
                 </Typography>
               </Box>
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 3, maxWidth: 280, lineHeight: 1.7 }}>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ mb: 3, maxWidth: 280, lineHeight: 1.7 }}
+              >
                 Powering your future with clean, renewable solar energy. Save up to 80% on
                 electricity bills while contributing to a sustainable planet.
               </Typography>
@@ -106,30 +112,35 @@ const Footer = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 * (idx + 1) }}
               >
-                <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 3, color: 'text.primary' }}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{ fontWeight: 700, mb: 3, color: 'text.primary' }}
+                >
                   {section.title}
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-                  {section.links.map((link) => (
-                    link.label && !link.label.startsWith('//') && (
-                    <Link
-                      key={link.label}
-                      href={link.path}
-                      underline="none"
-                      sx={{
-                        color: 'text.secondary',
-                        fontSize: '0.9rem',
-                        '&:hover': {
-                          color: 'primary.main',
-                          transform: 'translateX(4px)',
-                        },
-                        transition: 'all 0.3s ease',
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                    )
-                  ))}
+                  {section.links.map(
+                    (link) =>
+                      link.label &&
+                      !link.label.startsWith('//') && (
+                        <Link
+                          key={link.label}
+                          href={link.path}
+                          underline="none"
+                          sx={{
+                            color: 'text.secondary',
+                            fontSize: '0.9rem',
+                            '&:hover': {
+                              color: 'primary.main',
+                              transform: 'translateX(4px)',
+                            },
+                            transition: 'all 0.3s ease',
+                          }}
+                        >
+                          {link.label}
+                        </Link>
+                      )
+                  )}
                 </Box>
               </motion.div>
             </Grid>
@@ -143,7 +154,10 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 3, color: 'text.primary' }}>
+              <Typography
+                variant="subtitle1"
+                sx={{ fontWeight: 700, mb: 3, color: 'text.primary' }}
+              >
                 Contact Us
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
@@ -151,15 +165,15 @@ const Footer = () => {
                   <Box sx={{ p: 1, borderRadius: 1.5, bgcolor: 'primary.main', display: 'flex' }}>
                     <Phone sx={{ color: 'white', fontSize: 20 }} />
                   </Box>
-                  <Link 
-                    href="https://wa.me/919860874908" 
-                    target="_blank" 
+                  <Link
+                    href="https://wa.me/919860874908"
+                    target="_blank"
                     underline="none"
-                    sx={{ 
+                    sx={{
                       color: 'text.secondary',
                       fontSize: '0.9rem',
                       fontWeight: 500,
-                      '&:hover': { color: 'primary.main' }
+                      '&:hover': { color: 'primary.main' },
                     }}
                   >
                     +91 98608 74908
@@ -169,7 +183,11 @@ const Footer = () => {
                   <Box sx={{ p: 1, borderRadius: 1.5, bgcolor: 'primary.main', display: 'flex' }}>
                     <Email sx={{ color: 'white', fontSize: 20 }} />
                   </Box>
-                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.9rem', fontWeight: 500 }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ fontSize: '0.9rem', fontWeight: 500 }}
+                  >
                     info@saptasuryasolar.com
                   </Typography>
                 </Box>
@@ -177,7 +195,11 @@ const Footer = () => {
                   <Box sx={{ p: 1, borderRadius: 1.5, bgcolor: 'primary.main', display: 'flex' }}>
                     <LocationOn sx={{ color: 'white', fontSize: 20 }} />
                   </Box>
-                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.9rem', fontWeight: 500 }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ fontSize: '0.9rem', fontWeight: 500 }}
+                  >
                     Pune, Maharashtra, India
                   </Typography>
                 </Box>

@@ -17,38 +17,47 @@ const SolarProductsGrid = ({ products, showViewAll = true }: SolarProductsGridPr
     {
       id: 1,
       title: 'Solar Panels',
-      description: 'High-efficiency monocrystalline and polycrystalline solar panels for maximum energy output.',
-      image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80',
+      description:
+        'High-efficiency monocrystalline and polycrystalline solar panels for maximum energy output.',
+      image:
+        'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80',
     },
     {
       id: 2,
       title: 'Solar Rooftop Systems',
       description: 'Complete rooftop solar solutions for residential and commercial buildings.',
-      image: 'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80',
     },
     {
       id: 3,
       title: 'Solar Water Heater',
       description: 'Eco-friendly solar water heating systems to reduce electricity consumption.',
-      image: 'https://images.unsplash.com/photo-1618397746666-63405ce5d015?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1618397746666-63405ce5d015?auto=format&fit=crop&q=80',
     },
     {
       id: 4,
       title: 'Solar Pump',
       description: 'Solar-powered water pumps for agriculture and irrigation needs.',
-      image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80',
     },
     {
       id: 5,
       title: 'Inverters & Batteries',
-      description: 'High-quality inverters and battery storage solutions for reliable power backup.',
-      image: 'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&q=80',
+      description:
+        'High-quality inverters and battery storage solutions for reliable power backup.',
+      image:
+        'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&q=80',
     },
     {
       id: 6,
       title: 'EPC Services',
-      description: 'End-to-end Engineering, Procurement, and Construction services for solar projects.',
-      image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80',
+      description:
+        'End-to-end Engineering, Procurement, and Construction services for solar projects.',
+      image:
+        'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80',
     },
   ];
 
@@ -77,7 +86,7 @@ const SolarProductsGrid = ({ products, showViewAll = true }: SolarProductsGridPr
                     },
                     '& .MuiCardMedia-root::before': {
                       backgroundColor: 'rgba(0,0,0,0.3)',
-                    }
+                    },
                   },
                 }}
                 onClick={() => router.push('/products')}
@@ -102,8 +111,7 @@ const SolarProductsGrid = ({ products, showViewAll = true }: SolarProductsGridPr
                       transition: 'background-color 0.3s ease',
                     },
                   }}
-                >
-                </CardMedia>
+                ></CardMedia>
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
                     {product.title}

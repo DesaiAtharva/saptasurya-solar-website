@@ -2,11 +2,11 @@ import { createTheme } from '@mui/material/styles';
 
 // Premium Solar Theme Colors
 const solarTheme = {
-  primary: '#D4AF37',      // Metallic Gold
-  secondary: '#005C97',    // Deep Solar Blue
-  accent: '#B8860B',       // Dark Goldenrod
-  background: '#F8F9FA',   // Soft Light Background
-  text: '#050A15',         // Deep Blue/Black Text
+  primary: '#D4AF37', // Metallic Gold
+  secondary: '#005C97', // Deep Solar Blue
+  accent: '#B8860B', // Dark Goldenrod
+  background: '#F8F9FA', // Soft Light Background
+  text: '#050A15', // Deep Blue/Black Text
 };
 
 // Light Theme
@@ -165,7 +165,7 @@ export const darkTheme = createTheme({
     },
     background: {
       default: '#050A15', // Very deep blue/black
-      paper: '#0A1128',   // Deep blue
+      paper: '#0A1128', // Deep blue
     },
     text: {
       primary: '#F2F7F5',
@@ -242,5 +242,3 @@ export const darkTheme = createTheme({
     },
   },
 });
-
-

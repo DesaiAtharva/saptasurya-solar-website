@@ -43,10 +43,7 @@ const DesktopNav: React.FC<DesktopNavProps> = ({ navItems, pathname, router }) =
               position: 'absolute',
               bottom: 0,
               left: '50%',
-              transform:
-                pathname === item.path
-                  ? 'translateX(-50%)'
-                  : 'translateX(-50%) scaleX(0)',
+              transform: pathname === item.path ? 'translateX(-50%)' : 'translateX(-50%) scaleX(0)',
               width: pathname === item.path ? '60%' : '0%', // Slightly narrower than text
               height: '3px',
               backgroundColor: 'primary.main',

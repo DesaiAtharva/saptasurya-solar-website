@@ -9,12 +9,7 @@ import {
   CardContent,
   useTheme as useMuiTheme,
 } from '@mui/material';
-import {
-  Phone,
-  Email,
-  LocationOn,
-  Schedule,
-} from '@mui/icons-material';
+import { Phone, Email, LocationOn, Schedule } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import ContactForm from '@/components/ContactForm/ContactForm';
 
@@ -38,9 +33,7 @@ const Contact = () => {
     {
       icon: <LocationOn sx={{ fontSize: 32 }} />,
       title: 'Address',
-      details: [
-        'Pune, Maharashtra, India',
-      ],
+      details: ['Pune, Maharashtra, India'],
       color: theme.palette.primary.main,
     },
   ];
@@ -75,17 +68,17 @@ const Contact = () => {
             zIndex: 0,
           }}
         />
-        
+
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Typography 
-              variant="h2" 
-              sx={{ 
-                fontWeight: 800, 
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 800,
                 mb: 2,
                 background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                 WebkitBackgroundClip: 'text',
@@ -96,15 +89,15 @@ const Contact = () => {
             >
               Contact Us
             </Typography>
-            <Typography 
-              variant="h6" 
-              sx={{ 
-                opacity: 0.8, 
-                maxWidth: '700px', 
+            <Typography
+              variant="h6"
+              sx={{
+                opacity: 0.8,
+                maxWidth: '700px',
                 mx: 'auto',
                 fontWeight: 400,
                 lineHeight: 1.6,
-                color: 'text.secondary'
+                color: 'text.secondary',
               }}
             >
               Get in touch with us for free consultation and quotes
@@ -135,18 +128,18 @@ const Contact = () => {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <Card 
+                      <Card
                         component={info.link ? 'a' : 'div'}
                         href={info.link}
                         target={info.link ? '_blank' : undefined}
-                        sx={{ 
-                          p: 4, 
+                        sx={{
+                          p: 4,
                           height: '100%',
                           display: 'flex',
                           flexDirection: 'column',
                           alignItems: 'center',
                           textAlign: 'center',
-                          borderRadius: 4, 
+                          borderRadius: 4,
                           border: `1px solid ${theme.palette.divider}`,
                           textDecoration: 'none',
                           color: 'inherit',
@@ -160,8 +153,8 @@ const Contact = () => {
                               transform: 'scale(1.1)',
                               bgcolor: 'primary.main',
                               boxShadow: `0 8px 16px ${theme.palette.primary.main}40`,
-                            }
-                          }
+                            },
+                          },
                         }}
                       >
                         <Box
@@ -178,7 +171,7 @@ const Contact = () => {
                             transition: 'all 0.3s ease',
                             width: 64,
                             height: 64,
-                            boxShadow: `0 4px 12px ${info.color}40`
+                            boxShadow: `0 4px 12px ${info.color}40`,
                           }}
                         >
                           {info.icon}
@@ -204,7 +197,6 @@ const Contact = () => {
             </motion.div>
           </Grid>
         </Grid>
-
       </Container>
     </Box>
   );

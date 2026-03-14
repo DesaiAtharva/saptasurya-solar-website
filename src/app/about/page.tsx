@@ -1,19 +1,7 @@
 'use client';
 import React from 'react';
-import {
-  Container,
-  Box,
-  Typography,
-  Grid,
-  Card,
-  useTheme as useMuiTheme,
-} from '@mui/material';
-import {
-  EmojiEvents,
-  Visibility,
-  EnergySavingsLeaf,
-  VerifiedUser,
-} from '@mui/icons-material';
+import { Container, Box, Typography, Grid, Card, useTheme as useMuiTheme } from '@mui/material';
+import { EmojiEvents, Visibility, EnergySavingsLeaf, VerifiedUser } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 
 const About = () => {
@@ -28,7 +16,7 @@ const About = () => {
       icon: <Visibility sx={{ fontSize: 60 }} />,
       title: 'Our Vision',
       description:
-        'To become India\'s leading solar energy solutions provider, driving the transition to sustainable energy and creating a greener future for generations to come.',
+        "To become India's leading solar energy solutions provider, driving the transition to sustainable energy and creating a greener future for generations to come.",
     },
   ];
 
@@ -60,7 +48,7 @@ const About = () => {
     },
     {
       title: 'Increase Property Value',
-      description: 'Solar installations increase your property\'s market value.',
+      description: "Solar installations increase your property's market value.",
       icon: '📈',
     },
   ];
@@ -79,7 +67,8 @@ const About = () => {
     {
       icon: <EmojiEvents sx={{ fontSize: 48 }} />,
       title: 'Customer-Focused',
-      description: 'Dedicated to providing personalized service and ensuring customer satisfaction.',
+      description:
+        'Dedicated to providing personalized service and ensuring customer satisfaction.',
     },
   ];
 
@@ -115,17 +104,17 @@ const About = () => {
             zIndex: 0,
           }}
         />
-        
+
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Typography 
-              variant="h2" 
-              sx={{ 
-                fontWeight: 800, 
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 800,
                 mb: 2,
                 background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                 WebkitBackgroundClip: 'text',
@@ -136,18 +125,18 @@ const About = () => {
             >
               About Us
             </Typography>
-            <Typography 
-              variant="h6" 
-              sx={{ 
-                opacity: 0.8, 
-                maxWidth: '700px', 
+            <Typography
+              variant="h6"
+              sx={{
+                opacity: 0.8,
+                maxWidth: '700px',
                 mx: 'auto',
                 fontWeight: 400,
                 lineHeight: 1.6,
-                color: 'text.secondary'
+                color: 'text.secondary',
               }}
             >
-              Your trusted solar energy partner in Pune, led by Atharva Desai (Founder & Director). 
+              Your trusted solar energy partner in Pune, led by Atharva Desai (Founder & Director).
               Committed to bringing clean, affordable solar solutions to your doorstep.
             </Typography>
           </motion.div>

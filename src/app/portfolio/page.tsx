@@ -9,13 +9,7 @@ import {
   Card,
   useTheme as useMuiTheme,
 } from '@mui/material';
-import { 
-  CheckCircle, 
-  Verified, 
-  Security, 
-  Speed, 
-  Handyman 
-} from '@mui/icons-material';
+import { CheckCircle, Verified, Security, Speed, Handyman } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import CaseStudyCard from '@/components/CaseStudyCard/CaseStudyCard';
 
@@ -27,11 +21,13 @@ const Portfolio = () => {
     {
       id: 1,
       title: 'Luxury Villa Solar Setup',
-      image: 'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80',
       location: 'Baner, Pune',
       capacity: '12 KW',
       savings: '₹55,000/year',
-      description: 'High-aesthetic rooftop solar installation integrated seamlessly with modern villa architecture.',
+      description:
+        'High-aesthetic rooftop solar installation integrated seamlessly with modern villa architecture.',
       category: 'Residential',
     },
     {
@@ -41,23 +37,27 @@ const Portfolio = () => {
       location: 'Chakan MIDC, Pune',
       capacity: '150 KW',
       savings: '₹6,75,000/year',
-      description: 'Large-scale industrial solar solutions reducing carbon footprint for a major textile manufacturer.',
+      description:
+        'Large-scale industrial solar solutions reducing carbon footprint for a major textile manufacturer.',
       category: 'Industrial',
     },
     {
       id: 3,
       title: 'IT Park Rooftop Array',
-      image: 'https://images.unsplash.com/photo-1594398044738-3482bc03cb41?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1594398044738-3482bc03cb41?auto=format&fit=crop&q=80',
       location: 'Hinjewadi IT Park, Pune',
       capacity: '80 KW',
       savings: '₹3,60,000/year',
-      description: 'Dual-purpose solar terrace providing sustainable energy and shade for corporate employees.',
+      description:
+        'Dual-purpose solar terrace providing sustainable energy and shade for corporate employees.',
       category: 'Commercial',
     },
     {
       id: 4,
       title: 'Orchard Irrigation System',
-      image: 'https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&q=80',
       location: 'Baramati District',
       capacity: '7.5 HP',
       savings: '₹85,000/year',
@@ -67,21 +67,25 @@ const Portfolio = () => {
     {
       id: 5,
       title: 'Housing Society Project',
-      image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80',
       location: 'Wakad, Pune',
       capacity: '40 KW',
       savings: '₹1,80,000/year',
-      description: 'Cooperative housing society switch to solar for all common area lighting and elevators.',
+      description:
+        'Cooperative housing society switch to solar for all common area lighting and elevators.',
       category: 'Residential',
     },
     {
       id: 6,
       title: 'Logistics Center Hybrid',
-      image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80',
       location: 'Talegaon MIDC',
       capacity: '60 KW',
       savings: '₹2,70,000/year',
-      description: 'Hybrid solar system with emergency battery backup for critical cold-storage logistics.',
+      description:
+        'Hybrid solar system with emergency battery backup for critical cold-storage logistics.',
       category: 'Industrial',
     },
   ];
@@ -145,17 +149,17 @@ const Portfolio = () => {
             zIndex: 0,
           }}
         />
-        
+
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Typography 
-              variant="h2" 
-              sx={{ 
-                fontWeight: 800, 
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 800,
                 mb: 2,
                 background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                 WebkitBackgroundClip: 'text',
@@ -166,15 +170,15 @@ const Portfolio = () => {
             >
               Our Project Portfolio
             </Typography>
-            <Typography 
-              variant="h6" 
-              sx={{ 
-                opacity: 0.8, 
-                maxWidth: '700px', 
+            <Typography
+              variant="h6"
+              sx={{
+                opacity: 0.8,
+                maxWidth: '700px',
                 mx: 'auto',
                 fontWeight: 400,
                 lineHeight: 1.6,
-                color: 'text.secondary'
+                color: 'text.secondary',
               }}
             >
               Delivering high-performance solar solutions across Pune for a decade.
@@ -185,7 +189,16 @@ const Portfolio = () => {
 
       <Container maxWidth="xl" sx={{ mt: 4 }}>
         {/* Installation Excellence Info Section */}
-        <Box sx={{ mb: 10, py: 6, bgcolor: 'background.paper', borderRadius: 4, overflow: 'hidden', border: `1px solid ${theme.palette.divider}` }}>
+        <Box
+          sx={{
+            mb: 10,
+            py: 6,
+            bgcolor: 'background.paper',
+            borderRadius: 4,
+            overflow: 'hidden',
+            border: `1px solid ${theme.palette.divider}`,
+          }}
+        >
           <Typography variant="h3" sx={{ textAlign: 'center', fontWeight: 800, mb: 6 }}>
             Installation Excellence
           </Typography>
@@ -199,7 +212,14 @@ const Portfolio = () => {
                   transition={{ delay: idx * 0.1 }}
                 >
                   <Box sx={{ textAlign: 'center' }}>
-                    <Box sx={{ color: 'primary.main', mb: 2, display: 'flex', justifyContent: 'center' }}>
+                    <Box
+                      sx={{
+                        color: 'primary.main',
+                        mb: 2,
+                        display: 'flex',
+                        justifyContent: 'center',
+                      }}
+                    >
                       {std.icon}
                     </Box>
                     <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
@@ -231,8 +251,9 @@ const Portfolio = () => {
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 '&:hover': {
-                  bgcolor: selectedCategory === category ? 'primary.dark' : 'rgba(212, 175, 55, 0.1)',
-                }
+                  bgcolor:
+                    selectedCategory === category ? 'primary.dark' : 'rgba(212, 175, 55, 0.1)',
+                },
               }}
             />
           ))}

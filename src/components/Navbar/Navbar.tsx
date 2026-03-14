@@ -11,12 +11,7 @@ import {
   useScrollTrigger,
   Container,
 } from '@mui/material';
-import {
-  Menu as MenuIcon,
-  Brightness4,
-  Brightness7,
-  Phone,
-} from '@mui/icons-material';
+import { Menu as MenuIcon, Brightness4, Brightness7, Phone } from '@mui/icons-material';
 import { useTheme as useMuiTheme } from '@mui/material/styles';
 import { useTheme } from '@/context/ThemeContext';
 import { useRouter, usePathname } from 'next/navigation';
@@ -52,7 +47,7 @@ const Navbar = () => {
     { label: 'Services', path: '/services' },
     // { label: 'Portfolio', path: '/portfolio' },
     // { label: 'Subsidy & Finance', path: '/subsidy' },
-    // { label: 'Blog', path: '/blog' },
+    { label: 'Blog', path: '/blog' },
     { label: 'Contact', path: '/contact' },
   ];
 
@@ -68,9 +63,7 @@ const Navbar = () => {
             : 'transparent',
           transition: 'all 0.3s ease-in-out',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          boxShadow: scrolled
-            ? '0px 4px 20px rgba(0,0,0,0.1)'
-            : 'none',
+          boxShadow: scrolled ? '0px 4px 20px rgba(0,0,0,0.1)' : 'none',
         }}
         elevation={0}
       >
@@ -108,35 +101,44 @@ const Navbar = () => {
                 }}
                 onClick={() => router.push('/')}
               >
-                <Box 
-                  component="img" 
-                  src="/new_logo.png" 
-                  alt="Logo" 
-                  sx={{ 
-                    height: { xs: '60px', sm: '75px', md: '85px' }, 
+                <Box
+                  component="img"
+                  src="/new_logo.png"
+                  alt="Logo"
+                  sx={{
+                    height: { xs: '60px', sm: '75px', md: '85px' },
                     width: 'auto',
-                    mr: { xs: 1.5, md: 2 }, 
+                    mr: { xs: 1.5, md: 2 },
                     objectFit: 'contain',
                     // Removed filter for a cleaner edge
                     borderRadius: '4px',
                     transition: 'all 0.3s ease',
-                  }} 
+                  }}
                 />
-                <Box component="span" sx={{ 
-                  display: { xs: 'none', lg: 'inline' }, 
-                  whiteSpace: 'nowrap', 
-                  lineHeight: 1,
-                  background: `linear-gradient(135deg, #D4AF37 0%, #F8E076 50%, #AA8529 100%)`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  textShadow: '0px 2px 4px rgba(0,0,0,0.2)',
-                }}>
+                <Box
+                  component="span"
+                  sx={{
+                    display: { xs: 'none', lg: 'inline' },
+                    whiteSpace: 'nowrap',
+                    lineHeight: 1,
+                    background: `linear-gradient(135deg, #D4AF37 0%, #F8E076 50%, #AA8529 100%)`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    textShadow: '0px 2px 4px rgba(0,0,0,0.2)',
+                  }}
+                >
                   Saptasurya Solar Energy
                 </Box>
-                <Box component="span" sx={{ display: { xs: 'none', sm: 'inline', lg: 'none' }, whiteSpace: 'nowrap' }}>
+                <Box
+                  component="span"
+                  sx={{ display: { xs: 'none', sm: 'inline', lg: 'none' }, whiteSpace: 'nowrap' }}
+                >
                   Saptasurya Solar
                 </Box>
-                <Box component="span" sx={{ display: { xs: 'inline', sm: 'none' }, whiteSpace: 'nowrap' }}>
+                <Box
+                  component="span"
+                  sx={{ display: { xs: 'inline', sm: 'none' }, whiteSpace: 'nowrap' }}
+                >
                   Saptasurya
                 </Box>
               </Typography>
@@ -214,11 +216,7 @@ const Navbar = () => {
                   {item.label}
                 </Button>
               ))}
-              <IconButton
-                onClick={toggleTheme}
-                size="small"
-                sx={{ color: 'text.primary' }}
-              >
+              <IconButton onClick={toggleTheme} size="small" sx={{ color: 'text.primary' }}>
                 {isDarkMode ? <Brightness7 /> : <Brightness4 />}
               </IconButton>
               <IconButton

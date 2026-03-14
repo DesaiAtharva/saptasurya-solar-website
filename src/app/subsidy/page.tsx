@@ -307,4 +307,3 @@ const Subsidy = () => {
 };
 
 export default Subsidy;
-

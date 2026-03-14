@@ -44,7 +44,8 @@ const AnimatedCounter = ({ value, suffix = '', duration = 2, delay = 0 }: Animat
           color: 'primary.main',
         }}
       >
-        {displayValue.toLocaleString()}{suffix}
+        {displayValue.toLocaleString()}
+        {suffix}
       </Typography>
     </Box>
   );

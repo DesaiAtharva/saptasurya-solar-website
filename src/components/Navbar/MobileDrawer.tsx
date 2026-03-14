@@ -55,7 +55,12 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Box component="img" src="/new_logo.png" alt="Logo" sx={{ height: '32px', mr: 1, borderRadius: '4px' }} />
+          <Box
+            component="img"
+            src="/new_logo.png"
+            alt="Logo"
+            sx={{ height: '32px', mr: 1, borderRadius: '4px' }}
+          />
           <Typography
             variant="h6"
             sx={{
@@ -63,7 +68,7 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
               background: `linear-gradient(135deg, ${muiTheme.palette.primary.main}, ${muiTheme.palette.secondary.main})`,
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              fontSize: '1.25rem'
+              fontSize: '1.25rem',
             }}
           >
             Saptasurya Solar Energy

@@ -45,7 +45,7 @@ const TestimonialSlider = () => {
       name: 'Anjali Shah',
       role: 'Housing Society Member, Mumbai',
       rating: 5,
-      text: 'We installed a solar system for our society\'s common areas. Our monthly maintenance costs have dropped by 40%. The Saptasurya team was very transparent.',
+      text: "We installed a solar system for our society's common areas. Our monthly maintenance costs have dropped by 40%. The Saptasurya team was very transparent.",
       avatar: 'A',
     },
     {
@@ -156,11 +156,7 @@ const TestimonialSlider = () => {
                     left: 20,
                   }}
                 />
-                <Rating
-                  value={testimonials[currentIndex].rating}
-                  readOnly
-                  sx={{ mb: 3 }}
-                />
+                <Rating value={testimonials[currentIndex].rating} readOnly sx={{ mb: 3 }} />
                 <Typography
                   variant="h6"
                   sx={{
@@ -174,7 +170,9 @@ const TestimonialSlider = () => {
                 >
                   "{testimonials[currentIndex].text}"
                 </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2 }}>
+                <Box
+                  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2 }}
+                >
                   <Avatar
                     sx={{
                       bgcolor: 'primary.main',
@@ -206,7 +204,7 @@ const TestimonialSlider = () => {
             justifyContent: 'center',
             gap: 1,
             mt: 4,
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
           }}
         >
           {testimonials.map((_, index) => (
@@ -220,7 +218,7 @@ const TestimonialSlider = () => {
                 bgcolor: currentIndex === index ? 'primary.main' : 'grey.300',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
-                mb: 1
+                mb: 1,
               }}
             />
           ))}

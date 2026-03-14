@@ -32,59 +32,71 @@ var Blog = function() {
     var blogPosts = [
         {
             id: 1,
-            title: 'Top 10 Benefits of Solar Energy for Homeowners',
-            excerpt: 'Discover how solar energy can reduce your electricity bills, increase property value, and contribute to a sustainable future.',
+            title: 'Solar Panel Cost in Pune: Complete 2024 Pricing Guide',
+            excerpt: 'Find out the exact cost of solar panel installation in Pune, including government subsidies, net metering, and projected savings for your home or business.',
             date: 'March 15, 2024',
-            category: 'Solar Basics',
-            image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600'
+            category: 'Solar Costs',
+            slug: 'solar-panel-cost-pune',
+            image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80',
+            alt: 'Solar panel installation cost in Pune Maharashtra'
         },
         {
             id: 2,
-            title: 'Understanding Net Metering: A Complete Guide',
-            excerpt: 'Learn how net metering works, its benefits, and how it can help you maximize your solar investment.',
+            title: 'Solar Subsidy Maharashtra 2024: How to Get PM Surya Ghar Benefit',
+            excerpt: 'A full guide on how to apply for the PM Surya Ghar Yojana solar subsidy in Maharashtra, eligibility criteria, and how to maximize your savings.',
             date: 'March 10, 2024',
-            category: 'Solar Basics',
-            image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600'
+            category: 'Subsidy & Finance',
+            slug: 'solar-subsidy-maharashtra',
+            image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80',
+            alt: 'Government solar subsidy scheme in Maharashtra India'
         },
         {
             id: 3,
-            title: 'Government Subsidies for Solar: Everything You Need to Know',
-            excerpt: 'A comprehensive guide to available government subsidies and how to apply for them.',
+            title: '5KW Solar System Price in India: What You Need to Know in 2024',
+            excerpt: 'Everything about 5KW solar system pricing in India — equipment costs, installation charges, subsidy deductions, and payback period analysis.',
             date: 'March 5, 2024',
-            category: 'Subsidy & Finance',
-            image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600'
+            category: 'Solar Costs',
+            slug: '5kw-solar-system-price-india',
+            image: 'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=600&q=80',
+            alt: '5KW rooftop solar system installation in India'
         },
         {
             id: 4,
-            title: 'Solar Panel Maintenance: Tips for Optimal Performance',
-            excerpt: 'Essential maintenance tips to keep your solar panels performing at peak efficiency for years to come.',
+            title: 'Rooftop Solar Benefits: Why Maharashtra Homeowners Are Switching',
+            excerpt: 'Discover why thousands of Maharashtra homeowners are installing rooftop solar panels — from 80% bill savings to 25-year ROI breakdowns.',
             date: 'February 28, 2024',
-            category: 'Maintenance',
-            image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600'
+            category: 'Solar Basics',
+            slug: 'rooftop-solar-benefits-maharashtra',
+            image: 'https://images.unsplash.com/photo-1594398044738-3482bc03cb41?auto=format&fit=crop&w=600&q=80',
+            alt: 'Rooftop solar panels on Maharashtra home'
         },
         {
             id: 5,
-            title: 'On-Grid vs Off-Grid vs Hybrid: Which Solar System is Right for You?',
-            excerpt: 'Compare different solar system types and find the best option for your energy needs.',
+            title: 'On-Grid vs Off-Grid vs Hybrid Solar: Which is Best for Maharashtra?',
+            excerpt: 'Compare on-grid, off-grid, and hybrid solar systems for Maharashtra weather and grid conditions. Which one gives the best savings?',
             date: 'February 20, 2024',
             category: 'Solar Basics',
-            image: 'https://images.unsplash.com/photo-1605647540924-852290d6e597?w=600'
+            slug: 'on-grid-off-grid-hybrid-solar-maharashtra',
+            image: 'https://images.unsplash.com/photo-1605647540924-852290d6e597?auto=format&fit=crop&w=600&q=80',
+            alt: 'Solar system types comparison on-grid off-grid hybrid'
         },
         {
             id: 6,
-            title: 'ROI Calculation: How Long Until Your Solar System Pays for Itself?',
-            excerpt: 'Learn how to calculate the return on investment for your solar installation and understand payback periods.',
+            title: 'Solar Panel Installation in Nagpur: Costs, Subsidies & Process',
+            excerpt: 'A step-by-step guide to getting solar panels installed in Nagpur — from site survey to final commissioning, with government subsidy support.',
             date: 'February 15, 2024',
-            category: 'Subsidy & Finance',
-            image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600'
+            category: 'Local Guide',
+            slug: 'solar-panel-installation-nagpur-guide',
+            image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
+            alt: 'Solar panel installation guide Nagpur Maharashtra'
         }
     ];
     var categories = [
         'All',
-        'Solar Basics',
+        'Solar Costs',
         'Subsidy & Finance',
-        'Maintenance',
-        'Case Studies'
+        'Solar Basics',
+        'Local Guide'
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
         sx: {
@@ -126,7 +138,7 @@ var Blog = function() {
                                 children: "Solar Energy Blog"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/blog/page.tsx",
-                                lineNumber: 94,
+                                lineNumber: 106,
                                 columnNumber: 13
                             }, _this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -137,23 +149,23 @@ var Blog = function() {
                                 children: "Stay updated with the latest news, tips, and insights about solar energy"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/blog/page.tsx",
-                                lineNumber: 97,
+                                lineNumber: 109,
                                 columnNumber: 13
                             }, _this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/blog/page.tsx",
-                        lineNumber: 89,
+                        lineNumber: 101,
                         columnNumber: 11
                     }, _this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/blog/page.tsx",
-                    lineNumber: 88,
+                    lineNumber: 100,
                     columnNumber: 9
                 }, _this)
             }, void 0, false, {
                 fileName: "[project]/src/app/blog/page.tsx",
-                lineNumber: 80,
+                lineNumber: 92,
                 columnNumber: 7
             }, _this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__["Container"], {
@@ -184,13 +196,13 @@ var Blog = function() {
                                 }
                             }, category, false, {
                                 fileName: "[project]/src/app/blog/page.tsx",
-                                lineNumber: 108,
+                                lineNumber: 120,
                                 columnNumber: 13
                             }, _this);
                         })
                     }, void 0, false, {
                         fileName: "[project]/src/app/blog/page.tsx",
-                        lineNumber: 106,
+                        lineNumber: 118,
                         columnNumber: 9
                     }, _this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -238,7 +250,7 @@ var Blog = function() {
                                                 children: "☀️"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/blog/page.tsx",
-                                                lineNumber: 136,
+                                                lineNumber: 148,
                                                 columnNumber: 19
                                             }, _this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CardContent$2f$CardContent$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CardContent$3e$__["CardContent"], {
@@ -265,7 +277,7 @@ var Blog = function() {
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/blog/page.tsx",
-                                                                lineNumber: 151,
+                                                                lineNumber: 163,
                                                                 columnNumber: 23
                                                             }, _this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -282,7 +294,7 @@ var Blog = function() {
                                                                         }
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/blog/page.tsx",
-                                                                        lineNumber: 165,
+                                                                        lineNumber: 177,
                                                                         columnNumber: 25
                                                                     }, _this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -290,19 +302,19 @@ var Blog = function() {
                                                                         children: post.date
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/blog/page.tsx",
-                                                                        lineNumber: 166,
+                                                                        lineNumber: 178,
                                                                         columnNumber: 25
                                                                     }, _this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/blog/page.tsx",
-                                                                lineNumber: 157,
+                                                                lineNumber: 169,
                                                                 columnNumber: 23
                                                             }, _this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/blog/page.tsx",
-                                                        lineNumber: 150,
+                                                        lineNumber: 162,
                                                         columnNumber: 21
                                                     }, _this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -314,7 +326,7 @@ var Blog = function() {
                                                         children: post.title
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/blog/page.tsx",
-                                                        lineNumber: 169,
+                                                        lineNumber: 181,
                                                         columnNumber: 21
                                                     }, _this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -327,13 +339,13 @@ var Blog = function() {
                                                         children: post.excerpt
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/blog/page.tsx",
-                                                        lineNumber: 172,
+                                                        lineNumber: 184,
                                                         columnNumber: 21
                                                     }, _this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
                                                         endIcon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$ArrowForward$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                             fileName: "[project]/src/app/blog/page.tsx",
-                                                            lineNumber: 180,
+                                                            lineNumber: 188,
                                                             columnNumber: 32
                                                         }, void 0),
                                                         sx: {
@@ -344,35 +356,35 @@ var Blog = function() {
                                                         children: "Read More"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/blog/page.tsx",
-                                                        lineNumber: 179,
+                                                        lineNumber: 187,
                                                         columnNumber: 21
                                                     }, _this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/blog/page.tsx",
-                                                lineNumber: 149,
+                                                lineNumber: 161,
                                                 columnNumber: 19
                                             }, _this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/blog/page.tsx",
-                                        lineNumber: 135,
+                                        lineNumber: 147,
                                         columnNumber: 17
                                     }, _this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/blog/page.tsx",
-                                    lineNumber: 129,
+                                    lineNumber: 141,
                                     columnNumber: 15
                                 }, _this)
                             }, post.id, false, {
                                 fileName: "[project]/src/app/blog/page.tsx",
-                                lineNumber: 128,
+                                lineNumber: 140,
                                 columnNumber: 13
                             }, _this);
                         })
                     }, void 0, false, {
                         fileName: "[project]/src/app/blog/page.tsx",
-                        lineNumber: 126,
+                        lineNumber: 138,
                         columnNumber: 9
                     }, _this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -394,7 +406,7 @@ var Blog = function() {
                                 children: "Subscribe to Our Newsletter"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/blog/page.tsx",
-                                lineNumber: 207,
+                                lineNumber: 215,
                                 columnNumber: 11
                             }, _this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -406,7 +418,7 @@ var Blog = function() {
                                 children: "Get the latest solar energy news and tips delivered to your inbox"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/blog/page.tsx",
-                                lineNumber: 210,
+                                lineNumber: 218,
                                 columnNumber: 11
                             }, _this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -430,7 +442,7 @@ var Blog = function() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/blog/page.tsx",
-                                        lineNumber: 214,
+                                        lineNumber: 222,
                                         columnNumber: 13
                                     }, _this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -442,31 +454,31 @@ var Blog = function() {
                                         children: "Subscribe"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/blog/page.tsx",
-                                        lineNumber: 226,
+                                        lineNumber: 234,
                                         columnNumber: 13
                                     }, _this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/blog/page.tsx",
-                                lineNumber: 213,
+                                lineNumber: 221,
                                 columnNumber: 11
                             }, _this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/blog/page.tsx",
-                        lineNumber: 197,
+                        lineNumber: 205,
                         columnNumber: 9
                     }, _this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/blog/page.tsx",
-                lineNumber: 104,
+                lineNumber: 116,
                 columnNumber: 7
             }, _this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/blog/page.tsx",
-        lineNumber: 78,
+        lineNumber: 90,
         columnNumber: 5
     }, _this);
 };

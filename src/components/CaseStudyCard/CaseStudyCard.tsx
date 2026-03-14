@@ -43,8 +43,8 @@ const CaseStudyCard = ({ caseStudy, index = 0 }: CaseStudyCardProps) => {
             boxShadow: '0 12px 30px rgba(0,0,0,0.15)',
             '& .case-study-image': {
               transform: 'scale(1.05)',
-            }
-          }
+            },
+          },
         }}
       >
         <Box sx={{ position: 'relative', overflow: 'hidden' }}>
@@ -96,7 +96,11 @@ const CaseStudyCard = ({ caseStudy, index = 0 }: CaseStudyCardProps) => {
             }}
           >
             <Box>
-              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}
+              >
                 Capacity
               </Typography>
               <Typography variant="h6" sx={{ fontWeight: 800, color: 'primary.main', mt: 0.5 }}>
@@ -104,7 +108,11 @@ const CaseStudyCard = ({ caseStudy, index = 0 }: CaseStudyCardProps) => {
               </Typography>
             </Box>
             <Box>
-              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                sx={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}
+              >
                 Annual Savings
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mt: 0.5 }}>

@@ -24,7 +24,8 @@ const Products = () => {
     {
       id: 'panels',
       title: 'Solar Panels',
-      image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80',
       description: 'High-efficiency monocrystalline and polycrystalline solar panels',
       features: [
         '25-year performance warranty',
@@ -37,7 +38,8 @@ const Products = () => {
     {
       id: 'rooftop',
       title: 'Solar Rooftop Systems',
-      image: 'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80',
       description: 'Complete rooftop solar solutions for residential and commercial',
       features: [
         'On-grid, Off-grid, Hybrid options',
@@ -50,7 +52,8 @@ const Products = () => {
     {
       id: 'water-heater',
       title: 'Solar Water Heater',
-      image: 'https://images.unsplash.com/photo-1618397746666-63405ce5d015?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1618397746666-63405ce5d015?auto=format&fit=crop&q=80',
       description: 'Eco-friendly solar water heating systems',
       features: [
         'Save 70% on water heating costs',
@@ -63,7 +66,8 @@ const Products = () => {
     {
       id: 'pump',
       title: 'Solar Pump',
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80',
       description: 'Solar-powered water pumps for agriculture and irrigation',
       features: [
         'No electricity required',
@@ -76,7 +80,8 @@ const Products = () => {
     {
       id: 'inverters',
       title: 'Inverters & Batteries',
-      image: 'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&q=80',
       description: 'High-quality inverters and battery storage solutions',
       features: [
         'Pure sine wave inverters',
@@ -89,7 +94,8 @@ const Products = () => {
     {
       id: 'epc',
       title: 'EPC Services',
-      image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80',
       description: 'End-to-end Engineering, Procurement, and Construction',
       features: [
         'Complete project management',
@@ -115,7 +121,12 @@ const Products = () => {
     {
       title: 'Hybrid System',
       description: 'Combines grid connection with battery storage for maximum flexibility.',
-      benefits: ['Best of both worlds', 'Grid + battery backup', 'Optimal savings', 'Smart switching'],
+      benefits: [
+        'Best of both worlds',
+        'Grid + battery backup',
+        'Optimal savings',
+        'Smart switching',
+      ],
     },
   ];
 
@@ -149,17 +160,17 @@ const Products = () => {
             zIndex: 0,
           }}
         />
-        
+
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Typography 
-              variant="h2" 
-              sx={{ 
-                fontWeight: 800, 
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 800,
                 mb: 2,
                 background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                 WebkitBackgroundClip: 'text',
@@ -170,15 +181,15 @@ const Products = () => {
             >
               Our Solar Products
             </Typography>
-            <Typography 
-              variant="h6" 
-              sx={{ 
-                opacity: 0.8, 
-                maxWidth: '700px', 
+            <Typography
+              variant="h6"
+              sx={{
+                opacity: 0.8,
+                maxWidth: '700px',
                 mx: 'auto',
                 fontWeight: 400,
                 lineHeight: 1.6,
-                color: 'text.secondary'
+                color: 'text.secondary',
               }}
             >
               Comprehensive range of solar energy solutions for all your needs
@@ -209,7 +220,14 @@ const Products = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                  <Card
+                    sx={{
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      overflow: 'hidden',
+                    }}
+                  >
                     <CardMedia
                       component="img"
                       height="220"
@@ -219,7 +237,7 @@ const Products = () => {
                         transition: 'transform 0.5s ease',
                         '&:hover': {
                           transform: 'scale(1.05)',
-                        }
+                        },
                       }}
                     />
                     <CardContent sx={{ flexGrow: 1, p: 4 }}>
@@ -232,11 +250,7 @@ const Products = () => {
                         </Typography>
                       </Box>
                       <Box sx={{ mb: 3 }}>
-                        <Chip
-                          label={product.capacity}
-                          color="primary"
-                          sx={{ mb: 2 }}
-                        />
+                        <Chip label={product.capacity} color="primary" sx={{ mb: 2 }} />
                         <Box>
                           {product.features.map((feature, idx) => (
                             <Box
@@ -295,7 +309,11 @@ const Products = () => {
                     <Typography variant="h4" sx={{ fontWeight: 700, mb: 2 }}>
                       {system.title}
                     </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{ mb: 3, lineHeight: 1.8 }}>
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{ mb: 3, lineHeight: 1.8 }}
+                    >
                       {system.description}
                     </Typography>
                     <Box>

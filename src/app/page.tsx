@@ -34,7 +34,8 @@ const Home = () => {
             Our Premium Products
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-            Discover our comprehensive range of high-efficiency solar energy solutions designed to meet all your needs.
+            Discover our comprehensive range of high-efficiency solar energy solutions designed to
+            meet all your needs.
           </Typography>
         </Box>
         <SolarProductsGrid />
@@ -78,7 +79,7 @@ const Home = () => {
               right: 0,
               bottom: 0,
               bgcolor: 'rgba(10, 17, 40, 0.85)', // Deep blue overlay matching the theme
-            }
+            },
           }}
         >
           <Box sx={{ position: 'relative', zIndex: 1 }}>
@@ -154,14 +155,17 @@ const Home = () => {
               right: 0,
               bottom: 0,
               bgcolor: 'rgba(10, 17, 40, 0.9)', // Deep blue overlay
-            }
+            },
           }}
         >
           <Box sx={{ position: 'relative', zIndex: 1 }}>
             <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, color: 'white' }}>
               Ready for Premium Solar?
             </Typography>
-            <Typography variant="h6" sx={{ mb: 4, maxWidth: 600, mx: 'auto', color: 'rgba(255,255,255,0.7)' }}>
+            <Typography
+              variant="h6"
+              sx={{ mb: 4, maxWidth: 600, mx: 'auto', color: 'rgba(255,255,255,0.7)' }}
+            >
               Let's build a sustainable future together with our elite energy solutions.
             </Typography>
             <Button

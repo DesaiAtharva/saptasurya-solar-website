@@ -27,7 +27,8 @@ const Services = () => {
     {
       id: 'installation',
       title: 'Solar Installation',
-      image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80',
+      image:
+        'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80',
       description: 'Professional installation services with certified technicians',
       features: [
         'Site assessment and design',
@@ -66,7 +67,8 @@ const Services = () => {
     {
       id: 'survey',
       title: 'Site Survey & Proposal',
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&v=2',
+      image:
+        'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&v=2',
       description: 'Comprehensive site assessment and detailed proposals',
       features: [
         'Detailed site analysis',
@@ -141,17 +143,17 @@ const Services = () => {
             zIndex: 0,
           }}
         />
-        
+
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Typography 
-              variant="h2" 
-              sx={{ 
-                fontWeight: 800, 
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 800,
                 mb: 2,
                 background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                 WebkitBackgroundClip: 'text',
@@ -162,15 +164,15 @@ const Services = () => {
             >
               Our Services
             </Typography>
-            <Typography 
-              variant="h6" 
-              sx={{ 
-                opacity: 0.8, 
-                maxWidth: '700px', 
+            <Typography
+              variant="h6"
+              sx={{
+                opacity: 0.8,
+                maxWidth: '700px',
                 mx: 'auto',
                 fontWeight: 400,
                 lineHeight: 1.6,
-                color: 'text.secondary'
+                color: 'text.secondary',
               }}
             >
               End-to-end solar solutions from consultation to maintenance
@@ -201,7 +203,14 @@ const Services = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                  <Card
+                    sx={{
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      overflow: 'hidden',
+                    }}
+                  >
                     <CardMedia
                       component="img"
                       height="240"
@@ -211,18 +220,14 @@ const Services = () => {
                         transition: 'transform 0.5s ease',
                         '&:hover': {
                           transform: 'scale(1.05)',
-                        }
+                        },
                       }}
                     />
                     <CardContent sx={{ flexGrow: 1, p: 4 }}>
                       <Typography variant="h4" sx={{ fontWeight: 700, mb: 2 }}>
                         {service.title}
                       </Typography>
-                      <Typography
-                        variant="body1"
-                        color="text.secondary"
-                        sx={{ mb: 3 }}
-                      >
+                      <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
                         {service.description}
                       </Typography>
                       <List sx={{ mb: 3 }}>
@@ -231,8 +236,8 @@ const Services = () => {
                             <ListItemIcon sx={{ minWidth: 36 }}>
                               <CheckCircle sx={{ color: 'secondary.main', fontSize: 20 }} />
                             </ListItemIcon>
-                            <ListItemText 
-                              primary={feature} 
+                            <ListItemText
+                              primary={feature}
                               primaryTypographyProps={{ variant: 'body2', fontWeight: 500 }}
                             />
                           </ListItem>
@@ -256,7 +261,15 @@ const Services = () => {
         </Box>
 
         {/* Process Steps */}
-        <Box sx={{ py: 8, bgcolor: 'background.paper', borderRadius: 4, px: { xs: 2, md: 4 }, border: `1px solid ${theme.palette.divider}` }}>
+        <Box
+          sx={{
+            py: 8,
+            bgcolor: 'background.paper',
+            borderRadius: 4,
+            px: { xs: 2, md: 4 },
+            border: `1px solid ${theme.palette.divider}`,
+          }}
+        >
           <Typography
             variant="h2"
             sx={{
@@ -285,7 +298,7 @@ const Services = () => {
                       bgcolor: 'background.default',
                       '&:hover': {
                         borderColor: 'primary.main',
-                      }
+                      },
                     }}
                   >
                     <Box

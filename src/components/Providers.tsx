@@ -21,9 +21,7 @@ const MuiThemeProvider = ({ children }: { children: React.ReactNode }) => {
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeContextProvider>
-      <MuiThemeProvider>
-        {children}
-      </MuiThemeProvider>
+      <MuiThemeProvider>{children}</MuiThemeProvider>
     </ThemeContextProvider>
   );
 }
