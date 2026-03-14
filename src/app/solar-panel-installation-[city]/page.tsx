@@ -5,16 +5,47 @@ import CityLandingPage from '@/components/SEO/CityLandingPage';
 // All 36 Maharashtra districts + major cities
 const maharashtraCities = [
   // Major Cities
-  'pune', 'nagpur', 'mumbai', 'nashik', 'aurangabad', 'solapur', 'kolhapur',
-  'amravati', 'nanded', 'sangli', 'jalgaon', 'latur', 'dhule', 'akola',
-  'chandrapur', 'parbhani', 'beed', 'satara', 'yavatmal', 'thane',
+  'pune',
+  'nagpur',
+  'mumbai',
+  'nashik',
+  'aurangabad',
+  'solapur',
+  'kolhapur',
+  'amravati',
+  'nanded',
+  'sangli',
+  'jalgaon',
+  'latur',
+  'dhule',
+  'akola',
+  'chandrapur',
+  'parbhani',
+  'beed',
+  'satara',
+  'yavatmal',
+  'thane',
   // Districts
-  'wardha', 'bhandara', 'gondia', 'gadchiroli', 'buldhana', 'washim',
-  'jalna', 'hingoli', 'osmanabad', 'ahmednagar', 'nandurbar', 'palghar',
-  'raigad', 'ratnagiri', 'sindhudurg', 'talegaon',
+  'wardha',
+  'bhandara',
+  'gondia',
+  'gadchiroli',
+  'buldhana',
+  'washim',
+  'jalna',
+  'hingoli',
+  'osmanabad',
+  'ahmednagar',
+  'nandurbar',
+  'palghar',
+  'raigad',
+  'ratnagiri',
+  'sindhudurg',
+  'talegaon',
 ];
 
-function formatCityName(slug: string): string {
+function formatCityName(slug: string | undefined): string {
+  if (!slug) return '';
   return slug
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -30,8 +61,10 @@ export async function generateMetadata({
 }: {
   params: { city: string };
 }): Promise<Metadata> {
+  // Guard: return empty metadata if city is invalid or undefined
+  if (!params.city || !maharashtraCities.includes(params.city)) return {};
+
   const city = formatCityName(params.city);
-  if (!maharashtraCities.includes(params.city)) return {};
 
   return {
     title: `Solar Panel Installation in ${city} | Rooftop Solar | Saptasurya Solar`,
@@ -57,7 +90,7 @@ export async function generateMetadata({
 }
 
 export default function CityPage({ params }: { params: { city: string } }) {
-  if (!maharashtraCities.includes(params.city)) {
+  if (!params.city || !maharashtraCities.includes(params.city)) {
     notFound();
   }
 
