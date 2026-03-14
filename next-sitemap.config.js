@@ -5,16 +5,16 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 7000,
-  exclude: ['/server-sitemap.xml'],
   robotsTxtOptions: {
-    additionalSitemaps: [
-      'https://saptasuryasolar.com/server-sitemap.xml',
-    ],
     policies: [
       {
         userAgent: '*',
         allow: '/',
+        disallow: ['/404'],
       },
+    ],
+    additionalSitemaps: [
+      'https://saptasuryasolar.com/sitemap.xml',
     ],
   },
   // Boost home and key service pages
