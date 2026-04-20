@@ -29,6 +29,7 @@ import {
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import JsonLd from './JsonLd';
+import Breadcrumbs from '../Navigation/Breadcrumbs';
 
 interface CityLandingPageProps {
   citySlug: string;
@@ -94,7 +95,7 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
         '@type': 'ListItem',
         position: 3,
         name: cityName,
-        item: `https://saptasuryasolar.com/solar-panel-installation-${citySlug}`,
+        item: `https://saptasuryasolar.com/solar-installation-${citySlug}`,
       },
     ],
   };
@@ -102,9 +103,39 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
   return (
     <Box>
       <JsonLd city={cityName} />
+      <Breadcrumbs
+        items={[
+          { label: 'Solar Installation', path: '/services' },
+          { label: cityName },
+        ]}
+      />
+      {/* FAQ Schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: `What is the cost of solar panels in ${cityName}?`,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: `Solar system prices in ${cityName} start from ₹75,000 for a 1kW system, depending on the panel type and inverter quality.`,
+                },
+              },
+              {
+                '@type': 'Question',
+                name: `Is government subsidy available in ${cityName}?`,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: `Yes, residents in ${cityName} can apply for the PM Surya Ghar Muft Bijli Yojana, which offers significant subsidies for residential rooftop solar installations.`,
+                },
+              },
+            ],
+          }),
+        }}
       />
 
       {/* Hero Section */}
@@ -207,57 +238,132 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
         </Container>
       </Box>
 
-      {/* Benefits Section */}
+      {/* Process Section */}
+      <Box sx={{ py: 10, bgcolor: 'background.default' }}>
+        <Container maxWidth="lg">
+          <Typography variant="h2" sx={{ fontWeight: 800, mb: 6, textAlign: 'center' }}>
+            Our Solar Installation Process in {cityName}
+          </Typography>
+          <Grid container spacing={4}>
+            {[
+              {
+                step: '01',
+                title: 'Site Survey',
+                desc: 'Our experts visit your property in {cityName} to assess roof strength, shadow-free area, and electricity consumption patterns.',
+              },
+              {
+                step: '02',
+                title: 'System Design',
+                desc: 'We create a customized engineering design for your rooftop solar plant, optimizing for maximum sunlight capture and efficiency.',
+              },
+              {
+                step: '03',
+                title: 'Quality Procurement',
+                desc: 'We source high-efficiency monocrystalline PERC panels and premium inverters from top-tier global manufacturers.',
+              },
+              {
+                step: '04',
+                title: 'Professional Install',
+                desc: 'Our certified team carries out the heavy-duty mounting and electrical wiring to ensure 25+ years of trouble-free operation.',
+              },
+              {
+                step: '05',
+                title: 'Net Metering',
+                desc: 'We handle all the documentation and coordination with MSEDCL/BEST/Adani for the net metering process in {cityName}.',
+              },
+              {
+                step: '06',
+                title: 'Commissioning',
+                desc: 'Your system goes live! We monitor the initial performance and hand over a complete maintenance guide to you.',
+              },
+            ].map((p) => (
+              <Grid item xs={12} sm={6} md={4} key={p.step}>
+                <Box sx={{ p: 4, borderRadius: 4, border: '1px solid', borderColor: 'divider', height: '100%' }}>
+                  <Typography variant="h3" sx={{ color: 'primary.main', opacity: 0.3, fontWeight: 800, mb: 2 }}>
+                    {p.step}
+                  </Typography>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                    {p.title}
+                  </Typography>
+                  <Typography color="text.secondary">
+                    {p.desc.replace('{cityName}', cityName)}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Savings & ROI Section */}
+      <Box sx={{ py: 10, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
+        <Container maxWidth="md" sx={{ textAlign: 'center' }}>
+          <Typography variant="h2" sx={{ fontWeight: 800, mb: 3 }}>
+            Solar ROI & Savings in {cityName}
+          </Typography>
+          <Typography variant="h5" sx={{ mb: 6, opacity: 0.9 }}>
+            A typical 3kW solar system in {cityName} can save you over ₹4,000 per month on electricity bills.
+          </Typography>
+          <Grid container spacing={4}>
+            {[
+              { label: 'Starting Price', value: '₹75,000/kW' },
+              { label: 'Payback Period', value: '3.5 - 5 Years' },
+              { label: '25-Year Savings', value: '₹8,00,000+' },
+              { label: 'Property Value', value: '+4% Increase' },
+            ].map((stat) => (
+              <Grid item xs={6} md={3} key={stat.label}>
+                <Typography variant="h4" sx={{ fontWeight: 800 }}>
+                  {stat.value}
+                </Typography>
+                <Typography variant="body2" sx={{ opacity: 0.8, mt: 1 }}>
+                  {stat.label}
+                </Typography>
+              </Grid>
+            ))}
+          </Grid>
+          <Box sx={{ mt: 6 }}>
+            <Typography variant="body1" sx={{ lineHeight: 1.8, opacity: 0.9 }}>
+              With solar prices in {cityName} starting from just ₹75,000, and generous government subsidies under the PM Surya Ghar scheme, 
+              the return on investment is at an all-time high. A solar plant is not just an expense; it is a financial asset that 
+              provides inflation-free electricity for over 25 years.
+            </Typography>
+          </Box>
+        </Container>
+      </Box>
+
+      {/* Maintenance & Tips */}
       <Box sx={{ py: 10 }}>
         <Container maxWidth="lg">
           <Grid container spacing={6} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
-                  Why Choose Saptasurya Solar in {cityName}?
-                </Typography>
-                <Typography color="text.secondary" sx={{ mb: 4, lineHeight: 1.8 }}>
-                  With years of experience serving {cityName} and surrounding districts, we bring
-                  expertise, quality, and transparent pricing to every solar installation.
-                </Typography>
-                <List disablePadding>
-                  {benefits.map((b) => (
-                    <ListItem key={b} disablePadding sx={{ mb: 1 }}>
-                      <ListItemIcon sx={{ minWidth: 36 }}>
-                        <CheckCircle sx={{ color: 'primary.main', fontSize: 22 }} />
-                      </ListItemIcon>
-                      <ListItemText primary={b} primaryTypographyProps={{ fontWeight: 500 }} />
-                    </ListItem>
-                  ))}
-                </List>
-              </motion.div>
+            <Grid item xs={12} md={5}>
+              <Box component="img" 
+                src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80" 
+                sx={{ width: '100%', borderRadius: 4, boxShadow: 10 }} />
             </Grid>
-            <Grid item xs={12} md={6}>
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <Box
-                  sx={{
-                    borderRadius: 4,
-                    overflow: 'hidden',
-                    border: `2px solid ${theme.palette.primary.main}`,
-                    boxShadow: `0 20px 60px ${theme.palette.primary.main}20`,
-                  }}
-                >
-                  <Box
-                    component="img"
-                    src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80"
-                    alt={`Rooftop solar installation in ${cityName}`}
-                    sx={{ width: '100%', height: 400, objectFit: 'cover', display: 'block' }}
-                  />
-                </Box>
-              </motion.div>
+            <Grid item xs={12} md={7}>
+              <Typography variant="h2" sx={{ fontWeight: 800, mb: 4 }}>
+                Maintaining Your Solar Plant in {cityName}
+              </Typography>
+              <Typography variant="body1" sx={{ mb: 4, lineHeight: 1.8, color: 'text.secondary' }}>
+                Maharashtra's changing seasons—from dusty summers to heavy monsoons—require professional care. 
+                In {cityName}, we recommend a bi-weekly cleaning schedule to prevent dust accumulation, which can 
+                reduce your solar generation by up to 20%.
+              </Typography>
+              <Grid container spacing={2}>
+                {[
+                  'Automatic Solar Cleaning Systems available.',
+                  'Professional structure health checks every 6 months.',
+                  'Real-time app-based generation monitoring.',
+                  'Lightning arresters and SPD for monsoon safety.',
+                ].map((item) => (
+                  <Grid item xs={12} sm={6} key={item}>
+                    <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
+                      <CheckCircle sx={{ color: 'primary.main' }} />
+                      <Typography variant="body2" sx={{ fontWeight: 600 }}>{item}</Typography>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
             </Grid>
           </Grid>
         </Container>
@@ -372,7 +478,7 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
               { label: 'Nagpur', slug: 'nagpur' },
               { label: 'Mumbai', slug: 'mumbai' },
               { label: 'Nashik', slug: 'nashik' },
-              { label: 'Aurangabad', slug: 'aurangabad' },
+              { label: 'Chhatrapati Sambhajinagar', slug: 'chhatrapati-sambhajinagar' },
               { label: 'Solapur', slug: 'solapur' },
               { label: 'Kolhapur', slug: 'kolhapur' },
               { label: 'Amravati', slug: 'amravati' },
@@ -382,22 +488,22 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
               { label: 'Satara', slug: 'satara' },
               { label: 'Akola', slug: 'akola' },
               { label: 'Latur', slug: 'latur' },
-              { label: 'Chandrapur', slug: 'chandrapur' },
-              { label: 'Wardha', slug: 'wardha' },
-              { label: 'Yavatmal', slug: 'yavatmal' },
-              { label: 'Dhule', slug: 'dhule' },
-              { label: 'Bhandara', slug: 'bhandara' },
-              { label: 'Gondia', slug: 'gondia' },
+              { label: 'Thane', slug: 'thane' },
+              { label: 'Kalyan', slug: 'kalyan' },
+              { label: 'Dombivli', slug: 'dombivli' },
+              { label: 'Navi Mumbai', slug: 'navi-mumbai' },
+              { label: 'Panvel', slug: 'panvel' },
               { label: 'Ahmednagar', slug: 'ahmednagar' },
+              { label: 'Dhule', slug: 'dhule' },
+              { label: 'Chandrapur', slug: 'chandrapur' },
               { label: 'Parbhani', slug: 'parbhani' },
-              { label: 'Osmanabad', slug: 'osmanabad' },
-              { label: 'Raigad', slug: 'raigad' },
+              { label: 'Jalna', slug: 'jalna' },
             ]
               .filter((c) => c.slug !== citySlug)
               .map((c) => (
                 <Link
                   key={c.slug}
-                  href={`/solar-panel-installation-${c.slug}`}
+                  href={`/solar-installation-${c.slug}`}
                   underline="hover"
                   sx={{
                     px: 2,

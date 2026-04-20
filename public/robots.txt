@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
 
-Disallow: /404
-
 Sitemap: https://saptasuryasolar.com/sitemap.xml

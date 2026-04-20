@@ -4,6 +4,7 @@ import { Box, Container, Typography, Button, Grid, useTheme } from '@mui/materia
 import { Download } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const HeroBanner = () => {
   const theme = useTheme();
@@ -46,6 +47,7 @@ const HeroBanner = () => {
       }}
     >
       {/* Rich Background Image */}
+      {/* Optimized Background Image */}
       <Box
         sx={{
           position: 'absolute',
@@ -54,20 +56,24 @@ const HeroBanner = () => {
           right: 0,
           bottom: 0,
           opacity: 0.15,
-          backgroundImage: `url("https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80")`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: `linear-gradient(to right, ${theme.palette.background.default} 20%, transparent 100%)`,
-          },
+          zIndex: 0,
         }}
-      />
+      >
+        <Image
+          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80"
+          alt="Solar panels background"
+          fill
+          priority
+          style={{ objectFit: 'cover' }}
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            background: `linear-gradient(to right, ${theme.palette.background.default} 20%, transparent 100%)`,
+          }}
+        />
+      </Box>
 
       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
         <Grid container spacing={4} alignItems="center">
@@ -89,9 +95,9 @@ const HeroBanner = () => {
                     letterSpacing: '-0.02em',
                   }}
                 >
-                  Power Your Future With
+                  Solar Panel Installation Across
                   <br />
-                  Saptasurya Solar Energy
+                  All Maharashtra Districts
                 </Typography>
               </motion.div>
 
@@ -220,26 +226,15 @@ const HeroBanner = () => {
                     },
                   }}
                 >
-                  <Box
-                    component="img"
-                    src="/new_logo.png"
-                    alt="Saptasurya Logo"
-                    sx={{
-                      height: { xs: '150px', md: '220px' }, // Increased size
-                      mb: 3,
-                      position: 'relative',
-                      zIndex: 1,
-                      objectFit: 'cover',
-                      transform: 'scale(1.05)', // Cropping edges
-                      // Assuming isDarkMode is defined in the component's scope, otherwise this line will cause an error.
-                      // If not defined, consider removing or defining it.
-                      filter:
-                        theme.palette.mode === 'dark'
-                          ? 'drop-shadow(0 0 10px rgba(212, 175, 55, 0.5))'
-                          : 'none',
-                      borderRadius: '4px',
-                    }}
-                  />
+                  <Box sx={{ position: 'relative', width: { xs: 180, md: 280 }, height: { xs: 180, md: 280 }, mb: 4, zIndex: 1 }}>
+                    <Image
+                      src="/new_logo.png"
+                      alt="Saptasurya Logo"
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      priority
+                    />
+                  </Box>
                   <Typography
                     variant="h4"
                     sx={{

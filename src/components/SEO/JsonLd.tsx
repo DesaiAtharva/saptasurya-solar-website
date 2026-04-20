@@ -11,11 +11,11 @@ export default function JsonLd({ city }: JsonLdProps) {
     '@type': 'LocalBusiness',
     name: 'Saptasurya Solar Energy',
     url: 'https://saptasuryasolar.com',
-    telephone: '+91 98608 74908',
+    telephone: '9860874908',
     email: 'info@saptasuryasolar.com',
     image: 'https://saptasuryasolar.com/new_logo.png',
     description:
-      'Saptasurya Solar provides premium rooftop solar panel installation and renewable energy solutions across Maharashtra.',
+      'Saptasurya Solar provides premium rooftop solar panel installation and renewable energy solutions across all 36 districts of Maharashtra.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: city || 'Pune',
@@ -48,21 +48,34 @@ export default function JsonLd({ city }: JsonLdProps) {
     },
   };
 
-  const service = {
+  const solarService = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    serviceType: 'Solar Panel Installation',
+    name: 'Solar Panel Installation',
+    serviceType: 'Solar Energy System Installation',
     provider: {
       '@type': 'LocalBusiness',
       name: 'Saptasurya Solar Energy',
     },
     areaServed: city ? `${city}, Maharashtra` : 'Maharashtra',
-    description:
-      'Professional rooftop solar panel installation, solar water heaters, solar pumps, and battery storage solutions.',
+    description: 'Professional rooftop solar panel installation for residential and commercial customers in Maharashtra.',
     offers: {
       '@type': 'Offer',
-      availability: 'https://schema.org/InStock',
+      price: '75000',
+      priceCurrency: 'INR',
     },
+  };
+
+  const waterHeaterService = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Solar Water Heater Installation',
+    serviceType: 'Renewable Energy Water Heating',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Saptasurya Solar Energy',
+    },
+    areaServed: city ? `${city}, Maharashtra` : 'Maharashtra',
   };
 
   return (
@@ -77,7 +90,11 @@ export default function JsonLd({ city }: JsonLdProps) {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(solarService) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(waterHeaterService) }}
       />
     </>
   );

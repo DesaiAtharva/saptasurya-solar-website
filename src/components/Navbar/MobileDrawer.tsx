@@ -58,8 +58,8 @@ const MobileDrawer: React.FC<MobileDrawerProps> = ({
           <Box
             component="img"
             src="/new_logo.png"
-            alt="Logo"
-            sx={{ height: '32px', mr: 1, borderRadius: '4px' }}
+            alt="Saptasurya Logo"
+            sx={{ height: '40px', mr: 1.5, objectFit: 'contain' }}
           />
           <Typography
             variant="h6"

@@ -15,51 +15,45 @@ const FAQAccordion = () => {
   const faqs = [
     {
       id: 1,
-      question: 'How much can I save with solar panels?',
+      question: 'What is the starting cost for solar in Maharashtra in 2026?',
       answer:
-        'On average, customers save 70-80% on their electricity bills. The exact savings depend on your energy consumption, roof size, and location. Most systems pay for themselves within 5-7 years.',
+        'Solar system prices in Maharashtra now start from ₹75,000 for a 1kW system. With the PM Surya Ghar Yojana subsidies, the effective out-of-pocket cost is significantly lower, and the system pays for itself in less than 4 years.',
     },
     {
       id: 2,
-      question: 'What is the warranty on solar panels?',
+      question: 'How much subsidy can I get for a 3kW residential system?',
       answer:
-        'Our solar panels come with a 25-year performance warranty and 10-year product warranty. We also offer comprehensive maintenance packages to ensure optimal performance.',
+        'Under the 2026 PM Surya Ghar guidelines, a 3kW residential system in Maharashtra can qualify for a subsidy of up to ₹78,000. We handle all the documentation and application processing for you.',
     },
     {
       id: 3,
-      question: 'Do I need battery storage?',
+      question: 'Is it worth investing in bifacial panels in 2026?',
       answer:
-        'Battery storage is optional but recommended for areas with frequent power cuts. For grid-tied systems, you can use net metering to sell excess power back to the grid.',
+        'Yes, bifacial panels are highly recommended for the Maharashtra climate as they capture reflected light from the roof surface, providing up to 15% more generation compared to traditional panels for a slightly higher initial cost.',
     },
     {
       id: 4,
-      question: 'How long does installation take?',
+      question: 'What is the warranty on the system components?',
       answer:
-        'Residential installations typically take 2-5 days, while commercial projects may take 1-3 weeks depending on the system size and complexity.',
+        'We provide a 25-year performance warranty on solar panels, a 5-10 year warranty on premium inverters, and a 5-year workmanship warranty on the entire installation.',
     },
     {
       id: 5,
-      question: 'Are there government subsidies available?',
+      question: 'Do I need to clean the panels every day?',
       answer:
-        'Yes! We help you apply for various government subsidies and schemes. Subsidies can cover up to 40% of the installation cost depending on your location and system type.',
+        'No, in most Maharashtra districts, a bi-weekly cleaning (once every 15 days) is sufficient. However, in heavily industrial or dusty areas like parts of Thane or Nagpur, weekly cleaning may be required for optimal yield.',
     },
     {
       id: 6,
-      question: 'What maintenance is required?',
+      question: 'What happens if there is a power cut?',
       answer:
-        'Solar panels require minimal maintenance - just periodic cleaning and annual inspections. We offer Annual Maintenance Contracts (AMC) to keep your system running optimally.',
+        'For on-grid systems, the solar plant shuts down during a power cut for safety reasons (anti-islanding). If you need power during outages, we recommend a hybrid solar system with battery storage.',
     },
     {
       id: 7,
       question: 'Will solar panels work during monsoon/cloudy days?',
       answer:
         'Yes, solar panels work even on cloudy days, though at reduced efficiency (around 10-25% of peak capacity). They generate power from daylight, not just direct sunlight.',
-    },
-    {
-      id: 8,
-      question: 'Can I install solar on a rented property?',
-      answer:
-        "You'll need written permission from the property owner. We can help you draft the necessary agreements and ensure all legal requirements are met.",
     },
   ];
 

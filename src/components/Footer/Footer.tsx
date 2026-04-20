@@ -80,8 +80,8 @@ const Footer = () => {
                 <Box
                   component="img"
                   src="/new_logo.png"
-                  alt="Logo"
-                  sx={{ height: '45px', mr: 1.5, borderRadius: '4px', objectFit: 'contain' }}
+                  alt="Saptasurya Logo"
+                  sx={{ height: '60px', mr: 2, objectFit: 'contain' }}
                 />
                 <Typography
                   variant="h6"

@@ -31,7 +31,7 @@ const Home = () => {
               WebkitTextFillColor: 'transparent',
             }}
           >
-            Our Premium Products
+            Residential Solar Solutions (All Maharashtra Districts)
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
             Discover our comprehensive range of high-efficiency solar energy solutions designed to
@@ -46,7 +46,7 @@ const Home = () => {
         <Container maxWidth="xl">
           <Box sx={{ textAlign: 'center', mb: 6 }}>
             <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
-              Our Expert Services
+              Commercial Solar Projects
             </Typography>
             <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
               End-to-end solar solutions from professional installation to dedicated maintenance.
@@ -83,8 +83,11 @@ const Home = () => {
           }}
         >
           <Box sx={{ position: 'relative', zIndex: 1 }}>
-            <Typography variant="h3" sx={{ fontWeight: 800, mb: 6 }}>
-              Our Global Impact
+            <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
+              Government Subsidy Support
+            </Typography>
+            <Typography variant="h5" sx={{ mb: 6, opacity: 0.9 }}>
+              Benefit from PM Surya Ghar Yojana across Maharashtra
             </Typography>
             <Box
               sx={{
@@ -101,7 +104,7 @@ const Home = () => {
               >
                 <AnimatedCounter value={100} suffix="+" delay={0.2} />
                 <Typography variant="h6" sx={{ mt: 2, opacity: 0.9 }}>
-                  Customers
+                  100+ Customers Served
                 </Typography>
               </motion.div>
               <motion.div
@@ -110,9 +113,9 @@ const Home = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <AnimatedCounter value={950} suffix="KW+" delay={0.4} />
+                <AnimatedCounter value={5} suffix="+" delay={0.4} />
                 <Typography variant="h6" sx={{ mt: 2, opacity: 0.9 }}>
-                  System Installed
+                  5+ Years Experience
                 </Typography>
               </motion.div>
               <motion.div
@@ -121,11 +124,25 @@ const Home = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <AnimatedCounter value={250} suffix="+" delay={0.6} />
+                <Typography variant="h1" sx={{ fontWeight: 800, color: 'primary.main' }}>
+                  GOVT
+                </Typography>
                 <Typography variant="h6" sx={{ mt: 2, opacity: 0.9 }}>
-                  Projects Completed
+                  Government Approved Vendor
                 </Typography>
               </motion.div>
+            </Box>
+          </Box>
+          <Box sx={{ position: 'relative', zIndex: 1, mt: 8, pt: 8, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <Typography variant="h5" sx={{ mb: 4, fontWeight: 700 }}>
+              Authorized Partners & Certifications
+            </Typography>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 6, opacity: 0.8 }}>
+              {['ISO 9001:2015', 'MNRE Approved', 'MCED Certified', 'PM Surya Ghar Partner'].map((cert) => (
+                <Typography key={cert} variant="h6" sx={{ fontWeight: 800, letterSpacing: 1 }}>
+                  {cert}
+                </Typography>
+              ))}
             </Box>
           </Box>
         </Box>

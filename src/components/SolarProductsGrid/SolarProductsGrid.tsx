@@ -4,6 +4,7 @@ import { Grid, Card, CardContent, CardMedia, Typography, Box, Button } from '@mu
 import { ArrowForward } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 interface SolarProductsGridProps {
   products?: any[];
@@ -91,27 +92,30 @@ const SolarProductsGrid = ({ products, showViewAll = true }: SolarProductsGridPr
                 }}
                 onClick={() => router.push('/products')}
               >
-                <CardMedia
-                  image={product.image}
-                  sx={{
-                    height: 200,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    '&::before': {
-                      content: '""',
+                <Box sx={{ position: 'relative', height: 220, overflow: 'hidden' }}>
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectFit: 'cover' }}
+                    loading="lazy"
+                  />
+                  <Box
+                    sx={{
                       position: 'absolute',
                       top: 0,
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      backgroundColor: 'rgba(0,0,0,0.5)',
+                      backgroundColor: 'rgba(0,0,0,0.4)',
                       transition: 'background-color 0.3s ease',
-                    },
-                  }}
-                ></CardMedia>
+                      '&:hover': {
+                        backgroundColor: 'rgba(0,0,0,0.2)',
+                      },
+                    }}
+                  />
+                </Box>
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
                     {product.title}

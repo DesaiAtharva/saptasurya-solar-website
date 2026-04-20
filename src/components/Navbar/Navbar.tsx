@@ -42,11 +42,10 @@ const Navbar = () => {
 
   const navItems = [
     { label: 'Home', path: '/' },
-    { label: 'About Us', path: '/about' },
-    { label: 'Products', path: '/products' },
+    { label: 'About', path: '/about' },
     { label: 'Services', path: '/services' },
-    // { label: 'Portfolio', path: '/portfolio' },
-    // { label: 'Subsidy & Finance', path: '/subsidy' },
+    { label: 'Products', path: '/products' },
+    { label: 'Subsidy', path: '/subsidy' },
     { label: 'Blog', path: '/blog' },
     { label: 'Contact', path: '/contact' },
   ];
@@ -104,14 +103,13 @@ const Navbar = () => {
                 <Box
                   component="img"
                   src="/new_logo.png"
-                  alt="Logo"
+                  alt="Saptasurya Logo"
                   sx={{
-                    height: { xs: '60px', sm: '75px', md: '85px' },
+                    height: { xs: '50px', sm: '65px', md: '75px' },
                     width: 'auto',
-                    mr: { xs: 1.5, md: 2 },
+                    mr: { xs: 1, md: 1.5 },
                     objectFit: 'contain',
-                    // Removed filter for a cleaner edge
-                    borderRadius: '4px',
+                    filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.1))',
                     transition: 'all 0.3s ease',
                   }}
                 />
