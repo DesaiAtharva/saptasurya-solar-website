@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Container, Box, Typography, Button } from '@mui/material';
+import { Container, Box, Typography, Button, useTheme } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import HeroBanner from '@/components/HeroBanner/HeroBanner';
@@ -12,6 +12,7 @@ import AnimatedCounter from '@/components/AnimatedCounter/AnimatedCounter';
 
 const Home = () => {
   const router = useRouter();
+  const theme = useTheme();
 
   return (
     <Box>
@@ -26,7 +27,9 @@ const Home = () => {
             sx={{
               fontWeight: 800,
               mb: 2,
-              background: 'linear-gradient(135deg, #D4AF37, #B8860B)', // Premium Gold Gradient
+              background: theme.palette.mode === 'dark'
+                ? `linear-gradient(135deg, ${theme.palette.primary.main} 0%, #FFFFFF 100%)`
+                : `linear-gradient(135deg, ${theme.palette.primary.main} 0%, #121212 100%)`,
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -65,7 +68,7 @@ const Home = () => {
             p: 6,
             textAlign: 'center',
             color: 'white',
-            backgroundImage: `url("https://images.unsplash.com/photo-1548614606-52b4451f994b?auto=format&fit=crop&q=80")`,
+            backgroundImage: `url("/og-image.jpg")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed',
@@ -78,7 +81,7 @@ const Home = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              bgcolor: 'rgba(10, 17, 40, 0.85)', // Deep blue overlay matching the theme
+              bgcolor: 'rgba(0, 0, 0, 0.85)', // Dark overlay matching the theme
             },
           }}
         >
@@ -133,16 +136,34 @@ const Home = () => {
               </motion.div>
             </Box>
           </Box>
-          <Box sx={{ position: 'relative', zIndex: 1, mt: 8, pt: 8, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+          <Box
+            sx={{
+              position: 'relative',
+              zIndex: 1,
+              mt: 8,
+              pt: 8,
+              borderTop: '1px solid rgba(255,255,255,0.1)',
+            }}
+          >
             <Typography variant="h5" sx={{ mb: 4, fontWeight: 700 }}>
               Authorized Partners & Certifications
             </Typography>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 6, opacity: 0.8 }}>
-              {['ISO 9001:2015', 'MNRE Approved', 'MCED Certified', 'PM Surya Ghar Partner'].map((cert) => (
-                <Typography key={cert} variant="h6" sx={{ fontWeight: 800, letterSpacing: 1 }}>
-                  {cert}
-                </Typography>
-              ))}
+            <Box
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                gap: 6,
+                opacity: 0.8,
+              }}
+            >
+              {['ISO 9001:2015', 'MNRE Approved', 'MCED Certified', 'PM Surya Ghar Partner'].map(
+                (cert) => (
+                  <Typography key={cert} variant="h6" sx={{ fontWeight: 800, letterSpacing: 1 }}>
+                    {cert}
+                  </Typography>
+                )
+              )}
             </Box>
           </Box>
         </Box>
@@ -160,7 +181,7 @@ const Home = () => {
             p: 6,
             textAlign: 'center',
             boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
-            backgroundImage: `url("https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&q=80")`,
+            backgroundImage: `url("/og-image.jpg")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             overflow: 'hidden',
@@ -171,7 +192,7 @@ const Home = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              bgcolor: 'rgba(10, 17, 40, 0.9)', // Deep blue overlay
+              bgcolor: 'rgba(0, 0, 0, 0.9)', // Dark overlay
             },
           }}
         >

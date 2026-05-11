@@ -16,7 +16,7 @@ export const useTheme = () => {
 };
 
 export const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark premium theme
+  const [isDarkMode, setIsDarkMode] = useState(false); // Default to light mode as requested
 
   useEffect(() => {
     const saved = localStorage.getItem('theme');
@@ -28,6 +28,7 @@ export const ThemeContextProvider = ({ children }: { children: React.ReactNode }
   useEffect(() => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
     }
   }, [isDarkMode]);
 

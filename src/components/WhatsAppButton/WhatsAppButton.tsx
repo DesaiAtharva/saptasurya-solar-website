@@ -5,7 +5,7 @@ import { WhatsApp } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 
 const WhatsAppButton = () => {
-  const phoneNumber = '919860874908';
+  const phoneNumber = '917058362510';
   const message = "Hello Saptasurya Solar! I'm interested in solar energy solutions.";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 

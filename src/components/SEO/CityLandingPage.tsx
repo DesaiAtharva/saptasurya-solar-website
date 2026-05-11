@@ -104,10 +104,7 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
     <Box>
       <JsonLd city={cityName} />
       <Breadcrumbs
-        items={[
-          { label: 'Solar Installation', path: '/services' },
-          { label: cityName },
-        ]}
+        items={[{ label: 'Solar Installation', path: '/services' }, { label: cityName }]}
       />
       {/* FAQ Schema */}
       <script
@@ -200,7 +197,7 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
                 variant="contained"
                 size="large"
                 startIcon={<WhatsApp />}
-                href={`https://wa.me/919860874908?text=Hello! I'm interested in solar panel installation in ${cityName}.`}
+                href={`https://wa.me/917058362510?text=Hello! I'm interested in solar panel installation in ${cityName}.`}
                 target="_blank"
                 sx={{ px: 4, py: 1.5, fontSize: '1.1rem' }}
               >
@@ -210,7 +207,7 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
                 variant="outlined"
                 size="large"
                 startIcon={<Phone />}
-                href="tel:+919860874908"
+                href="tel:+917058362510"
                 sx={{ px: 4, py: 1.5, fontSize: '1.1rem' }}
               >
                 Call Now
@@ -229,7 +226,7 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
                 <Typography variant="h4" sx={{ fontWeight: 800, color: 'primary.contrastText' }}>
                   {s.number}
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'rgba(0,0,0,0.7)', fontWeight: 600 }}>
+                <Typography variant="body2" sx={{ color: 'primary.contrastText', opacity: 0.8, fontWeight: 600 }}>
                   {s.label}
                 </Typography>
               </Grid>
@@ -278,8 +275,19 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
               },
             ].map((p) => (
               <Grid item xs={12} sm={6} md={4} key={p.step}>
-                <Box sx={{ p: 4, borderRadius: 4, border: '1px solid', borderColor: 'divider', height: '100%' }}>
-                  <Typography variant="h3" sx={{ color: 'primary.main', opacity: 0.3, fontWeight: 800, mb: 2 }}>
+                <Box
+                  sx={{
+                    p: 4,
+                    borderRadius: 4,
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    height: '100%',
+                  }}
+                >
+                  <Typography
+                    variant="h3"
+                    sx={{ color: 'primary.main', opacity: 0.3, fontWeight: 800, mb: 2 }}
+                  >
                     {p.step}
                   </Typography>
                   <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
@@ -302,7 +310,8 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
             Solar ROI & Savings in {cityName}
           </Typography>
           <Typography variant="h5" sx={{ mb: 6, opacity: 0.9 }}>
-            A typical 3kW solar system in {cityName} can save you over ₹4,000 per month on electricity bills.
+            A typical 3kW solar system in {cityName} can save you over ₹4,000 per month on
+            electricity bills.
           </Typography>
           <Grid container spacing={4}>
             {[
@@ -315,7 +324,7 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
                 <Typography variant="h4" sx={{ fontWeight: 800 }}>
                   {stat.value}
                 </Typography>
-                <Typography variant="body2" sx={{ opacity: 0.8, mt: 1 }}>
+                <Typography variant="body2" sx={{ color: 'primary.contrastText', opacity: 0.8, mt: 1 }}>
                   {stat.label}
                 </Typography>
               </Grid>
@@ -323,9 +332,10 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
           </Grid>
           <Box sx={{ mt: 6 }}>
             <Typography variant="body1" sx={{ lineHeight: 1.8, opacity: 0.9 }}>
-              With solar prices in {cityName} starting from just ₹75,000, and generous government subsidies under the PM Surya Ghar scheme, 
-              the return on investment is at an all-time high. A solar plant is not just an expense; it is a financial asset that 
-              provides inflation-free electricity for over 25 years.
+              With solar prices in {cityName} starting from just ₹75,000, and generous government
+              subsidies under the PM Surya Ghar scheme, the return on investment is at an all-time
+              high. A solar plant is not just an expense; it is a financial asset that provides
+              inflation-free electricity for over 25 years.
             </Typography>
           </Box>
         </Container>
@@ -336,18 +346,20 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
         <Container maxWidth="lg">
           <Grid container spacing={6} alignItems="center">
             <Grid item xs={12} md={5}>
-              <Box component="img" 
-                src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80" 
-                sx={{ width: '100%', borderRadius: 4, boxShadow: 10 }} />
+              <Box
+                component="img"
+                src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80"
+                sx={{ width: '100%', borderRadius: 4, boxShadow: 10 }}
+              />
             </Grid>
             <Grid item xs={12} md={7}>
               <Typography variant="h2" sx={{ fontWeight: 800, mb: 4 }}>
                 Maintaining Your Solar Plant in {cityName}
               </Typography>
               <Typography variant="body1" sx={{ mb: 4, lineHeight: 1.8, color: 'text.secondary' }}>
-                Maharashtra's changing seasons—from dusty summers to heavy monsoons—require professional care. 
-                In {cityName}, we recommend a bi-weekly cleaning schedule to prevent dust accumulation, which can 
-                reduce your solar generation by up to 20%.
+                Maharashtra's changing seasons—from dusty summers to heavy monsoons—require
+                professional care. In {cityName}, we recommend a bi-weekly cleaning schedule to
+                prevent dust accumulation, which can reduce your solar generation by up to 20%.
               </Typography>
               <Grid container spacing={2}>
                 {[
@@ -359,7 +371,9 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
                   <Grid item xs={12} sm={6} key={item}>
                     <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
                       <CheckCircle sx={{ color: 'primary.main' }} />
-                      <Typography variant="body2" sx={{ fontWeight: 600 }}>{item}</Typography>
+                      <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                        {item}
+                      </Typography>
                     </Box>
                   </Grid>
                 ))}
@@ -422,7 +436,7 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
           <Typography variant="h2" sx={{ fontWeight: 800, color: 'primary.contrastText', mb: 2 }}>
             Get a Free Solar Quote in {cityName}
           </Typography>
-          <Typography sx={{ color: 'rgba(0,0,0,0.75)', mb: 4, fontSize: '1.1rem' }}>
+          <Typography sx={{ color: 'primary.contrastText', opacity: 0.9, mb: 4, fontSize: '1.1rem' }}>
             Our expert team will analyse your roof, calculate savings, and provide a transparent
             proposal — completely free.
           </Typography>
@@ -431,7 +445,7 @@ export default function CityLandingPage({ citySlug, cityName }: CityLandingPageP
               variant="contained"
               size="large"
               startIcon={<WhatsApp />}
-              href={`https://wa.me/919860874908?text=Hi, I need solar installation in ${cityName}.`}
+              href={`https://wa.me/917058362510?text=Hi, I need solar installation in ${cityName}.`}
               target="_blank"
               sx={{
                 bgcolor: '#ffffff',

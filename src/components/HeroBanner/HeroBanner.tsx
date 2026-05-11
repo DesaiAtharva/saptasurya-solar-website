@@ -47,7 +47,7 @@ const HeroBanner = () => {
       }}
     >
       {/* Rich Background Image */}
-      {/* Optimized Background Image */}
+      {/* 4K Background Video */}
       <Box
         sx={{
           position: 'absolute',
@@ -55,22 +55,35 @@ const HeroBanner = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          opacity: 0.15,
           zIndex: 0,
+          overflow: 'hidden',
         }}
       >
-        <Image
-          src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80"
-          alt="Solar panels background"
-          fill
-          priority
-          style={{ objectFit: 'cover' }}
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/new_logo.png"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
+        >
+          <source
+            src="https://cdn.pixabay.com/video/2020/06/17/42388-431511474_large.mp4"
+            type="video/mp4"
+          />
+        </video>
+        {/* Dynamic Overlay based on theme */}
         <Box
           sx={{
             position: 'absolute',
             inset: 0,
-            background: `linear-gradient(to right, ${theme.palette.background.default} 20%, transparent 100%)`,
+            background: theme.palette.mode === 'dark' 
+              ? 'linear-gradient(to right, rgba(0,0,0,0.9) 30%, rgba(0,0,0,0.4) 100%)'
+              : 'linear-gradient(to right, rgba(255,255,255,0.95) 30%, rgba(255,255,255,0.7) 100%)',
           }}
         />
       </Box>
@@ -87,7 +100,9 @@ const HeroBanner = () => {
                     fontWeight: 800,
                     mt: { xs: 8, md: 12 }, // Increased top margin for better spacing
                     mb: 3,
-                    background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                    background: theme.palette.mode === 'dark' 
+                      ? `linear-gradient(135deg, ${theme.palette.primary.main} 0%, #FFFFFF 100%)`
+                      : `linear-gradient(135deg, ${theme.palette.primary.main} 0%, #121212 100%)`,
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     fontSize: { xs: '2.5rem', md: '3.5rem', lg: '3.5rem' },
@@ -197,60 +212,45 @@ const HeroBanner = () => {
                   minHeight: { xs: '400px', md: '600px' },
                 }}
               >
-                {/* Premium Solar Image Illustration */}
+                {/* Background-less Logo Display */}
                 <Box
                   sx={{
                     width: '100%',
-                    maxWidth: '550px',
-                    height: '450px',
-                    backgroundImage: `url("https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80")`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    borderRadius: 6,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    justifyContent: 'center', // Centered alignment
+                    justifyContent: 'center',
                     position: 'relative',
-                    overflow: 'hidden',
-                    boxShadow: `0px 30px 60px rgba(0,0,0,0.6)`,
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background:
-                        'radial-gradient(circle, rgba(10, 17, 40, 0.6) 0%, rgba(10, 17, 40, 0.9) 100%)',
-                    },
                   }}
                 >
-                  <Box sx={{ position: 'relative', width: { xs: 180, md: 280 }, height: { xs: 180, md: 280 }, mb: 4, zIndex: 1 }}>
-                    <Image
-                      src="/new_logo.png"
-                      alt="Saptasurya Logo"
-                      fill
-                      style={{ objectFit: 'contain' }}
-                      priority
-                    />
-                  </Box>
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      fontWeight: 800,
-                      color: theme.palette.primary.main,
-                      position: 'relative',
-                      zIndex: 1,
-                      textAlign: 'center',
-                      px: 2,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.1rem',
-                      textShadow: '0px 4px 12px rgba(0,0,0,0.5)',
+                  <motion.div
+                    animate={{ 
+                      y: [0, -10, 0],
+                    }}
+                    transition={{ 
+                      duration: 4, 
+                      repeat: Infinity, 
+                      ease: "easeInOut" 
                     }}
                   >
-                    Premium Solar Solutions
-                  </Typography>
+                    <Box
+                      sx={{
+                        position: 'relative',
+                        width: { xs: 300, md: 500 },
+                        height: { xs: 300, md: 500 },
+                        zIndex: 1,
+                        filter: 'drop-shadow(0px 20px 40px rgba(0,0,0,0.4))',
+                      }}
+                    >
+                      <Image
+                        src="/new_logo.png"
+                        alt="Saptasurya Logo"
+                        fill
+                        style={{ objectFit: 'contain' }}
+                        priority
+                      />
+                    </Box>
+                  </motion.div>
                 </Box>
               </Box>
             </motion.div>

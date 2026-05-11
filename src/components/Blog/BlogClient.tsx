@@ -103,7 +103,7 @@ const BlogClient = () => {
       id: 12,
       title: 'Best Solar Company in Pune & Thane: How to Choose a Trusted Partner?',
       excerpt:
-        'Don\'t get fooled by low prices. Learn how to choose the best solar installer in Pune/Thane based on certifications, warranty, and history.',
+        "Don't get fooled by low prices. Learn how to choose the best solar installer in Pune/Thane based on certifications, warranty, and history.",
       date: 'April 14, 2026',
       category: 'Local Guide',
       slug: 'best-solar-company-pune-thane',

@@ -166,7 +166,7 @@ const Footer = () => {
                     <Phone sx={{ color: 'white', fontSize: 20 }} />
                   </Box>
                   <Link
-                    href="https://wa.me/919860874908"
+                    href="https://wa.me/917058362510"
                     target="_blank"
                     underline="none"
                     sx={{
@@ -176,7 +176,7 @@ const Footer = () => {
                       '&:hover': { color: 'primary.main' },
                     }}
                   >
-                    +91 98608 74908
+                    +91 70583 62510
                   </Link>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -200,7 +200,7 @@ const Footer = () => {
                     color="text.secondary"
                     sx={{ fontSize: '0.9rem', fontWeight: 500 }}
                   >
-                    Pune, Maharashtra, India
+                    Alankapuri Complex, Laxmi Colony, Hadapsar, Pune - 411028
                   </Typography>
                 </Box>
               </Box>

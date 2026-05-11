@@ -98,7 +98,7 @@ const About = () => {
             right: 0,
             bottom: 0,
             opacity: 0.2,
-            backgroundImage: `url("https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&q=80")`,
+            backgroundImage: `url("/og-image.jpg")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             zIndex: 0,

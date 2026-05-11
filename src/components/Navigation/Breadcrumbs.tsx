@@ -36,7 +36,9 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
   };
 
   return (
-    <Box sx={{ bgcolor: 'background.paper', py: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
+    <Box
+      sx={{ bgcolor: 'background.paper', py: 2, borderBottom: '1px solid', borderColor: 'divider' }}
+    >
       <Container maxWidth="xl">
         <script
           type="application/ld+json"
@@ -48,7 +50,13 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
         >
           <Link
             underline="hover"
-            sx={{ display: 'flex', alignItems: 'center', color: 'text.secondary', fontWeight: 500, cursor: 'pointer' }}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              color: 'text.secondary',
+              fontWeight: 500,
+              cursor: 'pointer',
+            }}
             onClick={() => router.push('/')}
           >
             <HomeIcon sx={{ mr: 0.5, fontSize: 18 }} />

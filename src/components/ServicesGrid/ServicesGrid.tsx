@@ -15,7 +15,6 @@ const ServicesGrid = () => {
       description:
         'Professional installation services with certified technicians and quality assurance.',
       icon: <Build sx={{ fontSize: 48 }} />,
-      color: '#FFA500',
     },
     {
       id: 2,
@@ -23,14 +22,12 @@ const ServicesGrid = () => {
       description:
         'Annual Maintenance Contracts and regular servicing to ensure optimal performance.',
       icon: <Engineering sx={{ fontSize: 48 }} />,
-      color: '#2B7A0B',
     },
     {
       id: 3,
       title: 'Government Subsidy Assistance',
       description: 'Help with subsidy applications and documentation for government solar schemes.',
       icon: <Assignment sx={{ fontSize: 48 }} />,
-      color: '#1E293B',
     },
     {
       id: 4,
@@ -38,7 +35,6 @@ const ServicesGrid = () => {
       description:
         'Comprehensive site assessment and detailed project proposals with ROI calculations.',
       icon: <Assessment sx={{ fontSize: 48 }} />,
-      color: '#FFA500',
     },
     {
       id: 5,
@@ -46,7 +42,6 @@ const ServicesGrid = () => {
       description:
         'Round-the-clock customer support and emergency service for all your solar needs.',
       icon: <SupportAgent sx={{ fontSize: 48 }} />,
-      color: '#2B7A0B',
     },
   ];
 
@@ -65,13 +60,12 @@ const ServicesGrid = () => {
                 sx={{
                   height: '100%',
                   textAlign: 'center',
-                  p: 3,
+                  p: 4,
                   position: 'relative',
                   overflow: 'hidden',
                   '&:hover': {
                     '& .service-icon': {
                       transform: 'scale(1.1) rotate(5deg)',
-                      color: service.color,
                     },
                   },
                 }}
@@ -80,7 +74,7 @@ const ServicesGrid = () => {
                   className="service-icon"
                   sx={{
                     color: 'primary.main',
-                    mb: 2,
+                    mb: 3,
                     transition: 'all 0.3s ease',
                     display: 'flex',
                     justifyContent: 'center',
@@ -88,23 +82,17 @@ const ServicesGrid = () => {
                 >
                   {service.icon}
                 </Box>
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+                <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>
                   {service.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 4, lineHeight: 1.6 }}>
                   {service.description}
                 </Typography>
                 <Button
                   variant="outlined"
+                  color="primary"
                   onClick={() => router.push('/services')}
-                  sx={{
-                    borderColor: service.color,
-                    color: service.color,
-                    '&:hover': {
-                      borderColor: service.color,
-                      bgcolor: `${service.color}10`,
-                    },
-                  }}
+                  sx={{ px: 4 }}
                 >
                   Learn More
                 </Button>

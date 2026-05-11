@@ -20,9 +20,9 @@ const Contact = () => {
     {
       icon: <Phone sx={{ fontSize: 32 }} />,
       title: 'WhatsApp / Phone',
-      details: ['+91 98608 74908'],
+      details: ['+91 70583 62510'],
       color: theme.palette.primary.main,
-      link: 'https://wa.me/919860874908',
+      link: 'https://wa.me/917058362510',
     },
     {
       icon: <Email sx={{ fontSize: 32 }} />,
@@ -62,7 +62,7 @@ const Contact = () => {
             right: 0,
             bottom: 0,
             opacity: 0.2,
-            backgroundImage: `url("https://images.unsplash.com/photo-1516387085603-f018e63f587d?auto=format&fit=crop&q=80")`,
+            backgroundImage: `url("/og-image.jpg")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             zIndex: 0,
@@ -194,6 +194,32 @@ const Contact = () => {
                   </Grid>
                 ))}
               </Grid>
+              {/* Map Section */}
+              <Box sx={{ mt: 10 }}>
+                <Typography variant="h3" sx={{ fontWeight: 800, mb: 4, textAlign: 'center' }}>
+                  Locate Our Office
+                </Typography>
+                <Box
+                  sx={{
+                    width: '100%',
+                    height: { xs: '400px', md: '550px' },
+                    borderRadius: 6,
+                    overflow: 'hidden',
+                    boxShadow: '0 20px 60px rgba(0,0,0,0.1)',
+                    border: `1px solid ${theme.palette.divider}`,
+                  }}
+                >
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.680345949989!2d73.95568519999999!3d18.498132899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f13552bcb43cc2f%3A0x87d26d9c9482abd5!2sSaptaSurya%20Solar%20Energy!5e0!3m2!1sen!2sin!4v1778478365423!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={true}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </Box>
+              </Box>
             </motion.div>
           </Grid>
         </Grid>

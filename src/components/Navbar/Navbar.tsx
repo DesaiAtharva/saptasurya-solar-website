@@ -105,12 +105,15 @@ const Navbar = () => {
                   src="/new_logo.png"
                   alt="Saptasurya Logo"
                   sx={{
-                    height: { xs: '50px', sm: '65px', md: '75px' },
+                    height: { xs: '65px', sm: '80px', md: '95px' }, // Increased size for the detailed logo
                     width: 'auto',
                     mr: { xs: 1, md: 1.5 },
                     objectFit: 'contain',
-                    filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.1))',
-                    transition: 'all 0.3s ease',
+                    filter: 'drop-shadow(0px 4px 8px rgba(0,0,0,0.2))',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    '&:hover': {
+                      transform: 'scale(1.08) rotate(2deg)',
+                    },
                   }}
                 />
                 <Box

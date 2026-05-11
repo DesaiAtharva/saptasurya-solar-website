@@ -1,242 +1,219 @@
 import { createTheme } from '@mui/material/styles';
 
-// Premium Solar Theme Colors
+// Premium Solar Theme Colors (Gold & Neutral)
 const solarTheme = {
   primary: '#D4AF37', // Metallic Gold
-  secondary: '#005C97', // Deep Solar Blue
-  accent: '#B8860B', // Dark Goldenrod
-  background: '#F8F9FA', // Soft Light Background
-  text: '#050A15', // Deep Blue/Black Text
+  primaryLight: '#F8E076',
+  primaryDark: '#AA8529',
+  goldGradient: 'linear-gradient(135deg, #D4AF37 0%, #AA8529 100%)',
+  black: '#000000',
+  white: '#FFFFFF',
+  offWhite: '#F8F9FA',
+  deepBlack: '#050A15',
 };
 
-// Light Theme
+// Common Typography
+const typography = {
+  fontFamily: "'Outfit', 'Inter', sans-serif",
+  h1: {
+    fontWeight: 800,
+    fontSize: '4rem',
+    lineHeight: 1.1,
+    letterSpacing: '-0.02em',
+    '@media (max-width:768px)': { fontSize: '2.5rem' },
+  },
+  h2: {
+    fontWeight: 800,
+    fontSize: '3rem',
+    lineHeight: 1.2,
+    letterSpacing: '-0.01em',
+    '@media (max-width:768px)': { fontSize: '2rem' },
+  },
+  h3: {
+    fontWeight: 700,
+    fontSize: '2.25rem',
+    lineHeight: 1.3,
+  },
+  h4: {
+    fontWeight: 700,
+    fontSize: '1.75rem',
+  },
+  h5: {
+    fontWeight: 600,
+    fontSize: '1.25rem',
+  },
+  h6: {
+    fontWeight: 600,
+    fontSize: '1.1rem',
+  },
+  body1: {
+    fontSize: '1.05rem',
+    lineHeight: 1.7,
+  },
+  button: {
+    textTransform: 'none',
+    fontWeight: 700,
+    letterSpacing: '0.02em',
+  },
+};
+
+// Common Components
+const commonComponents = {
+  MuiButton: {
+    styleOverrides: {
+      root: {
+        borderRadius: 12,
+        padding: '12px 32px',
+        fontSize: '1rem',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        '&:hover': {
+          transform: 'translateY(-2px)',
+          boxShadow: '0 8px 20px rgba(212, 175, 55, 0.3)',
+        },
+      },
+      containedPrimary: {
+        background: solarTheme.goldGradient,
+        color: '#000',
+        '&:hover': {
+          background: 'linear-gradient(135deg, #F8E076 0%, #D4AF37 100%)',
+        },
+      },
+      outlinedPrimary: {
+        borderWidth: 2,
+        borderColor: solarTheme.primary,
+        '&:hover': {
+          borderWidth: 2,
+          backgroundColor: 'rgba(212, 175, 55, 0.05)',
+        },
+      },
+    },
+  },
+  MuiCard: {
+    styleOverrides: {
+      root: {
+        borderRadius: 24,
+        transition: 'all 0.4s ease',
+        border: '1px solid transparent',
+      },
+    },
+  },
+  MuiAppBar: {
+    styleOverrides: {
+      root: {
+        boxShadow: 'none',
+        backdropFilter: 'blur(20px)',
+      },
+    },
+  },
+};
+
+// Light Theme (White & Gold)
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
       main: solarTheme.primary,
-      light: '#F8E076',
-      dark: '#AA8529',
-      contrastText: '#050A15', // Dark text on gold button
+      light: solarTheme.primaryLight,
+      dark: solarTheme.primaryDark,
+      contrastText: '#000000',
     },
     secondary: {
-      main: solarTheme.secondary,
-      light: '#3380B4',
-      dark: '#00406A',
-      contrastText: '#FFFFFF',
-    },
-    accent: {
-      main: solarTheme.accent,
-      light: '#D4A017',
-      dark: '#8B6508',
+      main: '#1A1A1A', // Rich Black for contrast
     },
     background: {
-      default: solarTheme.background,
-      paper: '#FFFFFF',
+      default: solarTheme.white,
+      paper: '#FDFCFB',
     },
     text: {
-      primary: solarTheme.text,
-      secondary: '#64748B',
+      primary: '#121212',
+      secondary: '#4A4A4A',
     },
+    divider: 'rgba(212, 175, 55, 0.12)',
   },
-  typography: {
-    fontFamily: "'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif",
-    h1: {
-      fontWeight: 800,
-      fontSize: '3.5rem',
-      lineHeight: 1.2,
-      '@media (max-width:768px)': {
-        fontSize: '2.5rem',
-      },
-    },
-    h2: {
-      fontWeight: 700,
-      fontSize: '2.75rem',
-      lineHeight: 1.3,
-      '@media (max-width:768px)': {
-        fontSize: '2rem',
-      },
-    },
-    h3: {
-      fontWeight: 600,
-      fontSize: '2rem',
-      lineHeight: 1.4,
-    },
-    h4: {
-      fontWeight: 600,
-      fontSize: '1.5rem',
-      lineHeight: 1.4,
-    },
-    h5: {
-      fontWeight: 600,
-      fontSize: '1.25rem',
-    },
-    h6: {
-      fontWeight: 600,
-      fontSize: '1rem',
-    },
-    body1: {
-      fontSize: '1rem',
-      lineHeight: 1.7,
-    },
-    body2: {
-      fontSize: '0.875rem',
-      lineHeight: 1.6,
-    },
-    button: {
-      textTransform: 'none',
-      fontWeight: 600,
-      fontSize: '1rem',
-    },
-  },
-  shape: {
-    borderRadius: 8,
-  },
+  typography,
+  shape: { borderRadius: 16 },
   components: {
-    MuiButton: {
+    ...commonComponents,
+    MuiAppBar: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
-          padding: '12px 32px',
-          fontSize: '1rem',
-          fontWeight: 600,
-          boxShadow: '0px 4px 12px rgba(212, 175, 55, 0.2)',
-          '&:hover': {
-            boxShadow: '0px 6px 16px rgba(212, 175, 55, 0.4)',
-          },
-        },
-        outlined: {
-          borderWidth: 2,
-          '&:hover': {
-            borderWidth: 2,
-          },
+          ...commonComponents.MuiAppBar.styleOverrides,
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          borderBottom: '1px solid rgba(212, 175, 55, 0.1)',
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
-          boxShadow: '0px 4px 20px rgba(0,0,0,0.05)',
-          transition: 'all 0.3s ease-in-out',
-          border: '1px solid rgba(0,0,0,0.05)',
+          ...commonComponents.MuiCard.styleOverrides,
+          backgroundColor: solarTheme.white,
+          boxShadow: '0 10px 40px rgba(0,0,0,0.04)',
           '&:hover': {
-            boxShadow: '0px 8px 30px rgba(0,0,0,0.1)',
-            transform: 'translateY(-4px)',
             borderColor: 'rgba(212, 175, 55, 0.3)',
+            boxShadow: '0 20px 60px rgba(212, 175, 55, 0.1)',
           },
-        },
-      },
-    },
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          boxShadow: '0px 2px 10px rgba(0,0,0,0.05)',
-          backdropFilter: 'blur(10px)',
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          borderBottom: '1px solid rgba(0,0,0,0.05)',
         },
       },
     },
   },
 });
 
-// Dark Theme
+// Dark Theme (Black & Gold)
 export const darkTheme = createTheme({
-  ...lightTheme,
   palette: {
     mode: 'dark',
     primary: {
       main: solarTheme.primary,
-      light: '#F8E076',
-      dark: '#AA8529',
-      contrastText: '#050A15', // Dark text on gold button
+      light: solarTheme.primaryLight,
+      dark: solarTheme.primaryDark,
+      contrastText: '#000000',
     },
     secondary: {
-      main: solarTheme.secondary,
-      light: '#3380B4',
-      dark: '#00406A',
-      contrastText: '#FFFFFF',
-    },
-    accent: {
-      main: solarTheme.accent,
-      light: '#D4A017',
-      dark: '#8B6508',
+      main: solarTheme.white,
     },
     background: {
-      default: '#050A15', // Very deep blue/black
-      paper: '#0A1128', // Deep blue
+      default: '#000000',
+      paper: '#0A0A0A',
     },
     text: {
-      primary: '#F2F7F5',
-      secondary: '#94A3B8',
+      primary: '#FFFFFF',
+      secondary: '#A0A0A0',
     },
+    divider: 'rgba(212, 175, 55, 0.15)',
   },
+  typography,
+  shape: { borderRadius: 16 },
   components: {
-    ...lightTheme.components,
+    ...commonComponents,
     MuiAppBar: {
       styleOverrides: {
         root: {
-          boxShadow: '0px 4px 20px rgba(0,0,0,0.5)',
-          backgroundColor: 'rgba(5, 10, 21, 0.85)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.15)', // Subtle gold border
-        },
-      },
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 8,
-          padding: '12px 32px',
-          fontSize: '1rem',
-          fontWeight: 600,
-          boxShadow: '0px 4px 12px rgba(212, 175, 55, 0.1)',
-          '&:hover': {
-            boxShadow: '0px 6px 16px rgba(212, 175, 55, 0.3)',
-          },
-        },
-        outlined: {
-          borderWidth: 2,
-          borderColor: 'rgba(212, 175, 55, 0.4)',
-          color: '#D4AF37',
-          '&:hover': {
-            borderWidth: 2,
-            borderColor: '#D4AF37',
-            backgroundColor: 'rgba(212, 175, 55, 0.08)',
-          },
+          ...commonComponents.MuiAppBar.styleOverrides,
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          borderBottom: '1px solid rgba(212, 175, 55, 0.2)',
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
-          boxShadow: '0px 4px 20px rgba(0,0,0,0.3)',
-          backgroundColor: '#0A1128',
-          border: '1px solid rgba(212, 175, 55, 0.1)',
-          transition: 'all 0.3s ease-in-out',
+          ...commonComponents.MuiCard.styleOverrides,
+          backgroundColor: '#0A0A0A',
+          boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
           '&:hover': {
-            boxShadow: '0px 8px 30px rgba(212, 175, 55, 0.15)',
-            transform: 'translateY(-4px)',
-            border: '1px solid rgba(212, 175, 55, 0.3)',
+            borderColor: 'rgba(212, 175, 55, 0.4)',
+            boxShadow: '0 20px 60px rgba(212, 175, 55, 0.15)',
           },
         },
       },
     },
-    MuiDrawer: {
+    MuiButton: {
       styleOverrides: {
-        paper: {
-          backgroundColor: '#0A1128',
-          borderRight: '1px solid rgba(212, 175, 55, 0.1)',
-        },
-      },
-    },
-    MuiMenu: {
-      styleOverrides: {
-        paper: {
-          backgroundColor: '#0A1128',
-          border: '1px solid rgba(212, 175, 55, 0.1)',
+        ...commonComponents.MuiButton.styleOverrides,
+        outlinedPrimary: {
+          ...commonComponents.MuiButton.styleOverrides.outlinedPrimary,
+          color: solarTheme.primary,
         },
       },
     },

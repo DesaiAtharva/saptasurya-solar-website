@@ -7,7 +7,8 @@ import '@/index.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://saptasuryasolar.com'),
   title: {
-    default: 'Solar Panel Installation in Maharashtra | Serving All 36 Districts | Saptasurya Solar',
+    default:
+      'Solar Panel Installation in Maharashtra | Serving All 36 Districts | Saptasurya Solar',
     template: '%s | Saptasurya Solar',
   },
   description:
@@ -31,7 +32,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Saptasurya Solar Energy Solutions | Best Solar in Maharashtra',
-    description: 'Save up to 80% on electricity bills with Maharashtra\'s leading solar installation team. All 36 districts served.',
+    description:
+      "Save up to 80% on electricity bills with Maharashtra's leading solar installation team. All 36 districts served.",
     url: 'https://saptasuryasolar.com',
     siteName: 'Saptasurya Solar',
     images: [

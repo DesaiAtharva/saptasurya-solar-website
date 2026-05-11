@@ -11,7 +11,7 @@ export default function JsonLd({ city }: JsonLdProps) {
     '@type': 'LocalBusiness',
     name: 'Saptasurya Solar Energy',
     url: 'https://saptasuryasolar.com',
-    telephone: '9860874908',
+    telephone: '7058362510',
     email: 'info@saptasuryasolar.com',
     image: 'https://saptasuryasolar.com/new_logo.png',
     description:
@@ -58,7 +58,8 @@ export default function JsonLd({ city }: JsonLdProps) {
       name: 'Saptasurya Solar Energy',
     },
     areaServed: city ? `${city}, Maharashtra` : 'Maharashtra',
-    description: 'Professional rooftop solar panel installation for residential and commercial customers in Maharashtra.',
+    description:
+      'Professional rooftop solar panel installation for residential and commercial customers in Maharashtra.',
     offers: {
       '@type': 'Offer',
       price: '75000',
