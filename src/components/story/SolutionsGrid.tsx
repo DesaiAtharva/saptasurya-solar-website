@@ -57,7 +57,12 @@ export default function SolutionsGrid() {
         onEnter: (batch) => {
           // Movement on expo-out; opacity on a softer curve so the fade reads as a reveal, not a pop.
           gsap.to(batch, { y: 0, duration: DURATION.slow, ease: EASE.out, stagger: STAGGER.items });
-          gsap.to(batch, { opacity: 1, duration: DURATION.reveal, ease: EASE.soft, stagger: STAGGER.items });
+          gsap.to(batch, {
+            opacity: 1,
+            duration: DURATION.reveal,
+            ease: EASE.soft,
+            stagger: STAGGER.items,
+          });
         },
       });
     },

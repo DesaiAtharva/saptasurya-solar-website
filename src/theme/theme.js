@@ -17,17 +17,44 @@ export const brand = {
   sun: '#FDBA2C',
 };
 
-const fontFamily = "var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
+const fontFamily =
+  "var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
 
 /** Display serif (Fraunces) for big headlines — warm, with character. */
 export const displayFont = "var(--font-display), 'Fraunces', Georgia, 'Times New Roman', serif";
 
 const typography = {
   fontFamily,
-  h1: { fontFamily: displayFont, fontWeight: 500, fontSize: 'clamp(2.5rem, 1.6rem + 3.4vw, 4.5rem)', lineHeight: 1.04, letterSpacing: '-0.03em', fontVariationSettings: '"SOFT" 50, "opsz" 144' },
-  h2: { fontFamily: displayFont, fontWeight: 500, fontSize: 'clamp(2rem, 1.4rem + 2.2vw, 3.25rem)', lineHeight: 1.08, letterSpacing: '-0.025em', fontVariationSettings: '"SOFT" 50, "opsz" 120' },
-  h3: { fontFamily: displayFont, fontWeight: 500, fontSize: 'clamp(1.65rem, 1.3rem + 1.3vw, 2.4rem)', lineHeight: 1.15, letterSpacing: '-0.02em', fontVariationSettings: '"SOFT" 50, "opsz" 72' },
-  h4: { fontWeight: 700, fontSize: 'clamp(1.35rem, 1.2rem + 0.6vw, 1.75rem)', lineHeight: 1.25, letterSpacing: '-0.01em' },
+  h1: {
+    fontFamily: displayFont,
+    fontWeight: 500,
+    fontSize: 'clamp(2.5rem, 1.6rem + 3.4vw, 4.5rem)',
+    lineHeight: 1.04,
+    letterSpacing: '-0.03em',
+    fontVariationSettings: '"SOFT" 50, "opsz" 144',
+  },
+  h2: {
+    fontFamily: displayFont,
+    fontWeight: 500,
+    fontSize: 'clamp(2rem, 1.4rem + 2.2vw, 3.25rem)',
+    lineHeight: 1.08,
+    letterSpacing: '-0.025em',
+    fontVariationSettings: '"SOFT" 50, "opsz" 120',
+  },
+  h3: {
+    fontFamily: displayFont,
+    fontWeight: 500,
+    fontSize: 'clamp(1.65rem, 1.3rem + 1.3vw, 2.4rem)',
+    lineHeight: 1.15,
+    letterSpacing: '-0.02em',
+    fontVariationSettings: '"SOFT" 50, "opsz" 72',
+  },
+  h4: {
+    fontWeight: 700,
+    fontSize: 'clamp(1.35rem, 1.2rem + 0.6vw, 1.75rem)',
+    lineHeight: 1.25,
+    letterSpacing: '-0.01em',
+  },
   h5: { fontWeight: 700, fontSize: '1.25rem', lineHeight: 1.35 },
   h6: { fontWeight: 700, fontSize: '1.075rem', lineHeight: 1.4 },
   subtitle1: { fontSize: '1.125rem', lineHeight: 1.6 },
@@ -50,12 +77,20 @@ function components(mode) {
     MuiButton: {
       defaultProps: { disableElevation: true },
       styleOverrides: {
-        root: { borderRadius: 10, padding: '10px 22px', fontSize: '0.975rem', transition: 'background-color .2s, box-shadow .2s, border-color .2s, color .2s' },
+        root: {
+          borderRadius: 10,
+          padding: '10px 22px',
+          fontSize: '0.975rem',
+          transition: 'background-color .2s, box-shadow .2s, border-color .2s, color .2s',
+        },
         sizeLarge: { padding: '13px 28px', fontSize: '1.05rem' },
         sizeSmall: { padding: '6px 14px', fontSize: '0.875rem' },
         containedPrimary: {
           boxShadow: '0 6px 16px -6px rgba(234,88,12,0.55)',
-          '&:hover': { backgroundColor: brand.orangeDark, boxShadow: '0 8px 20px -6px rgba(234,88,12,0.6)' },
+          '&:hover': {
+            backgroundColor: brand.orangeDark,
+            boxShadow: '0 8px 20px -6px rgba(234,88,12,0.6)',
+          },
         },
         outlined: { borderWidth: 1.5, '&:hover': { borderWidth: 1.5 } },
         outlinedPrimary: { borderColor: dark ? brand.orangeLight : brand.orange },
@@ -68,7 +103,9 @@ function components(mode) {
           borderRadius: 16,
           border: `1px solid ${border}`,
           backgroundColor: dark ? '#0F1B30' : '#FFFFFF',
-          boxShadow: dark ? 'none' : '0 1px 2px rgba(16,24,40,0.04), 0 4px 16px -8px rgba(16,24,40,0.08)',
+          boxShadow: dark
+            ? 'none'
+            : '0 1px 2px rgba(16,24,40,0.04), 0 4px 16px -8px rgba(16,24,40,0.08)',
           transition: 'box-shadow .25s ease, transform .25s ease, border-color .25s ease',
         },
       },
@@ -118,8 +155,18 @@ function components(mode) {
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
-    primary: { main: brand.orange, light: brand.orangeLight, dark: brand.orangeDark, contrastText: '#FFFFFF' },
-    secondary: { main: brand.navy, light: brand.navyLight, dark: brand.navyDark, contrastText: '#FFFFFF' },
+    primary: {
+      main: brand.orange,
+      light: brand.orangeLight,
+      dark: brand.orangeDark,
+      contrastText: '#FFFFFF',
+    },
+    secondary: {
+      main: brand.navy,
+      light: brand.navyLight,
+      dark: brand.navyDark,
+      contrastText: '#FFFFFF',
+    },
     background: { default: '#FBF6EE', paper: '#FFFFFF', alt: '#F4ECDF', brand: brand.navyDark },
     text: { primary: '#0F1B33', secondary: '#4B5871' },
     divider: '#E9E1D3',
@@ -133,8 +180,18 @@ export const lightTheme = createTheme({
 export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
-    primary: { main: '#F97316', light: brand.orangeLight, dark: brand.orange, contrastText: '#FFFFFF' },
-    secondary: { main: '#8FB3F0', light: '#B9D0F7', dark: brand.navyLight, contrastText: '#061A3A' },
+    primary: {
+      main: '#F97316',
+      light: brand.orangeLight,
+      dark: brand.orange,
+      contrastText: '#FFFFFF',
+    },
+    secondary: {
+      main: '#8FB3F0',
+      light: '#B9D0F7',
+      dark: brand.navyLight,
+      contrastText: '#061A3A',
+    },
     background: { default: '#0A1324', paper: '#0F1B30', alt: '#0D182B', brand: '#071531' },
     text: { primary: '#E8EEF8', secondary: '#9DAAC0' },
     divider: 'rgba(255,255,255,0.08)',
