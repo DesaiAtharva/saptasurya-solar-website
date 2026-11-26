@@ -1,34 +1,37 @@
-'use client';
 import React from 'react';
 
 interface JsonLdProps {
   city?: string;
+  /** On city pages the global LocalBusiness/WebSite schema is already in the root layout. */
+  servicesOnly?: boolean;
 }
 
-export default function JsonLd({ city }: JsonLdProps) {
+export default function JsonLd({ city, servicesOnly = false }: JsonLdProps) {
   const localBusiness = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Saptasurya Solar Energy',
-    url: 'https://saptasuryasolar.com',
-    telephone: '7058362510',
+    url: 'https://www.saptasuryasolar.com',
+    telephone: '+91-7058362510',
     email: 'info@saptasuryasolar.com',
-    image: 'https://saptasuryasolar.com/new_logo.png',
+    image: 'https://www.saptasuryasolar.com/og-image.png',
+    logo: 'https://www.saptasuryasolar.com/brand/saptasurya-logo-512.png',
     description:
       'Saptasurya Solar provides premium rooftop solar panel installation and renewable energy solutions across all 36 districts of Maharashtra.',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: city || 'Pune',
+      streetAddress: 'Alankapuri Complex, Laxmi Colony, Hadapsar',
+      addressLocality: 'Pune',
+      postalCode: '411028',
       addressRegion: 'Maharashtra',
       addressCountry: 'IN',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: '18.5204',
-      longitude: '73.8567',
+      latitude: '18.4981',
+      longitude: '73.9557',
     },
     openingHours: 'Mo-Sa 09:00-18:00',
-    sameAs: ['https://saptasuryasolar.com'],
     priceRange: '₹₹',
     areaServed: {
       '@type': 'State',
@@ -40,12 +43,7 @@ export default function JsonLd({ city }: JsonLdProps) {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Saptasurya Solar',
-    url: 'https://saptasuryasolar.com',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://saptasuryasolar.com/?s={search_term_string}',
-      'query-input': 'required name=search_term_string',
-    },
+    url: 'https://www.saptasuryasolar.com',
   };
 
   const solarService = {
@@ -60,11 +58,6 @@ export default function JsonLd({ city }: JsonLdProps) {
     areaServed: city ? `${city}, Maharashtra` : 'Maharashtra',
     description:
       'Professional rooftop solar panel installation for residential and commercial customers in Maharashtra.',
-    offers: {
-      '@type': 'Offer',
-      price: '75000',
-      priceCurrency: 'INR',
-    },
   };
 
   const waterHeaterService = {
@@ -81,14 +74,18 @@ export default function JsonLd({ city }: JsonLdProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
-      />
+      {!servicesOnly && (
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
+          />
+        </>
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(solarService) }}

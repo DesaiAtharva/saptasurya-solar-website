@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     'Read our latest articles on solar panel costs in Maharashtra, PM Surya Ghar subsidy guides, and solar energy benefits for homeowners and businesses.',
   alternates: {
-    canonical: 'https://saptasuryasolar.com/blog',
+    canonical: 'https://www.saptasuryasolar.com/blog',
   },
   openGraph: {
     title: 'Solar Energy Blog - Expert Insights | Saptasurya Solar',
     description: 'Expert guides and news on solar energy in Maharashtra.',
-    url: 'https://saptasuryasolar.com/blog',
-    images: [{ url: 'https://saptasuryasolar.com/og-image.jpg' }],
+    url: 'https://www.saptasuryasolar.com/blog',
+    images: [{ url: 'https://www.saptasuryasolar.com/og-image.png', width: 1200, height: 630 }],
   },
 };
 

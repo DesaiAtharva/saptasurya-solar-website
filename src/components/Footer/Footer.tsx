@@ -1,235 +1,165 @@
 'use client';
 import React from 'react';
-import { Box, Container, Grid, Typography, Link, IconButton, Divider } from '@mui/material';
-import {
-  Facebook,
-  Twitter,
-  Instagram,
-  LinkedIn,
-  Email,
-  Phone,
-  LocationOn,
-} from '@mui/icons-material';
-import { motion } from 'framer-motion';
+import { Box, Container, Typography, Link, Divider, Stack } from '@mui/material';
+import { Email, Phone, LocationOn, WhatsApp, Schedule } from '@mui/icons-material';
+import { Brand } from '@/components/Navbar/Navbar';
+import { BUSINESS, whatsappLink } from '@/config/site';
+import { trackContact } from '@/lib/analytics';
+
+const SECTIONS = [
+  {
+    title: 'Company',
+    links: [
+      { label: 'About Us', path: '/about' },
+      { label: 'Services', path: '/services' },
+      { label: 'Products', path: '/products' },
+      { label: 'Blog', path: '/blog' },
+      { label: 'Contact', path: '/contact' },
+    ],
+  },
+  {
+    title: 'Solar Guides',
+    links: [
+      { label: 'Subsidy Calculator', path: '/subsidy' },
+      { label: 'PM Surya Ghar Guide', path: '/blog/solar-subsidy-2026-guide' },
+      { label: 'Solar Price 2026', path: '/blog/solar-panel-price-maharashtra-2026' },
+      { label: 'On-grid vs Hybrid', path: '/blog/on-grid-off-grid-hybrid-solar' },
+      { label: 'Choosing an Installer', path: '/blog/best-solar-company-pune-thane' },
+    ],
+  },
+];
+
+const muted = 'rgba(255,255,255,0.68)';
+const linkSx = { color: muted, fontSize: '0.925rem', '&:hover': { color: '#fff' } };
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  const footerSections = [
-    {
-      title: 'Quick Links',
-      links: [
-        { label: 'Home', path: '/' },
-        { label: 'About Us', path: '/about' },
-        { label: 'Products', path: '/products' },
-        { label: 'Services', path: '/services' },
-        // { label: 'Portfolio', path: '/portfolio' },
-      ],
-    },
-    {
-      title: 'Products',
-      links: [
-        { label: 'Solar Panels', path: '/products#panels' },
-        { label: 'Solar Rooftop Systems', path: '/products#rooftop' },
-        { label: 'Solar Water Heater', path: '/products#water-heater' },
-        { label: 'Solar Pump', path: '/products#pump' },
-        { label: 'Inverters & Batteries', path: '/products#inverters' },
-      ],
-    },
-    {
-      title: 'Services',
-      links: [
-        { label: 'Solar Installation', path: '/services#installation' },
-        { label: 'Maintenance & AMC', path: '/services#maintenance' },
-        { label: 'Subsidy Assistance', path: '/services#subsidy' },
-        { label: 'Site Survey', path: '/services#survey' },
-      ],
-    },
-  ];
-
-  const socialLinks = [
-    { icon: <Facebook />, url: '#', label: 'Facebook' },
-    { icon: <Twitter />, url: '#', label: 'Twitter' },
-    { icon: <Instagram />, url: '#', label: 'Instagram' },
-    { icon: <LinkedIn />, url: '#', label: 'LinkedIn' },
-  ];
+  const year = new Date().getFullYear();
 
   return (
     <Box
       component="footer"
-      sx={{
-        bgcolor: 'background.paper',
-        pt: 8,
-        pb: 4,
-        mt: 8,
-        borderTop: '1px solid',
-        borderColor: 'divider',
-      }}
+      sx={{ bgcolor: '#061A3A', color: '#fff', pt: { xs: 8, md: 10 }, pb: 4 }}
     >
-      <Container maxWidth="xl">
-        <Grid container spacing={4}>
-          {/* Company Info */}
-          <Grid item xs={12} md={3}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                <Box
-                  component="img"
-                  src="/new_logo.png"
-                  alt="Saptasurya Logo"
-                  sx={{ height: '60px', mr: 2, objectFit: 'contain' }}
-                />
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: 800, color: 'primary.main', lineHeight: 1.2 }}
-                >
-                  Saptasurya
-                  <br />
-                  Solar Energy
-                </Typography>
-              </Box>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ mb: 3, maxWidth: 280, lineHeight: 1.7 }}
-              >
-                Powering your future with clean, renewable solar energy. Save up to 80% on
-                electricity bills while contributing to a sustainable planet.
-              </Typography>
-            </motion.div>
-          </Grid>
+      <Container maxWidth="lg">
+        <Box
+          sx={{
+            display: 'grid',
+            gap: { xs: 5, md: 6 },
+            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1.4fr 1fr 1fr 1.4fr' },
+          }}
+        >
+          <Box>
+            <Brand light />
+            <Typography sx={{ color: muted, mt: 2.5, maxWidth: 320, fontSize: '0.95rem' }}>
+              Rooftop solar, solar pumps and water heaters for homes, societies, businesses and
+              farms — with complete PM Surya Ghar subsidy and net-metering support across
+              Maharashtra.
+            </Typography>
+          </Box>
 
-          {/* Footer Links */}
-          {footerSections.map((section, idx) => (
-            <Grid item xs={12} sm={6} md={2} key={section.title}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 * (idx + 1) }}
-              >
-                <Typography
-                  variant="subtitle1"
-                  sx={{ fontWeight: 700, mb: 3, color: 'text.primary' }}
-                >
-                  {section.title}
-                </Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-                  {section.links.map(
-                    (link) =>
-                      link.label &&
-                      !link.label.startsWith('//') && (
-                        <Link
-                          key={link.label}
-                          href={link.path}
-                          underline="none"
-                          sx={{
-                            color: 'text.secondary',
-                            fontSize: '0.9rem',
-                            '&:hover': {
-                              color: 'primary.main',
-                              transform: 'translateX(4px)',
-                            },
-                            transition: 'all 0.3s ease',
-                          }}
-                        >
-                          {link.label}
-                        </Link>
-                      )
-                  )}
-                </Box>
-              </motion.div>
-            </Grid>
+          {SECTIONS.map((s) => (
+            <Box key={s.title}>
+              <Typography sx={{ fontWeight: 700, mb: 2.5 }}>{s.title}</Typography>
+              <Stack spacing={1.5}>
+                {s.links.map((l) => (
+                  <Link key={l.path} href={l.path} underline="none" sx={linkSx}>
+                    {l.label}
+                  </Link>
+                ))}
+              </Stack>
+            </Box>
           ))}
 
-          {/* Contact Info */}
-          <Grid item xs={12} md={3}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <Typography
-                variant="subtitle1"
-                sx={{ fontWeight: 700, mb: 3, color: 'text.primary' }}
-              >
-                Contact Us
-              </Typography>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Box sx={{ p: 1, borderRadius: 1.5, bgcolor: 'primary.main', display: 'flex' }}>
-                    <Phone sx={{ color: 'white', fontSize: 20 }} />
-                  </Box>
-                  <Link
-                    href="https://wa.me/917058362510"
-                    target="_blank"
-                    underline="none"
-                    sx={{
-                      color: 'text.secondary',
-                      fontSize: '0.9rem',
-                      fontWeight: 500,
-                      '&:hover': { color: 'primary.main' },
-                    }}
-                  >
-                    +91 70583 62510
-                  </Link>
+          <Box>
+            <Typography sx={{ fontWeight: 700, mb: 2.5 }}>Get in touch</Typography>
+            <Stack spacing={2}>
+              {[
+                {
+                  icon: <Phone fontSize="small" />,
+                  content: (
+                    <Link
+                      href={`tel:${BUSINESS.phoneE164}`}
+                      underline="none"
+                      sx={linkSx}
+                      onClick={() => trackContact('call', 'footer')}
+                    >
+                      {BUSINESS.phoneDisplay}
+                    </Link>
+                  ),
+                },
+                {
+                  icon: <WhatsApp fontSize="small" />,
+                  content: (
+                    <Link
+                      href={whatsappLink("Hi Saptasurya Solar, I'm interested in rooftop solar.")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      underline="none"
+                      sx={linkSx}
+                      onClick={() => trackContact('whatsapp', 'footer')}
+                    >
+                      Chat on WhatsApp
+                    </Link>
+                  ),
+                },
+                {
+                  icon: <Email fontSize="small" />,
+                  content: (
+                    <Link href={`mailto:${BUSINESS.email}`} underline="none" sx={linkSx}>
+                      {BUSINESS.email}
+                    </Link>
+                  ),
+                },
+                {
+                  icon: <LocationOn fontSize="small" />,
+                  content: (
+                    <Typography sx={{ color: muted, fontSize: '0.925rem' }}>
+                      Alankapuri Complex, Laxmi Colony, Hadapsar, Pune – 411028
+                    </Typography>
+                  ),
+                },
+                {
+                  icon: <Schedule fontSize="small" />,
+                  content: (
+                    <Typography sx={{ color: muted, fontSize: '0.925rem' }}>
+                      Mon – Sat, 9:00 am – 6:00 pm
+                    </Typography>
+                  ),
+                },
+              ].map((row, i) => (
+                <Box key={i} sx={{ display: 'flex', gap: 1.5, alignItems: 'flex-start' }}>
+                  <Box sx={{ color: 'primary.light', mt: 0.25 }}>{row.icon}</Box>
+                  {row.content}
                 </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Box sx={{ p: 1, borderRadius: 1.5, bgcolor: 'primary.main', display: 'flex' }}>
-                    <Email sx={{ color: 'white', fontSize: 20 }} />
-                  </Box>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ fontSize: '0.9rem', fontWeight: 500 }}
-                  >
-                    info@saptasuryasolar.com
-                  </Typography>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Box sx={{ p: 1, borderRadius: 1.5, bgcolor: 'primary.main', display: 'flex' }}>
-                    <LocationOn sx={{ color: 'white', fontSize: 20 }} />
-                  </Box>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ fontSize: '0.9rem', fontWeight: 500 }}
-                  >
-                    Alankapuri Complex, Laxmi Colony, Hadapsar, Pune - 411028
-                  </Typography>
-                </Box>
-              </Box>
-            </motion.div>
-          </Grid>
-        </Grid>
+              ))}
+            </Stack>
+          </Box>
+        </Box>
 
-        <Divider sx={{ my: 4 }} />
+        {/* City links removed from the UI for now. City pages stay discoverable via
+            sitemap.xml and the "near you" links on each city page. */}
+        <Divider sx={{ my: 5, borderColor: 'rgba(255,255,255,0.1)' }} />
 
         <Box
           sx={{
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
             justifyContent: 'space-between',
-            alignItems: 'center',
+            alignItems: { xs: 'flex-start', md: 'center' },
             gap: 2,
           }}
         >
-          <Typography variant="body2" color="text.secondary">
-            © {currentYear} Saptasurya Solar Energy. All rights reserved.
+          <Typography sx={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.875rem' }}>
+            © {year} Saptasurya Solar Energy. All rights reserved.
           </Typography>
-          <Box sx={{ display: 'flex', gap: 3 }}>
-            <Link href="#" underline="none" color="text.secondary" variant="body2">
+          <Stack direction="row" spacing={3}>
+            <Link href="/privacy-policy" underline="none" sx={{ ...linkSx, fontSize: '0.875rem' }}>
               Privacy Policy
             </Link>
-            <Link href="#" underline="none" color="text.secondary" variant="body2">
+            <Link href="/terms" underline="none" sx={{ ...linkSx, fontSize: '0.875rem' }}>
               Terms of Service
             </Link>
-          </Box>
+          </Stack>
         </Box>
       </Container>
     </Box>

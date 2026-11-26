@@ -28,4 +28,11 @@ yarn-error.log*
 .idea/
 *.swp
 *.swo
-*~
+*~.env
+*.tsbuildinfo
+
+# next-sitemap output (generated on build)
+/public/sitemap*.xml
+
+# Source videos (not deployed)
+/raw-videos/

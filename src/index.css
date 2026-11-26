@@ -1,11 +1,13 @@
 :root {
-  --gold: #D4AF37;
-  --gold-dark: #AA8529;
-  --scrollbar-track: #f1f1f1;
+  --brand-orange: #ea580c;
+  --brand-navy: #0b2a5b;
+  --scrollbar-track: #f1f4f9;
+  --scrollbar-thumb: #c5cedd;
 }
 
 [data-theme='dark'] {
-  --scrollbar-track: #121212;
+  --scrollbar-track: #0a1324;
+  --scrollbar-thumb: #24324d;
 }
 
 * {
@@ -16,38 +18,171 @@
 
 body {
   margin: 0;
-  font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--scrollbar-track);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 5px;
+  background: var(--scrollbar-thumb);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-orange);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-dark);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ───────────── Motion: masked word reveal (SplitReveal) ───────────── */
+.ss-w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.ss-w > span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: ss-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--ss-reveal-delay, 0.15s) + var(--i, 0) * 70ms);
+}
+.ss-accent {
+  font-style: italic;
+  color: #fb923c;
+}
+.ss-reveal-after-intro {
+  --ss-reveal-delay: 1.15s;
+}
+html[data-intro='seen'] .ss-reveal-after-intro {
+  --ss-reveal-delay: 0.1s;
+}
+@keyframes ss-rise {
+  to {
+    transform: none;
+  }
+}
+
+/* Fade-up for supporting elements */
+.ss-fade {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: ss-fade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--ss-reveal-delay, 0.15s) + var(--d, 0s));
+}
+@keyframes ss-fade {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ───────────── Section 1: intro reveal (home, first visit per session) ───────────── */
+.ss-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  background: #061a3a;
+  clip-path: inset(0 0 0 0);
+  animation: ss-intro-out 0.5s cubic-bezier(0.77, 0, 0.18, 1) 0.8s forwards;
+}
+.ss-intro__inner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.ss-intro svg {
+  width: 92px;
+  height: 92px;
+  overflow: visible;
+}
+.ss-intro .ray {
+  stroke-dasharray: 12;
+  stroke-dashoffset: 12;
+  animation: ss-draw 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(0.12s + var(--i) * 50ms);
+}
+.ss-intro .hz {
+  stroke-dasharray: 52;
+  stroke-dashoffset: 52;
+  animation: ss-draw 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.ss-intro .sun {
+  transform: translateY(16px);
+  animation: ss-sun 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
+}
+.ss-intro__word {
+  color: #fff;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: ss-fade 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+@keyframes ss-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes ss-sun {
+  to {
+    transform: none;
+  }
+}
+@keyframes ss-intro-out {
+  to {
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+  }
+}
+html[data-intro='seen'] .ss-intro {
+  display: none;
+}
+
+/* Hero sun rises once the intro ends */
+.ss-sunrise {
+  transform: translateY(140px);
+  animation: ss-sun 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--ss-reveal-delay, 0.15s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ss-intro {
+    display: none;
+  }
+  .ss-w > span,
+  .ss-fade,
+  .ss-sunrise {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Hide on phones (mobile uses the sticky CTA bar) */
+@media (max-width: 899.95px) {
+  .ss-hide-mobile {
+    display: none !important;
+  }
 }

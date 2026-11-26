@@ -1,4 +1,11 @@
+# *
 User-agent: *
 Allow: /
+Disallow: /404
+Disallow: /api/
 
-Sitemap: https://saptasuryasolar.com/sitemap.xml
+# Host
+Host: https://www.saptasuryasolar.com
+
+# Sitemaps
+Sitemap: https://www.saptasuryasolar.com/sitemap.xml

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 3.5 64 64" role="img" aria-label="Saptasurya Solar Energy">
+  <!-- Variant for dark backgrounds: horizon lines in white -->
+  <path d="M18 44a14 14 0 0 1 28 0z" fill="#F97316"/>
+  <g stroke="#fff" stroke-width="1.6" stroke-linecap="round">
+    <path d="M25 43.2v-10.6M32 43.2V31.2M39 43.2v-10.6M20.4 37.5h23.2"/>
+  </g>
+  <g stroke="#F97316" stroke-width="3.6" stroke-linecap="round">
+    <path d="M14.61 39.34 6.89 37.27M18.21 32.43l-6.13-5.14M24.39 27.69l-3.38-7.25M32 26V15M39.61 27.69l3.38-7.25M45.79 32.43l6.13-5.14M49.39 39.34l7.72-2.07"/>
+  </g>
+  <g stroke="#fff" stroke-width="3.6" stroke-linecap="round">
+    <path d="M6 49h52M16 56h32"/>
+  </g>
+</svg>

@@ -4,17 +4,12 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
   Card,
   CardContent,
   Button,
   Chip,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
+  Paper,
   useTheme as useMuiTheme,
-  Link,
 } from '@mui/material';
 import {
   CheckCircle,
@@ -23,521 +18,357 @@ import {
   Savings,
   Phone,
   WhatsApp,
-  LocationOn,
-  Star,
   EmojiEvents,
+  ElectricMeter,
+  Thermostat,
 } from '@mui/icons-material';
-import { motion } from 'framer-motion';
 import JsonLd from './JsonLd';
 import Breadcrumbs from '../Navigation/Breadcrumbs';
+import LeadForm from '../LeadForm/LeadForm';
+import SolarCalculator from '../SolarCalculator/SolarCalculator';
+import FAQAccordion from '../FAQAccordion/FAQAccordion';
+import PageHero from '../ui/PageHero';
+import SectionHeader from '../ui/SectionHeader';
+import CTABand from '../ui/CTABand';
+import { City, REGIONS, nearbyCities, CITIES } from '@/data/cities';
+import { BUSINESS, whatsappLink } from '@/config/site';
+import { trackContact } from '@/lib/analytics';
 
-interface CityLandingPageProps {
-  citySlug: string;
-  cityName: string;
-}
+const MAJOR = [
+  'pune',
+  'mumbai',
+  'nagpur',
+  'nashik',
+  'thane',
+  'chhatrapati-sambhajinagar',
+  'kolhapur',
+  'solapur',
+];
 
-export default function CityLandingPage({ citySlug, cityName }: CityLandingPageProps) {
+export default function CityLandingPage({ city }: { city: City }) {
   const theme = useMuiTheme();
+  const region = REGIONS[city.region];
+  const cityName = city.name;
+  const discomText = city.discoms.join(' / ');
+  const nearby = nearbyCities(city);
+  const others = CITIES.filter((c) => c.region !== city.region && MAJOR.includes(c.slug));
 
-  const benefits = [
-    'Up to 80% reduction in electricity bills',
-    'Government subsidy available under PM Surya Ghar scheme',
-    '25-year panel performance warranty',
-    'Free site survey and detailed proposal',
-    'Certified and experienced installation team',
-    'On-grid, Off-grid, and Hybrid options',
-    'Net metering support and grid connection',
-    'AMC and maintenance services available',
+  const iconBox = {
+    width: 48,
+    height: 48,
+    borderRadius: 3,
+    display: 'grid',
+    placeItems: 'center',
+    bgcolor: theme.palette.mode === 'dark' ? 'rgba(249,115,22,0.14)' : '#FFF1E6',
+    color: 'primary.main',
+    mb: 2,
+  } as const;
+
+  const faqs = [
+    {
+      question: `What is the cost of a rooftop solar system in ${cityName}?`,
+      answer: `A 3 kW home system in ${cityName} costs about ₹2,25,000 before subsidy. After the PM Surya Ghar subsidy of ₹78,000, your net cost is about ₹1,47,000. The exact price depends on panel brand, inverter and roof type — we confirm it after a free site survey.`,
+    },
+    {
+      question: `Is PM Surya Ghar subsidy available in ${cityName}?`,
+      answer: `Yes. Homeowners in ${cityName} get ₹30,000/kW for the first 2 kW and ₹18,000 for the 3rd kW — up to ₹78,000. Housing societies get ₹18,000/kW for common-area systems. We register you on the national portal and handle all the paperwork.`,
+    },
+    {
+      question: `Who handles net metering in ${cityName}?`,
+      answer: `In ${cityName}, net metering is approved by ${discomText}. We prepare the application, coordinate the site inspection and get your bi-directional net meter installed, so extra units are credited to your bill.`,
+    },
+    {
+      question: `How much electricity will solar generate in ${cityName}?`,
+      answer: `In the ${region.name} region, each 1 kW of panels generates about ${region.unitsPerKwDay} units per day on average — roughly 115–140 units a month. A 3 kW system can cover a ₹3,000 – ₹4,000 monthly bill.`,
+    },
+    {
+      question: `How long does solar installation take in ${cityName}?`,
+      answer: `Physical installation takes 1–2 days. Including subsidy registration and net-meter approval from ${city.discoms[0]}, the full process usually takes 3–6 weeks.`,
+    },
   ];
 
   const services = [
     {
-      icon: <WbSunny sx={{ color: theme.palette.primary.main, fontSize: 36 }} />,
+      icon: <WbSunny />,
       title: 'Rooftop Solar',
-      desc: 'Complete rooftop solar system for homes and businesses.',
+      desc: 'On-grid, hybrid and off-grid systems for homes, societies and businesses.',
     },
+    { icon: <Bolt />, title: 'Solar Water Heater', desc: 'Save up to 70% on water heating costs.' },
     {
-      icon: <Bolt sx={{ color: theme.palette.primary.main, fontSize: 36 }} />,
-      title: 'Solar Water Heater',
-      desc: 'Save 70% on water heating costs with solar technology.',
-    },
-    {
-      icon: <Savings sx={{ color: theme.palette.primary.main, fontSize: 36 }} />,
+      icon: <Savings />,
       title: 'Solar Pump',
-      desc: 'Government-subsidised solar pumps for agriculture.',
+      desc: 'PM-KUSUM subsidised solar pumps for agriculture.',
     },
     {
-      icon: <EmojiEvents sx={{ color: theme.palette.primary.main, fontSize: 36 }} />,
-      title: 'EPC Services',
-      desc: 'End-to-end Engineering, Procurement & Construction.',
+      icon: <EmojiEvents />,
+      title: 'EPC & AMC',
+      desc: 'Commercial projects and yearly maintenance contracts.',
     },
   ];
 
-  const stats = [
-    { number: '100+', label: 'Projects Installed' },
-    { number: '80%', label: 'Bill Savings' },
-    { number: '25yr', label: 'Warranty' },
-    { number: '24/7', label: 'Support' },
+  const process = [
+    {
+      step: '01',
+      title: 'Free site survey',
+      desc: `Our engineer visits your property in ${cityName} to check roof strength, shadow-free area and consumption.`,
+    },
+    {
+      step: '02',
+      title: 'Design & quote',
+      desc: 'Custom system design with generation estimate, price and subsidy — no hidden costs.',
+    },
+    {
+      step: '03',
+      title: 'Subsidy registration',
+      desc: 'We register your application on the PM Surya Ghar national portal.',
+    },
+    {
+      step: '04',
+      title: 'Installation',
+      desc: `Our team installs in 1–2 days, with structures suited to ${region.name}'s climate.`,
+    },
+    {
+      step: '05',
+      title: 'Net metering',
+      desc: `We coordinate with ${discomText} for inspection and net-meter installation.`,
+    },
+    {
+      step: '06',
+      title: 'Subsidy credited',
+      desc: 'Subsidy is credited directly to your bank account after commissioning.',
+    },
   ];
 
-  const breadcrumb = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saptasuryasolar.com' },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Solar Installation',
-        item: 'https://saptasuryasolar.com/services',
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: cityName,
-        item: `https://saptasuryasolar.com/solar-installation-${citySlug}`,
-      },
-    ],
-  };
+  const facts = [
+    {
+      icon: <WbSunny />,
+      label: 'Solar generation',
+      value: region.unitsPerKwDay,
+      note: 'units per kW per day (yearly average)',
+    },
+    {
+      icon: <ElectricMeter />,
+      label: 'Net metering by',
+      value: discomText,
+      note: 'We file the application & coordinate inspection.',
+    },
+    { icon: <Thermostat />, label: 'Most popular here', value: '', note: region.popular },
+  ];
 
   return (
     <Box>
-      <JsonLd city={cityName} />
-      <Breadcrumbs
-        items={[{ label: 'Solar Installation', path: '/services' }, { label: cityName }]}
-      />
-      {/* FAQ Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: `What is the cost of solar panels in ${cityName}?`,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: `Solar system prices in ${cityName} start from ₹75,000 for a 1kW system, depending on the panel type and inverter quality.`,
-                },
-              },
-              {
-                '@type': 'Question',
-                name: `Is government subsidy available in ${cityName}?`,
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: `Yes, residents in ${cityName} can apply for the PM Surya Ghar Muft Bijli Yojana, which offers significant subsidies for residential rooftop solar installations.`,
-                },
-              },
-            ],
-          }),
-        }}
-      />
+      <JsonLd city={cityName} servicesOnly />
 
-      {/* Hero Section */}
-      <Box
-        sx={{
-          minHeight: '60vh',
-          display: 'flex',
-          alignItems: 'center',
-          position: 'relative',
-          overflow: 'hidden',
-          background: `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.background.paper} 100%)`,
-          borderBottom: `1px solid ${theme.palette.divider}`,
-        }}
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage:
-              'url(https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: 0.07,
-          }}
-        />
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, py: 10 }}>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Chip
-              label={`Serving ${cityName}, Maharashtra`}
-              color="primary"
-              sx={{ mb: 3, fontWeight: 600 }}
-            />
-            <Typography
-              variant="h1"
-              sx={{
-                fontWeight: 800,
-                mb: 3,
-                lineHeight: 1.15,
-                background: `linear-gradient(135deg, ${theme.palette.text.primary} 0%, ${theme.palette.primary.main} 100%)`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              Solar Panel Installation
-              <br />
-              in {cityName}
-            </Typography>
-            <Typography
-              variant="h5"
-              color="text.secondary"
-              sx={{ mb: 4, fontWeight: 400, lineHeight: 1.6, maxWidth: 650 }}
-            >
-              Maharashtra's trusted solar energy company. Get affordable rooftop solar systems with
-              government subsidy in {cityName}.
-            </Typography>
-            <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-              <Button
-                variant="contained"
-                size="large"
-                startIcon={<WhatsApp />}
-                href={`https://wa.me/917058362510?text=Hello! I'm interested in solar panel installation in ${cityName}.`}
-                target="_blank"
-                sx={{ px: 4, py: 1.5, fontSize: '1.1rem' }}
-              >
-                Get Free Quote
-              </Button>
-              <Button
-                variant="outlined"
-                size="large"
-                startIcon={<Phone />}
-                href="tel:+917058362510"
-                sx={{ px: 4, py: 1.5, fontSize: '1.1rem' }}
-              >
-                Call Now
-              </Button>
-            </Box>
-          </motion.div>
-        </Container>
-      </Box>
-
-      {/* Stats Bar */}
-      <Box sx={{ bgcolor: 'primary.main', py: 3 }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={2} justifyContent="center">
-            {stats.map((s) => (
-              <Grid item xs={6} md={3} key={s.label} sx={{ textAlign: 'center' }}>
-                <Typography variant="h4" sx={{ fontWeight: 800, color: 'primary.contrastText' }}>
-                  {s.number}
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'primary.contrastText', opacity: 0.8, fontWeight: 600 }}>
-                  {s.label}
-                </Typography>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Process Section */}
-      <Box sx={{ py: 10, bgcolor: 'background.default' }}>
-        <Container maxWidth="lg">
-          <Typography variant="h2" sx={{ fontWeight: 800, mb: 6, textAlign: 'center' }}>
-            Our Solar Installation Process in {cityName}
-          </Typography>
-          <Grid container spacing={4}>
-            {[
-              {
-                step: '01',
-                title: 'Site Survey',
-                desc: 'Our experts visit your property in {cityName} to assess roof strength, shadow-free area, and electricity consumption patterns.',
-              },
-              {
-                step: '02',
-                title: 'System Design',
-                desc: 'We create a customized engineering design for your rooftop solar plant, optimizing for maximum sunlight capture and efficiency.',
-              },
-              {
-                step: '03',
-                title: 'Quality Procurement',
-                desc: 'We source high-efficiency monocrystalline PERC panels and premium inverters from top-tier global manufacturers.',
-              },
-              {
-                step: '04',
-                title: 'Professional Install',
-                desc: 'Our certified team carries out the heavy-duty mounting and electrical wiring to ensure 25+ years of trouble-free operation.',
-              },
-              {
-                step: '05',
-                title: 'Net Metering',
-                desc: 'We handle all the documentation and coordination with MSEDCL/BEST/Adani for the net metering process in {cityName}.',
-              },
-              {
-                step: '06',
-                title: 'Commissioning',
-                desc: 'Your system goes live! We monitor the initial performance and hand over a complete maintenance guide to you.',
-              },
-            ].map((p) => (
-              <Grid item xs={12} sm={6} md={4} key={p.step}>
-                <Box
-                  sx={{
-                    p: 4,
-                    borderRadius: 4,
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    height: '100%',
-                  }}
-                >
-                  <Typography
-                    variant="h3"
-                    sx={{ color: 'primary.main', opacity: 0.3, fontWeight: 800, mb: 2 }}
-                  >
-                    {p.step}
-                  </Typography>
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
-                    {p.title}
-                  </Typography>
-                  <Typography color="text.secondary">
-                    {p.desc.replace('{cityName}', cityName)}
-                  </Typography>
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Savings & ROI Section */}
-      <Box sx={{ py: 10, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
-        <Container maxWidth="md" sx={{ textAlign: 'center' }}>
-          <Typography variant="h2" sx={{ fontWeight: 800, mb: 3 }}>
-            Solar ROI & Savings in {cityName}
-          </Typography>
-          <Typography variant="h5" sx={{ mb: 6, opacity: 0.9 }}>
-            A typical 3kW solar system in {cityName} can save you over ₹4,000 per month on
-            electricity bills.
-          </Typography>
-          <Grid container spacing={4}>
-            {[
-              { label: 'Starting Price', value: '₹75,000/kW' },
-              { label: 'Payback Period', value: '3.5 - 5 Years' },
-              { label: '25-Year Savings', value: '₹8,00,000+' },
-              { label: 'Property Value', value: '+4% Increase' },
-            ].map((stat) => (
-              <Grid item xs={6} md={3} key={stat.label}>
-                <Typography variant="h4" sx={{ fontWeight: 800 }}>
-                  {stat.value}
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'primary.contrastText', opacity: 0.8, mt: 1 }}>
-                  {stat.label}
-                </Typography>
-              </Grid>
-            ))}
-          </Grid>
-          <Box sx={{ mt: 6 }}>
-            <Typography variant="body1" sx={{ lineHeight: 1.8, opacity: 0.9 }}>
-              With solar prices in {cityName} starting from just ₹75,000, and generous government
-              subsidies under the PM Surya Ghar scheme, the return on investment is at an all-time
-              high. A solar plant is not just an expense; it is a financial asset that provides
-              inflation-free electricity for over 25 years.
-            </Typography>
-          </Box>
-        </Container>
-      </Box>
-
-      {/* Maintenance & Tips */}
-      <Box sx={{ py: 10 }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={6} alignItems="center">
-            <Grid item xs={12} md={5}>
-              <Box
-                component="img"
-                src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80"
-                sx={{ width: '100%', borderRadius: 4, boxShadow: 10 }}
-              />
-            </Grid>
-            <Grid item xs={12} md={7}>
-              <Typography variant="h2" sx={{ fontWeight: 800, mb: 4 }}>
-                Maintaining Your Solar Plant in {cityName}
-              </Typography>
-              <Typography variant="body1" sx={{ mb: 4, lineHeight: 1.8, color: 'text.secondary' }}>
-                Maharashtra's changing seasons—from dusty summers to heavy monsoons—require
-                professional care. In {cityName}, we recommend a bi-weekly cleaning schedule to
-                prevent dust accumulation, which can reduce your solar generation by up to 20%.
-              </Typography>
-              <Grid container spacing={2}>
-                {[
-                  'Automatic Solar Cleaning Systems available.',
-                  'Professional structure health checks every 6 months.',
-                  'Real-time app-based generation monitoring.',
-                  'Lightning arresters and SPD for monsoon safety.',
-                ].map((item) => (
-                  <Grid item xs={12} sm={6} key={item}>
-                    <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
-                      <CheckCircle sx={{ color: 'primary.main' }} />
-                      <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                        {item}
-                      </Typography>
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Services Section */}
-      <Box
-        sx={{ py: 8, bgcolor: 'background.paper', borderTop: `1px solid ${theme.palette.divider}` }}
-      >
-        <Container maxWidth="lg">
-          <Typography variant="h2" sx={{ fontWeight: 800, mb: 2, textAlign: 'center' }}>
-            Our Solar Services in {cityName}
-          </Typography>
-          <Typography
-            color="text.secondary"
-            sx={{ textAlign: 'center', mb: 6, maxWidth: 550, mx: 'auto' }}
-          >
-            Complete solar energy solutions tailored for {cityName} residents and businesses.
-          </Typography>
-          <Grid container spacing={3}>
-            {services.map((s) => (
-              <Grid item xs={12} sm={6} md={3} key={s.title}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
-                    <CardContent>
-                      <Box sx={{ mb: 2 }}>{s.icon}</Box>
-                      <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
-                        {s.title}
-                      </Typography>
-                      <Typography color="text.secondary" variant="body2">
-                        {s.desc}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* CTA Section */}
-      <Box
-        sx={{
-          py: 10,
-          textAlign: 'center',
-          background: `linear-gradient(135deg, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 100%)`,
-        }}
-      >
-        <Container maxWidth="md">
-          <Star sx={{ fontSize: 48, color: 'white', mb: 2 }} />
-          <Typography variant="h2" sx={{ fontWeight: 800, color: 'primary.contrastText', mb: 2 }}>
-            Get a Free Solar Quote in {cityName}
-          </Typography>
-          <Typography sx={{ color: 'primary.contrastText', opacity: 0.9, mb: 4, fontSize: '1.1rem' }}>
-            Our expert team will analyse your roof, calculate savings, and provide a transparent
-            proposal — completely free.
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+      <PageHero
+        eyebrow={`Serving ${cityName} · ${city.district} district`}
+        title={`Solar panel installation in ${cityName}`}
+        subtitle={
+          <>
+            Rooftop solar with up to <b>₹78,000 PM Surya Ghar subsidy</b>. We handle the survey,
+            installation, subsidy paperwork and {discomText} net metering — end to end.
+            {city.note && (
+              <Box component="span" sx={{ display: 'block', mt: 1.5 }}>
+                {city.note}
+              </Box>
+            )}
+          </>
+        }
+        actions={
+          <>
             <Button
               variant="contained"
               size="large"
-              startIcon={<WhatsApp />}
-              href={`https://wa.me/917058362510?text=Hi, I need solar installation in ${cityName}.`}
-              target="_blank"
-              sx={{
-                bgcolor: '#ffffff',
-                color: theme.palette.primary.dark,
-                px: 4,
-                py: 1.5,
-                fontWeight: 700,
-                '&:hover': { bgcolor: '#f0f0f0' },
-              }}
+              startIcon={<Phone />}
+              href={`tel:${BUSINESS.phoneE164}`}
+              onClick={() => trackContact('call', 'city_hero')}
             >
-              WhatsApp Us
+              {BUSINESS.phoneDisplay}
             </Button>
             <Button
               variant="outlined"
               size="large"
-              startIcon={<LocationOn />}
-              href="/contact"
+              startIcon={<WhatsApp />}
+              href={whatsappLink(
+                `Hi Saptasurya Solar, I'm interested in solar panel installation in ${cityName}.`
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackContact('whatsapp', 'city_hero')}
               sx={{
-                borderColor: 'white',
-                color: 'white',
-                px: 4,
-                py: 1.5,
-                fontWeight: 700,
-                '&:hover': { borderColor: 'white', bgcolor: 'rgba(255,255,255,0.1)' },
+                color: '#fff',
+                borderColor: 'rgba(255,255,255,0.45)',
+                '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.08)' },
               }}
             >
-              View Contact Details
+              WhatsApp
             </Button>
+          </>
+        }
+        aside={
+          <Paper elevation={0} sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: 4 }}>
+            <LeadForm
+              compact
+              source="city_page"
+              defaultCity={cityName}
+              title={`Free solar quote in ${cityName}`}
+              subtitle="Our engineer will call you within 24 hours."
+            />
+          </Paper>
+        }
+      />
+      <Breadcrumbs
+        items={[{ label: 'Solar Installation', path: '/services' }, { label: cityName }]}
+      />
+
+      {/* Local facts */}
+      <Box component="section" sx={{ py: { xs: 8, md: 12 } }}>
+        <Container maxWidth="lg">
+          <SectionHeader
+            eyebrow="Local insight"
+            title={`Solar in ${cityName}: what you should know`}
+            subtitle={`${cityName} is in the ${region.name} region, which has ${region.climate}. Here is how that shapes your solar system.`}
+          />
+          <Box
+            sx={{
+              display: 'grid',
+              gap: 3,
+              gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+            }}
+          >
+            {facts.map((f) => (
+              <Card key={f.label} sx={{ height: '100%' }}>
+                <CardContent sx={{ p: 3 }}>
+                  <Box sx={iconBox}>{f.icon}</Box>
+                  <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 600 }}>
+                    {f.label}
+                  </Typography>
+                  {f.value && (
+                    <Typography
+                      sx={{ fontWeight: 800, fontSize: '1.5rem', color: 'text.primary', my: 0.5 }}
+                    >
+                      {f.value}
+                    </Typography>
+                  )}
+                  <Typography color="text.secondary" sx={{ fontWeight: f.value ? 400 : 600 }}>
+                    {f.note}
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </Box>
+          <Card sx={{ mt: 3 }}>
+            <CardContent sx={{ p: { xs: 3, md: 4 } }}>
+              <Typography variant="h5" component="h3" sx={{ mb: 2.5 }}>
+                How we build systems for {region.name}
+              </Typography>
+              <Box
+                sx={{
+                  display: 'grid',
+                  gap: 1.75,
+                  gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                }}
+              >
+                {region.advice.map((item) => (
+                  <Box key={item} sx={{ display: 'flex', gap: 1.25, alignItems: 'flex-start' }}>
+                    <CheckCircle sx={{ color: 'success.main', mt: 0.25 }} />
+                    <Typography>{item}</Typography>
+                  </Box>
+                ))}
+              </Box>
+            </CardContent>
+          </Card>
+        </Container>
+      </Box>
+
+      <Box sx={{ bgcolor: 'background.alt' }}>
+        <SolarCalculator
+          title={`Solar savings calculator for ${cityName}`}
+          defaultCity={cityName}
+        />
+      </Box>
+
+      {/* Process */}
+      <Box component="section" sx={{ py: { xs: 8, md: 12 } }}>
+        <Container maxWidth="lg">
+          <SectionHeader eyebrow="Our process" title={`How we install solar in ${cityName}`} />
+          <Box
+            sx={{
+              display: 'grid',
+              gap: 3,
+              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(3, 1fr)' },
+            }}
+          >
+            {process.map((p) => (
+              <Card key={p.step} sx={{ height: '100%' }}>
+                <CardContent sx={{ p: 3 }}>
+                  <Typography
+                    sx={{ fontWeight: 800, color: 'primary.main', fontSize: '1.4rem', mb: 1 }}
+                  >
+                    {p.step}
+                  </Typography>
+                  <Typography variant="h6" component="h3" sx={{ mb: 0.75 }}>
+                    {p.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {p.desc}
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
           </Box>
         </Container>
       </Box>
-      {/* Internal City Linking — helps Google crawl all city pages */}
-      <Box sx={{ py: 6, borderTop: `1px solid ${theme.palette.divider}` }}>
+
+      {/* Services */}
+      <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: 'background.alt' }}>
         <Container maxWidth="lg">
-          <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, textAlign: 'center' }}>
-            Solar Installation Across Maharashtra
+          <SectionHeader eyebrow="Services" title={`Our solar services in ${cityName}`} />
+          <Box
+            sx={{
+              display: 'grid',
+              gap: 3,
+              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(4, 1fr)' },
+            }}
+          >
+            {services.map((s) => (
+              <Card key={s.title} sx={{ height: '100%' }}>
+                <CardContent sx={{ p: 3 }}>
+                  <Box sx={iconBox}>{s.icon}</Box>
+                  <Typography variant="h6" component="h3" sx={{ mb: 0.75 }}>
+                    {s.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {s.desc}
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </Box>
+        </Container>
+      </Box>
+
+      <FAQAccordion faqs={faqs} title={`Solar FAQs for ${cityName}`} />
+
+      <CTABand source="city_cta" title={`Get a free solar quote in ${cityName}`} />
+
+      {/* Internal linking — nearby cities first */}
+      <Box component="section" sx={{ pb: { xs: 8, md: 10 } }}>
+        <Container maxWidth="lg">
+          <Typography variant="h6" component="h2" sx={{ mb: 2.5, textAlign: 'center' }}>
+            Solar installation near {cityName}
           </Typography>
-          <Typography color="text.secondary" sx={{ textAlign: 'center', mb: 4 }}>
-            We serve all districts and major cities in Maharashtra
-          </Typography>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, justifyContent: 'center' }}>
-            {[
-              { label: 'Pune', slug: 'pune' },
-              { label: 'Nagpur', slug: 'nagpur' },
-              { label: 'Mumbai', slug: 'mumbai' },
-              { label: 'Nashik', slug: 'nashik' },
-              { label: 'Chhatrapati Sambhajinagar', slug: 'chhatrapati-sambhajinagar' },
-              { label: 'Solapur', slug: 'solapur' },
-              { label: 'Kolhapur', slug: 'kolhapur' },
-              { label: 'Amravati', slug: 'amravati' },
-              { label: 'Nanded', slug: 'nanded' },
-              { label: 'Sangli', slug: 'sangli' },
-              { label: 'Jalgaon', slug: 'jalgaon' },
-              { label: 'Satara', slug: 'satara' },
-              { label: 'Akola', slug: 'akola' },
-              { label: 'Latur', slug: 'latur' },
-              { label: 'Thane', slug: 'thane' },
-              { label: 'Kalyan', slug: 'kalyan' },
-              { label: 'Dombivli', slug: 'dombivli' },
-              { label: 'Navi Mumbai', slug: 'navi-mumbai' },
-              { label: 'Panvel', slug: 'panvel' },
-              { label: 'Ahmednagar', slug: 'ahmednagar' },
-              { label: 'Dhule', slug: 'dhule' },
-              { label: 'Chandrapur', slug: 'chandrapur' },
-              { label: 'Parbhani', slug: 'parbhani' },
-              { label: 'Jalna', slug: 'jalna' },
-            ]
-              .filter((c) => c.slug !== citySlug)
-              .map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/solar-installation-${c.slug}`}
-                  underline="hover"
-                  sx={{
-                    px: 2,
-                    py: 0.75,
-                    borderRadius: 2,
-                    border: `1px solid ${theme.palette.divider}`,
-                    color: 'text.secondary',
-                    fontSize: '0.9rem',
-                    fontWeight: 500,
-                    '&:hover': {
-                      color: 'primary.main',
-                      borderColor: 'primary.main',
-                      bgcolor: `${theme.palette.primary.main}08`,
-                    },
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  {c.label}
-                </Link>
-              ))}
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, justifyContent: 'center' }}>
+            {[...nearby, ...others].map((c) => (
+              <Chip
+                key={c.slug}
+                label={c.name}
+                component="a"
+                href={`/solar-installation-${c.slug}`}
+                clickable
+                variant="outlined"
+                sx={{ '&:hover': { borderColor: 'primary.main', color: 'primary.main' } }}
+              />
+            ))}
           </Box>
         </Container>
       </Box>

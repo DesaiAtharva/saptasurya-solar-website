@@ -42,10 +42,12 @@ const ScrollToTop = () => {
             onClick={scrollToTop}
             sx={{
               position: 'fixed',
-              bottom: 32,
-              right: 32,
+              // Hidden on phones: the sticky Call/WhatsApp/Quote bar owns that space.
+              display: { xs: 'none', md: 'inline-flex' },
+              bottom: { xs: 88, md: 32 },
+              right: { xs: 16, md: 32 },
               zIndex: 1000,
-              boxShadow: '0px 8px 24px rgba(255, 165, 0, 0.4)',
+              boxShadow: '0 8px 20px -6px rgba(234,88,12,0.55)',
             }}
           >
             <KeyboardArrowUp />

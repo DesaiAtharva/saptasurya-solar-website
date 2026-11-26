@@ -1,42 +1,49 @@
 'use client';
 import React from 'react';
-import { Fab } from '@mui/material';
+import { Box, Fab } from '@mui/material';
 import { WhatsApp } from '@mui/icons-material';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+import { whatsappLink } from '@/config/site';
+import { trackContact } from '@/lib/analytics';
+import { pageWhatsappMessage } from '@/components/MobileCTABar/MobileCTABar';
 
+/** Floating WhatsApp button — desktop/tablet only (mobile uses the sticky CTA bar). */
 const WhatsAppButton = () => {
-  const phoneNumber = '917058362510';
-  const message = "Hello Saptasurya Solar! I'm interested in solar energy solutions.";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  const pathname = usePathname() || '/';
 
   return (
-    <motion.div
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 2, type: 'spring', stiffness: 200 }}
-      style={{ position: 'fixed', bottom: 32, left: 32, zIndex: 1000 }}
-    >
-      <Fab
-        component="a"
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        sx={{
-          bgcolor: '#25D366',
-          color: 'white',
-          width: { xs: 56, md: 64 },
-          height: { xs: 56, md: 64 },
-          '&:hover': {
-            bgcolor: '#20BA5A',
-            transform: 'scale(1.1)',
-          },
-          boxShadow: '0px 8px 24px rgba(37, 211, 102, 0.4)',
-          transition: 'all 0.3s ease',
-        }}
+    <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 2, type: 'spring', stiffness: 200 }}
+        style={{ position: 'fixed', bottom: 32, left: 32, zIndex: 1000 }}
       >
-        <WhatsApp sx={{ fontSize: { xs: 28, md: 32 } }} />
-      </Fab>
-    </motion.div>
+        <Fab
+          component="a"
+          href={whatsappLink(pageWhatsappMessage(pathname))}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          onClick={() => trackContact('whatsapp', 'floating_button')}
+          sx={{
+            bgcolor: '#25D366',
+            color: 'white',
+            width: 64,
+            height: 64,
+            '&:hover': {
+              bgcolor: '#20BA5A',
+              transform: 'scale(1.1)',
+            },
+            boxShadow: '0px 8px 24px rgba(37, 211, 102, 0.4)',
+            transition: 'all 0.3s ease',
+          }}
+        >
+          <WhatsApp sx={{ fontSize: 32 }} />
+        </Fab>
+      </motion.div>
+    </Box>
   );
 };
 

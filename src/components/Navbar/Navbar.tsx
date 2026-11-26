@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -8,288 +8,286 @@ import {
   Box,
   IconButton,
   Drawer,
-  useScrollTrigger,
   Container,
+  List,
+  ListItemButton,
+  ListItemText,
+  Divider,
+  Stack,
+  useScrollTrigger,
+  Tooltip,
 } from '@mui/material';
-import { Menu as MenuIcon, Brightness4, Brightness7, Phone } from '@mui/icons-material';
-import { useTheme as useMuiTheme } from '@mui/material/styles';
+import {
+  Menu as MenuIcon,
+  Close,
+  DarkModeOutlined,
+  LightModeOutlined,
+  Phone,
+  WhatsApp,
+} from '@mui/icons-material';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTheme } from '@/context/ThemeContext';
-import { useRouter, usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
-import DesktopNav from './DesktopNav';
-import MobileDrawer from './MobileDrawer';
+import { useTheme as useMuiTheme } from '@mui/material/styles';
+import LogoMark from '@/components/Logo/LogoMark';
+import { useLeadPopup } from '@/components/LeadPopup/LeadPopupContext';
+import { trackContact } from '@/lib/analytics';
+import { BUSINESS, whatsappLink } from '@/config/site';
+
+export const NAV_ITEMS = [
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Services', path: '/services' },
+  { label: 'Products', path: '/products' },
+  { label: 'Subsidy', path: '/subsidy' },
+  { label: 'Blog', path: '/blog' },
+  { label: 'Contact', path: '/contact' },
+];
+
+export function Brand({ light = false }: { light?: boolean }) {
+  const muiTheme = useMuiTheme();
+  return (
+    <Box
+      component={Link}
+      href="/"
+      aria-label="Saptasurya Solar — home"
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1.25,
+        textDecoration: 'none',
+        color: 'inherit',
+        flexShrink: 0,
+      }}
+    >
+      <Box sx={{ width: { xs: 40, md: 46 }, height: { xs: 40, md: 46 } }}>
+        <LogoMark size="100%" light={light || muiTheme.palette.mode === 'dark'} />
+      </Box>
+      <Box sx={{ lineHeight: 1 }}>
+        <Typography
+          component="span"
+          sx={{
+            display: 'block',
+            fontWeight: 800,
+            fontSize: { xs: '1.1rem', md: '1.25rem' },
+            letterSpacing: '-0.02em',
+            color: light ? '#fff' : 'text.primary',
+            lineHeight: 1.1,
+          }}
+        >
+          Saptasurya
+        </Typography>
+        <Typography
+          component="span"
+          sx={{
+            display: 'block',
+            fontWeight: 700,
+            fontSize: '0.68rem',
+            letterSpacing: '0.18em',
+            color: light ? 'primary.light' : 'primary.main',
+            textTransform: 'uppercase',
+          }}
+        >
+          Solar Energy
+        </Typography>
+      </Box>
+    </Box>
+  );
+}
 
 const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
-  const muiTheme = useMuiTheme();
-  const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname() || '/';
+  const { openPopup } = useLeadPopup();
+  const scrolled = useScrollTrigger({ disableHysteresis: true, threshold: 40 });
+  // Transparent over the full-bleed dawn hero on the home page, solid once scrolled.
+  const overHero = pathname === '/' && !scrolled;
+  const fg = overHero ? '#fff' : 'text.primary';
 
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 50,
-  });
-
-  useEffect(() => {
-    setScrolled(trigger);
-  }, [trigger]);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
-  const navItems = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Services', path: '/services' },
-    { label: 'Products', path: '/products' },
-    { label: 'Subsidy', path: '/subsidy' },
-    { label: 'Blog', path: '/blog' },
-    { label: 'Contact', path: '/contact' },
-  ];
+  const isActive = (path: string) => (path === '/' ? pathname === '/' : pathname.startsWith(path));
 
   return (
     <>
       <AppBar
         position="fixed"
+        color="inherit"
         sx={{
-          backgroundColor: scrolled
-            ? muiTheme.palette.mode === 'dark'
-              ? 'rgba(30, 41, 59, 0.98)'
-              : 'rgba(255, 255, 255, 0.98)'
-            : 'transparent',
-          transition: 'all 0.3s ease-in-out',
-          backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          boxShadow: scrolled ? '0px 4px 20px rgba(0,0,0,0.1)' : 'none',
+          bgcolor: overHero ? 'transparent' : 'background.default',
+          borderBottom: 1,
+          borderColor: scrolled ? 'divider' : 'transparent',
+          boxShadow: scrolled ? '0 4px 20px -12px rgba(15,27,51,0.25)' : 'none',
+          transition: 'background-color .3s, box-shadow .3s, border-color .3s',
         }}
-        elevation={0}
       >
-        <Container maxWidth="xl">
-          <Toolbar
-            sx={{
-              justifyContent: 'space-between',
-              py: { xs: 1, sm: 1.5 },
-              minHeight: { xs: 64, sm: 70 },
-            }}
-          >
-            {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Typography
-                variant="h5"
-                component="div"
-                sx={{
-                  fontWeight: 800,
-                  fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' },
-                  background: `linear-gradient(135deg, ${muiTheme.palette.primary.main}, ${muiTheme.palette.secondary.main})`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 1,
-                  '&:hover': {
-                    transform: 'scale(1.05)',
-                  },
-                  transition: 'transform 0.3s ease',
-                }}
-                onClick={() => router.push('/')}
-              >
-                <Box
-                  component="img"
-                  src="/new_logo.png"
-                  alt="Saptasurya Logo"
-                  sx={{
-                    height: { xs: '65px', sm: '80px', md: '95px' }, // Increased size for the detailed logo
-                    width: 'auto',
-                    mr: { xs: 1, md: 1.5 },
-                    objectFit: 'contain',
-                    filter: 'drop-shadow(0px 4px 8px rgba(0,0,0,0.2))',
-                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    '&:hover': {
-                      transform: 'scale(1.08) rotate(2deg)',
-                    },
-                  }}
-                />
-                <Box
-                  component="span"
-                  sx={{
-                    display: { xs: 'none', lg: 'inline' },
-                    whiteSpace: 'nowrap',
-                    lineHeight: 1,
-                    background: `linear-gradient(135deg, #D4AF37 0%, #F8E076 50%, #AA8529 100%)`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    textShadow: '0px 2px 4px rgba(0,0,0,0.2)',
-                  }}
-                >
-                  Saptasurya Solar Energy
-                </Box>
-                <Box
-                  component="span"
-                  sx={{ display: { xs: 'none', sm: 'inline', lg: 'none' }, whiteSpace: 'nowrap' }}
-                >
-                  Saptasurya Solar
-                </Box>
-                <Box
-                  component="span"
-                  sx={{ display: { xs: 'inline', sm: 'none' }, whiteSpace: 'nowrap' }}
-                >
-                  Saptasurya
-                </Box>
-              </Typography>
-            </motion.div>
+        <Container maxWidth="lg">
+          <Toolbar disableGutters sx={{ minHeight: { xs: 68, md: 76 }, gap: 2 }}>
+            <Brand light={overHero} />
 
-            {/* Desktop Navigation */}
-            <DesktopNav navItems={navItems} pathname={pathname} router={router} />
-
-            {/* Desktop Actions */}
             <Box
-              sx={{
-                display: { xs: 'none', lg: 'flex' },
-                gap: 1,
-                alignItems: 'center',
-              }}
+              component="nav"
+              sx={{ display: { xs: 'none', lg: 'flex' }, gap: 0.25, mx: 'auto' }}
             >
-              <IconButton
-                onClick={toggleTheme}
-                sx={{
-                  color: 'text.primary',
-                  '&:hover': {
-                    bgcolor: 'action.hover',
-                    transform: 'rotate(180deg)',
-                  },
-                  transition: 'all 0.3s ease',
-                }}
-              >
-                {isDarkMode ? <Brightness7 /> : <Brightness4 />}
-              </IconButton>
-              {/* <Button
-                variant="contained"
-                color="primary"
-                onClick={() => router.push('/contact')}
-                startIcon={<Phone />}
-                sx={{
-                  ml: 1,
-                  px: { lg: 2, xl: 3 },
-                  py: 1,
-                  fontSize: { lg: '0.875rem', xl: '1rem' },
-                  fontWeight: 600,
-                  boxShadow: `0px 4px 12px ${muiTheme.palette.primary.main}40`,
-                  '&:hover': {
-                    boxShadow: `0px 6px 16px ${muiTheme.palette.primary.main}60`,
-                    transform: 'translateY(-2px)',
-                  },
-                  transition: 'all 0.3s ease',
-                }}
-              >
-                Get Quote
-              </Button> */}
-            </Box>
-
-            {/* Tablet Navigation (Condensed) */}
-            <Box
-              sx={{
-                display: { xs: 'none', md: 'flex', lg: 'none' },
-                gap: 0.5,
-                alignItems: 'center',
-              }}
-            >
-              {navItems.slice(0, 4).map((item) => (
+              {NAV_ITEMS.map((item) => (
                 <Button
-                  key={item.label}
-                  onClick={() => router.push(item.path)}
-                  size="small"
+                  key={item.path}
+                  component={Link}
+                  href={item.path}
+                  color="inherit"
                   sx={{
-                    color: pathname === item.path ? 'primary.main' : 'text.primary',
-                    fontWeight: pathname === item.path ? 700 : 500,
-                    fontSize: '0.8rem',
-                    minWidth: 'auto',
-                    px: 1,
-                    textTransform: 'none',
+                    px: 1.5,
+                    py: 1,
+                    fontWeight: 600,
+                    fontSize: '0.95rem',
+                    color: isActive(item.path) ? (overHero ? '#FDBA2C' : 'primary.main') : fg,
+                    '&:hover': {
+                      bgcolor: overHero ? 'rgba(255,255,255,0.08)' : 'action.hover',
+                      color: overHero ? '#FDBA2C' : 'primary.main',
+                    },
                   }}
                 >
                   {item.label}
                 </Button>
               ))}
-              <IconButton onClick={toggleTheme} size="small" sx={{ color: 'text.primary' }}>
-                {isDarkMode ? <Brightness7 /> : <Brightness4 />}
-              </IconButton>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ ml: 0.5 }}
-              >
-                <MenuIcon />
-              </IconButton>
             </Box>
 
-            {/* Mobile Actions */}
-            <Box
-              sx={{
-                display: { xs: 'flex', md: 'none' },
-                gap: 0.5,
-                alignItems: 'center',
-              }}
+            <Stack
+              direction="row"
+              spacing={1}
+              alignItems="center"
+              sx={{ ml: { xs: 'auto', lg: 0 } }}
             >
-              <IconButton
-                onClick={toggleTheme}
+              <Tooltip title={isDarkMode ? 'Light mode' : 'Dark mode'}>
+                <IconButton
+                  onClick={toggleTheme}
+                  aria-label="Toggle dark mode"
+                  sx={{ color: overHero ? 'rgba(255,255,255,0.85)' : 'text.secondary' }}
+                >
+                  {isDarkMode ? <LightModeOutlined /> : <DarkModeOutlined />}
+                </IconButton>
+              </Tooltip>
+              <Button
+                href={`tel:${BUSINESS.phoneE164}`}
+                onClick={() => trackContact('call', 'navbar')}
+                startIcon={<Phone />}
+                color="inherit"
                 sx={{
-                  color: 'text.primary',
-                  '&:hover': { bgcolor: 'action.hover' },
+                  display: { xs: 'none', md: 'inline-flex' },
+                  fontWeight: 700,
+                  color: fg,
+                  whiteSpace: 'nowrap',
                 }}
               >
-                {isDarkMode ? <Brightness7 /> : <Brightness4 />}
-              </IconButton>
+                {BUSINESS.phoneDisplay.replace('+91 ', '')}
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => openPopup('navbar')}
+                sx={{ display: { xs: 'none', sm: 'inline-flex' }, whiteSpace: 'nowrap' }}
+              >
+                Get Free Quote
+              </Button>
               <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{
-                  '&:hover': { bgcolor: 'action.hover' },
-                }}
+                aria-label="Open menu"
+                onClick={() => setOpen(true)}
+                sx={{ display: { lg: 'none' }, color: fg }}
               >
                 <MenuIcon />
               </IconButton>
-            </Box>
+            </Stack>
           </Toolbar>
         </Container>
       </AppBar>
 
-      {/* Mobile Drawer */}
       <Drawer
-        variant="temporary"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true,
-        }}
-        sx={{
-          display: { xs: 'block', lg: 'none' },
-          '& .MuiDrawer-paper': {
-            boxSizing: 'border-box',
-            width: { xs: '100%', sm: 320 },
+        anchor="right"
+        open={open}
+        onClose={() => setOpen(false)}
+        PaperProps={{
+          sx: {
+            width: { xs: '100%', sm: 360 },
+            bgcolor: 'background.default',
+            backgroundImage: 'none',
           },
         }}
       >
-        <MobileDrawer
-          navItems={navItems}
-          pathname={pathname}
-          router={router}
-          handleDrawerToggle={handleDrawerToggle}
-          setMobileOpen={setMobileOpen}
-          muiTheme={muiTheme}
-          toggleTheme={toggleTheme}
-          isDarkMode={isDarkMode}
-        />
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            px: 2.5,
+            py: 1.5,
+          }}
+        >
+          <Brand />
+          <IconButton aria-label="Close menu" onClick={() => setOpen(false)}>
+            <Close />
+          </IconButton>
+        </Box>
+        <Divider />
+        <List sx={{ px: 1.5, py: 2 }}>
+          {NAV_ITEMS.map((item) => (
+            <ListItemButton
+              key={item.path}
+              component={Link}
+              href={item.path}
+              onClick={() => setOpen(false)}
+              selected={isActive(item.path)}
+              sx={{
+                borderRadius: 2,
+                mb: 0.5,
+                '&.Mui-selected': { bgcolor: 'action.hover', color: 'primary.main' },
+              }}
+            >
+              <ListItemText
+                primary={item.label}
+                primaryTypographyProps={{ fontWeight: 600, fontSize: '1.05rem' }}
+              />
+            </ListItemButton>
+          ))}
+        </List>
+        <Box sx={{ px: 2.5, mt: 'auto', pb: 4, display: 'grid', gap: 1.25 }}>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => {
+              setOpen(false);
+              openPopup('mobile_menu');
+            }}
+          >
+            Get Free Quote
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            size="large"
+            startIcon={<Phone />}
+            href={`tel:${BUSINESS.phoneE164}`}
+            onClick={() => trackContact('call', 'mobile_menu')}
+          >
+            Call {BUSINESS.phoneDisplay}
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            size="large"
+            startIcon={<WhatsApp />}
+            href={whatsappLink("Hi Saptasurya Solar, I'm interested in rooftop solar.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackContact('whatsapp', 'mobile_menu')}
+          >
+            WhatsApp Us
+          </Button>
+          <Button
+            color="inherit"
+            onClick={toggleTheme}
+            startIcon={isDarkMode ? <LightModeOutlined /> : <DarkModeOutlined />}
+          >
+            {isDarkMode ? 'Light mode' : 'Dark mode'}
+          </Button>
+        </Box>
       </Drawer>
     </>
   );
