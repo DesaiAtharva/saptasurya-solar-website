@@ -134,7 +134,7 @@ export default function LeadForm({
   return (
     <Box component="form" onSubmit={handleSubmit} noValidate>
       {title && (
-        <Typography variant={compact ? 'h6' : 'h5'} sx={{ fontWeight: 800, mb: 0.5 }}>
+        <Typography variant={compact ? 'h6' : 'h5'} component="p" sx={{ fontWeight: 800, mb: 0.5 }}>
           {title}
         </Typography>
       )}

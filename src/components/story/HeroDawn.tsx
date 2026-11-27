@@ -39,6 +39,7 @@ export default function HeroDawn() {
     <>
       <Box
         component="section"
+        data-surface="dark"
         ref={root}
         sx={{
           position: 'relative',

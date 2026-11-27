@@ -38,6 +38,7 @@ const Footer = () => {
   return (
     <Box
       component="footer"
+      data-surface="dark"
       sx={{ bgcolor: '#061A3A', color: '#fff', pt: { xs: 8, md: 10 }, pb: 4 }}
     >
       <Container maxWidth="lg">

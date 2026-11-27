@@ -22,7 +22,7 @@ export const STAGGER = {
 } as const;
 
 /** Intro overlay length (ms). Keep in sync with .ss-intro keyframes in index.css. */
-export const INTRO_MS = 1250;
+export const INTRO_MS = 1000;
 
 /** Desktop-only effects (smooth scroll, cursor, magnetic buttons). */
 export const FINE_POINTER_QUERY = '(hover: hover) and (pointer: fine)';

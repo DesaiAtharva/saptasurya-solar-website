@@ -17,6 +17,7 @@ export default function PageHero({ eyebrow, title, subtitle, actions, aside, chi
   return (
     <Box
       component="section"
+      data-surface="dark"
       sx={{
         position: 'relative',
         overflow: 'hidden',

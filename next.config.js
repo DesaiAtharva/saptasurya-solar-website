@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    // Inline the (small) global CSS into the HTML so it doesn't block first paint.
+    inlineCss: true,
+  },
   images: {
     remotePatterns: [
       {

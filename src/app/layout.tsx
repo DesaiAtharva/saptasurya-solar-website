@@ -25,7 +25,7 @@ const fontDisplay = Fraunces({
 });
 
 // Intro plays once per session, and only when the visit starts on the home page.
-const INTRO_FLAG = `(function(){var d=document.documentElement;try{if(location.pathname!=='/'||sessionStorage.getItem('ss_intro')){d.setAttribute('data-intro','seen');return}sessionStorage.setItem('ss_intro','1');setTimeout(function(){d.setAttribute('data-intro','seen')},1600)}catch(e){d.setAttribute('data-intro','seen')}})();`;
+const INTRO_FLAG = `(function(){var d=document.documentElement;try{if(location.pathname!=='/'||sessionStorage.getItem('ss_intro')){d.setAttribute('data-intro','seen');return}sessionStorage.setItem('ss_intro','1');setTimeout(function(){d.setAttribute('data-intro','seen')},1200)}catch(e){d.setAttribute('data-intro','seen')}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.saptasuryasolar.com'),

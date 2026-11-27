@@ -54,6 +54,7 @@ export default function SunriseSequence() {
       {/* ───────── Animated version (hidden for reduced motion) ───────── */}
       <Box
         component="section"
+        data-surface="dark"
         ref={section}
         aria-label="How solar works through the day"
         sx={{
@@ -191,6 +192,7 @@ export default function SunriseSequence() {
       {/* ───────── Reduced-motion version: two stills + captions ───────── */}
       <Box
         component="section"
+        data-surface="dark"
         aria-label="How solar works through the day"
         sx={{
           display: 'none',

@@ -8,6 +8,9 @@ import { createTheme } from '@mui/material/styles';
  * background.alt          → alternating section background (use `bgcolor: 'background.alt'`)
  */
 export const brand = {
+  /** Text/CTA orange on light surfaces — WCAG AA: 5.2:1 on cream, 4.8:1 on alt cream, 5.6:1 white-on-orange. */
+  orangeText: '#B93E0B',
+  orangeDeep: '#9A3412',
   orange: '#EA580C',
   orangeLight: '#FB923C',
   orangeDark: '#C2410C',
@@ -88,7 +91,7 @@ function components(mode) {
         containedPrimary: {
           boxShadow: '0 6px 16px -6px rgba(234,88,12,0.55)',
           '&:hover': {
-            backgroundColor: brand.orangeDark,
+            backgroundColor: dark ? brand.orange : brand.orangeDeep,
             boxShadow: '0 8px 20px -6px rgba(234,88,12,0.6)',
           },
         },
@@ -149,6 +152,24 @@ function components(mode) {
     MuiLink: {
       defaultProps: { underline: 'hover' },
     },
+    // Subtitles are paragraphs, not <h6> — keeps heading levels sequential (a11y).
+    MuiTypography: {
+      defaultProps: {
+        variantMapping: {
+          h1: 'h1',
+          h2: 'h2',
+          h3: 'h3',
+          h4: 'h4',
+          h5: 'h5',
+          h6: 'h6',
+          subtitle1: 'p',
+          subtitle2: 'p',
+          body1: 'p',
+          body2: 'p',
+          inherit: 'p',
+        },
+      },
+    },
   };
 }
 
@@ -156,9 +177,9 @@ export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: brand.orange,
-      light: brand.orangeLight,
-      dark: brand.orangeDark,
+      main: brand.orangeText,
+      light: brand.orange,
+      dark: brand.orangeDeep,
       contrastText: '#FFFFFF',
     },
     secondary: {
@@ -170,7 +191,7 @@ export const lightTheme = createTheme({
     background: { default: '#FBF6EE', paper: '#FFFFFF', alt: '#F4ECDF', brand: brand.navyDark },
     text: { primary: '#0F1B33', secondary: '#4B5871' },
     divider: '#E9E1D3',
-    success: { main: '#16A34A' },
+    success: { main: '#15803D' }, // 5.0:1 on white (AA for text)
   },
   typography,
   shape: { borderRadius: 12 },
@@ -184,7 +205,8 @@ export const darkTheme = createTheme({
       main: '#F97316',
       light: brand.orangeLight,
       dark: brand.orange,
-      contrastText: '#FFFFFF',
+      // Dark text on bright orange: 6.9:1 (white on #F97316 would only be ~2.8:1).
+      contrastText: '#1C0A02',
     },
     secondary: {
       main: '#8FB3F0',

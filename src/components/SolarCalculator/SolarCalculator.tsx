@@ -102,7 +102,7 @@ export default function SolarCalculator({
               }}
             >
               {TYPES.map((t) => (
-                <ToggleButton key={t.value} value={t.value}>
+                <ToggleButton key={t.value} value={t.value} aria-label={t.label}>
                   {t.icon}
                   <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
                     {t.label}

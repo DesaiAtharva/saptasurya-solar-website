@@ -1,60 +1,37 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Fab } from '@mui/material';
+import { Fab, Zoom } from '@mui/material';
 import { KeyboardArrowUp } from '@mui/icons-material';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener('scroll', toggleVisibility);
+    const toggleVisibility = () => setIsVisible(window.scrollY > 300);
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Fab
-            color="primary"
-            size="medium"
-            onClick={scrollToTop}
-            sx={{
-              position: 'fixed',
-              // Hidden on phones: the sticky Call/WhatsApp/Quote bar owns that space.
-              display: { xs: 'none', md: 'inline-flex' },
-              bottom: { xs: 88, md: 32 },
-              right: { xs: 16, md: 32 },
-              zIndex: 1000,
-              boxShadow: '0 8px 20px -6px rgba(234,88,12,0.55)',
-            }}
-          >
-            <KeyboardArrowUp />
-          </Fab>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <Zoom in={isVisible}>
+      <Fab
+        color="primary"
+        size="medium"
+        aria-label="Scroll to top"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        sx={{
+          position: 'fixed',
+          // Hidden on phones: the sticky Call/WhatsApp/Quote bar owns that space.
+          display: { xs: 'none', md: 'inline-flex' },
+          bottom: 32,
+          right: 32,
+          zIndex: 1000,
+          boxShadow: '0 8px 20px -6px rgba(194,65,12,0.55)',
+        }}
+      >
+        <KeyboardArrowUp />
+      </Fab>
+    </Zoom>
   );
 };
 

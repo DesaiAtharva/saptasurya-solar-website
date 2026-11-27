@@ -68,12 +68,17 @@ html {
   animation: ss-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: calc(var(--ss-reveal-delay, 0.15s) + var(--i, 0) * 70ms);
 }
+/* Accent words: deep orange on light surfaces (AA contrast), bright orange on dark ones. */
 .ss-accent {
   font-style: italic;
+  color: #b93e0b;
+}
+[data-surface='dark'] .ss-accent,
+html[data-theme='dark'] .ss-accent {
   color: #fb923c;
 }
 .ss-reveal-after-intro {
-  --ss-reveal-delay: 1.15s;
+  --ss-reveal-delay: 0.85s;
 }
 html[data-intro='seen'] .ss-reveal-after-intro {
   --ss-reveal-delay: 0.1s;
@@ -98,7 +103,8 @@ html[data-intro='seen'] .ss-reveal-after-intro {
   }
 }
 
-/* ───────────── Section 1: intro reveal (home, first visit per session) ───────────── */
+/* ───────────── Section 1: intro reveal (home, first visit per session) ─────────────
+   Only opacity + transform are animated, so it runs on the compositor (no main-thread work). */
 .ss-intro {
   position: fixed;
   inset: 0;
@@ -106,54 +112,37 @@ html[data-intro='seen'] .ss-reveal-after-intro {
   display: grid;
   place-items: center;
   background: #061a3a;
-  clip-path: inset(0 0 0 0);
-  animation: ss-intro-out 0.5s cubic-bezier(0.77, 0, 0.18, 1) 0.8s forwards;
+  will-change: transform;
+  animation: ss-intro-out 0.45s cubic-bezier(0.77, 0, 0.18, 1) 0.55s forwards;
 }
 .ss-intro__inner {
   display: flex;
   align-items: center;
   gap: 18px;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  animation: ss-intro-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
 }
 .ss-intro svg {
   width: 92px;
   height: 92px;
   overflow: visible;
 }
-.ss-intro .ray {
-  stroke-dasharray: 12;
-  stroke-dashoffset: 12;
-  animation: ss-draw 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: calc(0.12s + var(--i) * 50ms);
-}
-.ss-intro .hz {
-  stroke-dasharray: 52;
-  stroke-dashoffset: 52;
-  animation: ss-draw 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.ss-intro .sun {
-  transform: translateY(16px);
-  animation: ss-sun 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
-}
-.ss-intro__word {
-  color: #fff;
-  opacity: 0;
-  transform: translateY(8px);
-  animation: ss-fade 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-}
-@keyframes ss-draw {
+@keyframes ss-intro-in {
   to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes ss-sun {
-  to {
+    opacity: 1;
     transform: none;
   }
 }
 @keyframes ss-intro-out {
   to {
-    clip-path: inset(0 0 100% 0);
-    visibility: hidden;
+    transform: translateY(-100%);
+  }
+}
+@keyframes ss-sun {
+  to {
+    transform: none;
   }
 }
 html[data-intro='seen'] .ss-intro {
@@ -163,7 +152,7 @@ html[data-intro='seen'] .ss-intro {
 /* Hero sun rises once the intro ends */
 .ss-sunrise {
   transform: translateY(140px);
-  animation: ss-sun 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: ss-sun 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: var(--ss-reveal-delay, 0.15s);
 }
 

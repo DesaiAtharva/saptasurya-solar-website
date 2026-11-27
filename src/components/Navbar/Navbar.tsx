@@ -113,7 +113,8 @@ const Navbar = () => {
         position="fixed"
         color="inherit"
         sx={{
-          bgcolor: overHero ? 'transparent' : 'background.default',
+          // Same colour as the top of the hero sky — looks seamless and gives the logo a real contrast background.
+          bgcolor: overHero ? '#040F24' : 'background.default',
           borderBottom: 1,
           borderColor: scrolled ? 'divider' : 'transparent',
           boxShadow: scrolled ? '0 4px 20px -12px rgba(15,27,51,0.25)' : 'none',

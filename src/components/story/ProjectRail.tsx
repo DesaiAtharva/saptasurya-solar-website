@@ -55,6 +55,7 @@ export default function ProjectRail({ projects }: { projects: Project[] }) {
   return (
     <Box
       component="section"
+      data-surface="dark"
       ref={root}
       aria-labelledby="projects-heading"
       sx={{

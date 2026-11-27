@@ -49,7 +49,7 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
         />
       </Box>
       <CardContent sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-        <Typography variant="h6" component="h3" sx={{ mb: 0.75 }}>
+        <Typography variant="h6" component="h2" sx={{ mb: 0.75 }}>
           {d.title}
         </Typography>
         <Box

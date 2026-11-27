@@ -146,6 +146,7 @@ export default function BlogArticle({
         </Box>
         <Typography
           variant="h6"
+          component="p"
           color="text.secondary"
           sx={{ fontWeight: 400, mb: 3, lineHeight: 1.7 }}
         >
@@ -207,7 +208,11 @@ export default function BlogArticle({
                   <CardContent>
                     <Chip label={r.category} size="small" sx={{ mb: 1.5 }} />
                     <Link href={`/blog/${r.slug}`} underline="hover" color="inherit">
-                      <Typography variant="h6" sx={{ fontWeight: 700, lineHeight: 1.4 }}>
+                      <Typography
+                        variant="h6"
+                        component="h3"
+                        sx={{ fontWeight: 700, lineHeight: 1.4 }}
+                      >
                         {r.title}
                       </Typography>
                     </Link>

@@ -161,7 +161,7 @@ const Subsidy = () => {
                   >
                     <Box sx={{ color: 'primary.main', '& svg': { fontSize: 32 } }}>{s.icon}</Box>
                     <Typography
-                      sx={{ fontWeight: 800, color: 'text.disabled', fontSize: '1.5rem' }}
+                      sx={{ fontWeight: 800, color: 'text.secondary', fontSize: '1.5rem' }}
                     >
                       0{i + 1}
                     </Typography>

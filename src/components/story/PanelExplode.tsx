@@ -152,6 +152,7 @@ export default function PanelExplode({ sequence }: { sequence: SequenceSets }) {
   return (
     <Box
       component="section"
+      data-surface="dark"
       ref={section}
       aria-labelledby="panel-heading"
       sx={{
